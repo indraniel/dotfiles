@@ -70,4 +70,4 @@ unset bootUp
 unset warn
 unset die
 unset note
-source ~/.bash_profile
+#source ~/.bash_profile
