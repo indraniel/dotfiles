@@ -64,7 +64,6 @@ function bootUp() {
 }
 
 cd "$(dirname "$0")"
-#git pull
 
 if [ "$1" == "--force" -o "$1" == "-f" ]; then
     bootUp
@@ -80,4 +79,3 @@ unset bootUp
 unset warn
 unset die
 unset note
-#source ~/.bash_profile
