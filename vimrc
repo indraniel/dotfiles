@@ -224,10 +224,9 @@ endif " has("autocmd")
 " tab shortcuts
 " -------------
 map <C-t> :tabnew<CR>   " CTRL + t -- opens a new tab
-map <C-h> :tabp<CR>  " ALT + h -- moves one tab to the left
-map<C-l> :tabn<CR>  " ALT + l -- moves one tab to the right
-" map <C-left> :tabp<CR>  " CTRL + left arrow -- moves one tab to the left
-" map<C-right> :tabn<CR>  " CTRL + right arrow -- moves one tab to the right
+map <C-h> :tabp<CR>     " CTRL + h -- moves one tab to the left
+map <C-l> :tabn<CR>     " CTRL + l -- moves one tab to the right
+
 
 " OmniComplete -- Ctrl+N -- Remappings
 " taken from http://vim.sourceforge.net/tips/tip.php?tip_id=1386
