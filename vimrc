@@ -121,6 +121,16 @@ let NERDTreeDirArrows = 1
 let g:NERDTreeWinSize = 30
 
 "==============================================================================
+" golden-ratio Adjustments
+"==============================================================================
+" disable automatic buffer resizes
+let g:golden_ratio_autocommand = 0
+
+" golden ratio resize toggle
+" --------------------------
+nnoremap <F7> :GoldenRatioToggle<CR>
+
+"==============================================================================
 " Mouse
 "==============================================================================
 "set mouse=a " work in all modes
