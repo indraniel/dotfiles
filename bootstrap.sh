@@ -19,27 +19,37 @@ function note() {
 }
 
 function setup_symlinks() {
-    ln -s $HOME/dotfiles/vimrc $HOME/.vimrc
-    ln -s $HOME/dotfiles/vim $HOME/.vim
+    ln -vs $HOME/dotfiles/vimrc $HOME/.vimrc
+    ln -vs $HOME/dotfiles/vim $HOME/.vim
+
+    os=$(uname)
+    if [ "$os" == "Linux" ]; then
+        ln -s $HOME/dotfiles/fonts $HOME/.fonts
+    fi
 }
 
 function bootUp() {
     note "Checking vim version..."
     vim --version | grep 7.3 || die "Your vim's version is too low!\nPlease download higher version(7.3+) from http://www.vim.org/download.php"
 
+    os=$(uname)
+    if [ "$os" == "Darwin" ]; then
+        mvim --version | grep 7.3 || die "MacVim version is too low!\nPlease download a higher version(7.3+)."
+    fi
+
     # backup noteable existing stuff
     note "Backing up noteable configs..."
     for i in $HOME/.vim $HOME/.vimrc $HOME/.gvimrc; do 
         if [ -e $i ]; then
-            note "\t * $i"
+            note "--> $i"
             mv -f $i $i.backup; 
         fi
     done
 
     note "Re-making .vim directory..."
-    mkdir -p $HOME/.vim/bundle
+    setup_symlinks
 
-    setup_symlinks()
+    mkdir -p $HOME/.vim/bundle
 
     note "Installing Vundle..."
     git clone git://github.com/gmarik/vundle.git $HOME/.vim/bundle/vundle
@@ -56,7 +66,7 @@ function bootUp() {
 cd "$(dirname "$0")"
 #git pull
 
-if [ "$1" == "--force" -o "$1" == "-f"]; then
+if [ "$1" == "--force" -o "$1" == "-f" ]; then
     bootUp
 else 
     read -p "This may overwrite existing files in your home directory. Are you sure? (y/n) " -n 1
