@@ -34,7 +34,7 @@ Bundle 'gmarik/vundle'                                            " required!
 
 " UI Additions
 " ------------
-Bundle 'wOng/vim-hybrid'
+Bundle 'w0ng/vim-hybrid'
 Bundle 'chriskempson/vim-tomorrow-theme'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'nanotech/jellybeans.vim'
