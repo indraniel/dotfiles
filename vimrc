@@ -101,7 +101,17 @@ syntax on
 "==============================================================================
 set listchars=tab:▸\ ,eol:¬,extends:❯,precedes:❮
 set showbreak=↪
-set guifont=Monaco\ for\ Powerline:h12
+
+" Need to use powerline patched fonts. See here for details:
+" https://github.com/Lokaltog/vim-powerline/wiki/Patched-fonts
+if has("unix")
+  let os = substitute(system('uname'), "\n", "", "")
+  if os == "Darwin"
+    set guifont=Monaco\ for\ Powerline:h12
+  elseif os == "Linux"
+    set guifont=Ubuntu\ Mono\ 12
+  endif
+endif
 
 "==============================================================================
 " Status Bar (vim powerline) Adjustments
