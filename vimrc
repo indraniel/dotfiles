@@ -101,6 +101,7 @@ syntax on
 "==============================================================================
 set listchars=tab:▸\ ,eol:¬,extends:❯,precedes:❮
 set showbreak=↪
+set guifont=Monaco\ for\ Powerline:h12
 
 "==============================================================================
 " Status Bar (vim powerline) Adjustments
