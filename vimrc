@@ -46,6 +46,7 @@ Bundle 'roman/golden-ratio'
 " Navigation
 " ----------
 Bundle 'scrooloose/nerdtree'
+Bundle 'jistr/vim-nerdtree-tabs'
 
 if executable('git')
     Bundle 'tpope/vim-git'
