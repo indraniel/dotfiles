@@ -22,6 +22,7 @@ function setup_symlinks() {
     ln -vs $HOME/dotfiles/vimrc $HOME/.vimrc
     ln -vs $HOME/dotfiles/vim $HOME/.vim
     ln -vs $HOME/dotfiles/screenrc $HOME/.screenrc
+    ln -vs $HOME/dotfiles/tmux.conf $HOME/.tmux.conf
 
     os=$(uname)
     if [ "$os" == "Linux" ]; then
