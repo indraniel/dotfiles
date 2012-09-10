@@ -68,7 +68,8 @@ Bundle 'pangloss/vim-javascript'
 Bundle 'itspriddle/vim-jquery'
 Bundle 'zaiste/VimClojure'
 Bundle 'tpope/vim-markdown'
-" Bundle 'gmarik/vim-markdown' fork of 'hallison/vim-markdown' or 'plasticboy/vim-markdown'
+" Choices are (1) 'tpope/vim-markdown', or (2) 'gmarik/vim-markdown' :
+" which is a fork of (3) 'hallison/vim-markdown' or (4) 'plasticboy/vim-markdown'
 Bundle 'laktek/distraction-free-writing-vim'
 
 " Applications
