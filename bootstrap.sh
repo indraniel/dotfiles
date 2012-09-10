@@ -5,6 +5,9 @@
 # https://github.com/aaronjensen/vimfiles/blob/master/setup.sh
 # https://raw.github.com/kepbod/ivim/master/tools/bootstrap.sh
 
+# note our base directory location
+DOTFILE_DIR=$( cd `dirname $0` >/dev/null; pwd -P )
+
 function warn() {
     printf '\033[0;31m%s\033[0m\n' "$1" >&2
 }
@@ -19,15 +22,15 @@ function note() {
 }
 
 function setup_symlinks() {
-    ln -vs $HOME/dotfiles/vimrc $HOME/.vimrc
-    ln -vs $HOME/dotfiles/vim $HOME/.vim
-    ln -vs $HOME/dotfiles/screenrc $HOME/.screenrc
-    ln -vs $HOME/dotfiles/tmux.conf $HOME/.tmux.conf
+    ln -vs $DOTFILE_DIR/vimrc $HOME/.vimrc
+    ln -vs $DOTFILE_DIR/vim $HOME/.vim
+    ln -vs $DOTFILE_DIR/screenrc $HOME/.screenrc
+    ln -vs $DOTFILE_DIR/tmux.conf $HOME/.tmux.conf
 
-    os=$(uname)
-    if [ "$os" == "Linux" ]; then
-        ln -s $HOME/dotfiles/fonts $HOME/.fonts
-    fi
+#    os=$(uname)
+#    if [ "$os" == "Linux" ]; then
+#        ln -s $DOTFILE_DIR/fonts $HOME/.fonts
+#    fi
 }
 
 function bootUp() {
@@ -41,7 +44,7 @@ function bootUp() {
 
     # backup noteable existing stuff
     note "Backing up noteable configs..."
-    for i in $HOME/.vim $HOME/.vimrc $HOME/.gvimrc; do 
+    for i in $HOME/.vim $HOME/.vimrc $HOME/.gvimrc $HOME/.screenrc $HOME/.tmux.conf; do 
         if [ -e $i ]; then
             note "--> $i"
             mv -f $i $i.backup; 
@@ -65,7 +68,7 @@ function bootUp() {
     note "dotfile setup complete!"
 }
 
-cd "$(dirname "$0")"
+cd $DOTFILE_DIR
 
 if [ "$1" == "--force" -o "$1" == "-f" ]; then
     bootUp
