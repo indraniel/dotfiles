@@ -21,6 +21,7 @@ function note() {
 function setup_symlinks() {
     ln -vs $HOME/dotfiles/vimrc $HOME/.vimrc
     ln -vs $HOME/dotfiles/vim $HOME/.vim
+    ln -vs $HOME/dotfiles/screenrc $HOME/.screenrc
 
     os=$(uname)
     if [ "$os" == "Linux" ]; then
