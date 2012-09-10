@@ -70,7 +70,7 @@ Bundle 'zaiste/VimClojure'
 Bundle 'tpope/vim-markdown'
 " Choices are (1) 'tpope/vim-markdown', or (2) 'gmarik/vim-markdown' :
 " which is a fork of (3) 'hallison/vim-markdown' or (4) 'plasticboy/vim-markdown'
-Bundle 'vim-scripts/asciidoc.vim'
+Bundle 'mihai-rotaru/vim-asciidoc-ft-syntax'
 Bundle 'laktek/distraction-free-writing-vim'
 
 " Applications
