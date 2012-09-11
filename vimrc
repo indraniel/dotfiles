@@ -10,6 +10,7 @@ set autoindent
 set expandtab
 set tabstop=4
 set shiftwidth=4
+set smarttab                    " Use shiftwidth to guide tab indention
 
 " Backup
 " ------
