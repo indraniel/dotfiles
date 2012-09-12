@@ -95,6 +95,9 @@ elseif $XTERM_VERSION == 'XTerm(256)'
 elseif $TERM_PROGRAM == 'iTerm.app'
     set t_Co=256
     colorscheme railscasts
+elseif $TERM == 'screen-256color'
+    set t_Co=256
+    colorscheme kraihlight
 else 
     colorscheme default
 endif
