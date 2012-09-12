@@ -65,6 +65,7 @@ Bundle 'tpope/vim-surround'
 
 " Language Syntax
 " ---------------
+Bundle 'pfdevilliers/Pretty-Vim-Python'
 Bundle 'vim-ruby/vim-ruby'
 Bundle 'pangloss/vim-javascript'
 Bundle 'itspriddle/vim-jquery'
