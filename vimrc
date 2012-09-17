@@ -145,6 +145,7 @@ let g:NERDTreeWinSize = 30
 " NERDtree Tabs Adjustments
 "==============================================================================
 let g:nerdtree_tabs_open_on_gui_startup = 0
+nnoremap <F1> :NERDTreeTabsToggle<CR>
 
 "==============================================================================
 " golden-ratio Adjustments
