@@ -25,12 +25,13 @@ function setup_symlinks() {
     ln -vs $DOTFILE_DIR/vimrc $HOME/.vimrc
     ln -vs $DOTFILE_DIR/vim $HOME/.vim
     ln -vs $DOTFILE_DIR/screenrc $HOME/.screenrc
-    ln -vs $DOTFILE_DIR/tmux.conf $HOME/.tmux.conf
 
-#    os=$(uname)
-#    if [ "$os" == "Linux" ]; then
-#        ln -s $DOTFILE_DIR/fonts $HOME/.fonts
-#    fi
+    os=$(uname)
+    if [ "$os" == "Linux" ]; then
+        ln -vs $DOTFILE_DIR/tmux-linux.conf $HOME/.tmux.conf
+    elif [ "$os" == "Darwin" ]; then
+        ln -sv $DOTFILE_DIR/tmux-osx.conf $HOME/.tmux.conf
+    fi
 }
 
 function bootUp() {
