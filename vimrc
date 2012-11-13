@@ -76,6 +76,7 @@ Bundle 'tpope/vim-markdown'
 " which is a fork of (3) 'hallison/vim-markdown' or (4) 'plasticboy/vim-markdown'
 Bundle 'mihai-rotaru/vim-asciidoc-ft-syntax'
 Bundle 'laktek/distraction-free-writing-vim'
+Bundle 'nelstrom/vim-markdown-folding'
 
 " Applications
 " ------------
