@@ -44,6 +44,7 @@ Bundle '29decibel/codeschool-vim-theme'
 Bundle 'nanotech/jellybeans.vim'
 Bundle 'Lokaltog/vim-powerline'
 Bundle 'roman/golden-ratio'
+Bundle 'vim-scripts/LargeFile'
 
 " Navigation
 " ----------
@@ -103,6 +104,7 @@ else
 endif
 
 syntax on
+let g:LargeFile=20 " Files larger than 20MB will not have syntax highlighting
 
 "==============================================================================
 " Fonts
