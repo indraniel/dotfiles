@@ -181,7 +181,7 @@ let perl_fold = 1
 
 " python 
 " ------
-autocmd FileType python setlocal smartindent softtabstop=4 formatoptions+=croq cinwords=if,elif,else,for,while,try,except,finally,def,class,with foldmethod=indent foldnestmax=4
+autocmd FileType python setlocal smartindent shiftwidth=4 softtabstop=4 formatoptions+=croq cinwords=if,elif,else,for,while,try,except,finally,def,class,with foldmethod=indent foldnestmax=4
 let python_highlight_all=1
 let python_highlight_exceptions=0
 let python_hightlight_builtins=0
