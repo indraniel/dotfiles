@@ -1,0 +1,9 @@
+[user]
+	name = Indraniel
+	email = indraniel@gmail.com
+[color]
+	branch = auto
+	status = auto
+	diff = auto
+[alias]
+        gglog = log --graph --full-history --pretty=format:'%w(120, 0, 9)%C(yellow)%h%Cred%d%Creset %C(green)%an%Creset %C(white)%s%Creset'
