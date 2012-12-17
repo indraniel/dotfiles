@@ -51,6 +51,7 @@ Bundle 'vim-scripts/LargeFile'
 " ----------
 Bundle 'scrooloose/nerdtree'
 Bundle 'jistr/vim-nerdtree-tabs'
+Bundle 'tpope/vim-rails'
 
 if executable('git')
     Bundle 'tpope/vim-git'
