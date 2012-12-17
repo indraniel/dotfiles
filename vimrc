@@ -46,6 +46,7 @@ Bundle 'nelstrom/vim-mac-classic-theme'
 Bundle 'Lokaltog/vim-powerline'
 Bundle 'roman/golden-ratio'
 Bundle 'vim-scripts/LargeFile'
+Bundle 'indraniel/vim-github-colorscheme'
 
 " Navigation
 " ----------
