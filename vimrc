@@ -53,6 +53,7 @@ Bundle 'indraniel/vim-github-colorscheme'
 Bundle 'scrooloose/nerdtree'
 Bundle 'jistr/vim-nerdtree-tabs'
 Bundle 'tpope/vim-rails'
+Bundle 'vim-perl/vim-perl'
 
 if executable('git')
     Bundle 'tpope/vim-git'
