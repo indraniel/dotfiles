@@ -46,11 +46,14 @@ Bundle 'nelstrom/vim-mac-classic-theme'
 Bundle 'Lokaltog/vim-powerline'
 Bundle 'roman/golden-ratio'
 Bundle 'vim-scripts/LargeFile'
+Bundle 'indraniel/vim-github-colorscheme'
 
 " Navigation
 " ----------
 Bundle 'scrooloose/nerdtree'
 Bundle 'jistr/vim-nerdtree-tabs'
+Bundle 'tpope/vim-rails'
+Bundle 'vim-perl/vim-perl'
 
 if executable('git')
     Bundle 'tpope/vim-git'
