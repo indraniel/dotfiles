@@ -81,6 +81,7 @@ Bundle 'tpope/vim-markdown'
 Bundle 'mihai-rotaru/vim-asciidoc-ft-syntax'
 Bundle 'laktek/distraction-free-writing-vim'
 Bundle 'nelstrom/vim-markdown-folding'
+Bundle 'puppetlabs/puppet-syntax-vim'
 
 " Applications
 " ------------
