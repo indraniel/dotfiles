@@ -25,6 +25,7 @@ function setup_symlinks() {
     ln -vs $DOTFILE_DIR/vimrc $HOME/.vimrc
     ln -vs $DOTFILE_DIR/vim $HOME/.vim
     ln -vs $DOTFILE_DIR/screenrc $HOME/.screenrc
+    ln -vs $DOTFILE_DIR/git-prompt.sh $HOME/.git-prompt.sh
 
     os=$(uname)
     if [ "$os" == "Linux" ]; then
