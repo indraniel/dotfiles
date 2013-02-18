@@ -44,30 +44,6 @@ if [ -n "$force_color_prompt" ]; then
     fi
 fi
 
-if [ -f /usr/share/git-core/contrib/git-prompt.sh ]; then
-    source /usr/share/git-core/contrib/git-prompt.sh
-elif [ -f ]; then
-    source
-else
-    source ~/.git-prompt.sh
-fi
-
-if [ "$color_prompt" = yes ]; then
-    PS1="$CYAN\!:$GRN\u$BLU@$BLU\h $RED[\w]$NORM\$ "
-else
-    PS1='\u@\h:\w\$ '
-fi
-unset color_prompt force_color_prompt
-
-# If this is an xterm set the title to user@host:dir
-case "$TERM" in
-xterm*|rxvt*)
-    PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
-    ;;
-*)
-    ;;
-esac
-
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
@@ -105,7 +81,24 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
 
-PS1="$CYAN\!:$GRN\u$BLU@$BLU\h $RED[\w]$NORM\$ "
+# enable branch notification niceties on the prompt
+if [ -f /usr/share/git-core/contrib/git-prompt.sh ]; then
+    source /usr/share/git-core/contrib/git-prompt.sh
+elif [ -f /opt/local/share/git-core/git-prompt.sh ]; then
+    source /opt/local/share/git-core/git-prompt.sh
+elif [ -f ~/.git-prompt.sh ]; then
+    source ~/.git-prompt.sh
+else
+fi
+
+# setup the prompt
+if [ "$color_prompt" = yes ]; then
+    PS1='╭─\[$(tput -T xterm sgr0)\]( \[$(tput -T xterm setaf 4)\]\w\[$(tput -T xterm setaf 1)\]$(__git_ps1 " (%s)")\[$(tput -T xterm sgr0)\] as \[$(tput -T xterm setaf 2)\]\u\[$(tput -T xterm sgr0)\] at \[$(tput -T xterm setaf 6)\]\h\[$(tput -T xterm sgr0)\] )
+    ╰─\[$(tput -T xterm bold)\]\[$(tput -T xterm setaf 1)\]$\[$(tput -T xterm sgr0)\] '
+else
+    PS1='\u@\h:\w\$ '
+fi
+unset color_prompt force_color_prompt
 
 # enable the less command to display colors
 LESS="-eiMXR"
