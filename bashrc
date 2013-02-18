@@ -23,11 +23,6 @@ shopt -s checkwinsize
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
-# set variable identifying the chroot you work in (used in the prompt below)
-if [ -z "$debian_chroot" ] && [ -r /etc/debian_chroot ]; then
-    debian_chroot=$(cat /etc/debian_chroot)
-fi
-
 # set a fancy prompt (non-color, unless we know we "want" color)
 case "$TERM" in
     xterm-color) color_prompt=yes;;
@@ -49,10 +44,18 @@ if [ -n "$force_color_prompt" ]; then
     fi
 fi
 
-if [ "$color_prompt" = yes ]; then
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+if [ -f /usr/share/git-core/contrib/git-prompt.sh ]; then
+    source /usr/share/git-core/contrib/git-prompt.sh
+elif [ -f ]; then
+    source
 else
-    PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
+    source ~/.git-prompt.sh
+fi
+
+if [ "$color_prompt" = yes ]; then
+    PS1="$CYAN\!:$GRN\u$BLU@$BLU\h $RED[\w]$NORM\$ "
+else
+    PS1='\u@\h:\w\$ '
 fi
 unset color_prompt force_color_prompt
 
@@ -102,41 +105,6 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
 
-# new $PS1 prompt approach (2006-12-13)
-# Taken from "http://www.linuxquestions.org/questions/showthread.php?t=449425"
-
-# Color Variables for Prompt
-GRAD1='\333\262\261\260'
-GRAD2='\260\261\262\333'
-YLOBRN='\[\033[01;33;43m\]'
-WHTBRN='\[\033[01;37;43m\]'
-REDBRN='\[\033[01;31;43m\]'
-BLUBRN='\[\033[01;34;43m\]'
-GRNBRN='\[\033[00;32;43m\]'
-REDBLK='\[\033[00;31;40m\]'
-PPLBLK='\[\033[01;35;40m\]'
-WHTBLK='\[\033[01;37;40m\]'
-NONE='\[\033[00m\]'
-HBLK='\[\033[00;30;30m\]'
-HBLU='\[\033[01;34;34m\]'
-
-BLU='\[\033[01;34m\]'
-YEL='\[\033[01;33m\]'
-WHT='\[\033[01;37m\]'
-PRPL='\[\033[00;35m\]'
-RED='\[\033[01;31m\]'
-GRN='\[\033[01;32m\]'
-GRAY='\[\033[01;30m\]'
-PINK='\[\033[01;35m\]'
-NORM='\[\033[01;00;0m\]'
-CYAN='\[\033[01;36m\]'
-
-
-export GRAD1 GRAD2 YLOBRN WHTBRN REDBRN GRNBRN REDBLK PPLBLK WHTBLK NONE HBLU BLU YEL WHT PRPL RED GRN GRAY NORM CYAN BLUBRN HBLK PINK
-
-
-#PS1="$CYAN[\s]$YEL[\t] $GRN\u$YEL@$BLU\h $WHT[\w]\$$NONE $NORM" 
-#PS1="$CYAN[\t]$GRN\u$BLU@$BLU\h $RED[\w]$NORM\$ " 
 PS1="$CYAN\!:$GRN\u$BLU@$BLU\h $RED[\w]$NORM\$ "
 
 # enable the less command to display colors
@@ -146,5 +114,5 @@ export LESS
 # set the window title
 PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME%%.*}: ${PWD/$HOME/~}\007"'
 
-#export PATH=/home/me/udacity/cs253/google/google_appengine:/home/me/epd_free-7.3-2-rh5-x86/bin:$PATH
+# customize the PATH
 export PATH=/home/me/udacity/cs253/google/google_appengine:$PATH
