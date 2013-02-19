@@ -25,6 +25,7 @@ shopt -s checkwinsize
 
 # set a fancy prompt (non-color, unless we know we "want" color)
 case "$TERM" in
+    xterm) color_prompt=yes;;
     xterm-color) color_prompt=yes;;
 esac
 
@@ -86,15 +87,14 @@ if [ -f /usr/share/git-core/contrib/git-prompt.sh ]; then
     source /usr/share/git-core/contrib/git-prompt.sh
 elif [ -f /opt/local/share/git-core/git-prompt.sh ]; then
     source /opt/local/share/git-core/git-prompt.sh
-elif [ -f ~/.git-prompt.sh ]; then
-    source ~/.git-prompt.sh
 else
+    source ~/.git-prompt.sh
 fi
 
 # setup the prompt
 if [ "$color_prompt" = yes ]; then
     PS1='╭─\[$(tput -T xterm sgr0)\]( \[$(tput -T xterm setaf 4)\]\w\[$(tput -T xterm setaf 1)\]$(__git_ps1 " (%s)")\[$(tput -T xterm sgr0)\] as \[$(tput -T xterm setaf 2)\]\u\[$(tput -T xterm sgr0)\] at \[$(tput -T xterm setaf 6)\]\h\[$(tput -T xterm sgr0)\] )
-    ╰─\[$(tput -T xterm bold)\]\[$(tput -T xterm setaf 1)\]$\[$(tput -T xterm sgr0)\] '
+╰─\[$(tput -T xterm bold)\]\[$(tput -T xterm setaf 1)\]$\[$(tput -T xterm sgr0)\] '
 else
     PS1='\u@\h:\w\$ '
 fi
