@@ -82,6 +82,7 @@ Bundle 'mihai-rotaru/vim-asciidoc-ft-syntax'
 Bundle 'laktek/distraction-free-writing-vim'
 Bundle 'nelstrom/vim-markdown-folding'
 Bundle 'puppetlabs/puppet-syntax-vim'
+Bundle 'vim-scripts/confluencewiki.vim'
 
 " Applications
 " ------------
@@ -239,6 +240,10 @@ autocmd BufNewFile,BufRead *.md setlocal ft=markdown
 " asciidoc
 " --------
 autocmd BufNewFile,BufRead *.asciidoc,*.ad setlocal syntax=asciidoc
+
+" confluence
+" ----------
+autocmd BufNewFile,BufRead *.confluence,*.cwiki setlocal syntax=confluencewiki
 
 "==============================================================================
 " History Niceties
