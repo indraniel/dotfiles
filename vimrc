@@ -55,6 +55,8 @@ Bundle 'jistr/vim-nerdtree-tabs'
 Bundle 'tpope/vim-rails'
 Bundle 'vim-perl/vim-perl'
 
+" Git Integrations
+" ----------------
 if executable('git')
     Bundle 'tpope/vim-git'
     Bundle 'tpope/vim-fugitive'
