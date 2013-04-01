@@ -89,6 +89,7 @@ Bundle 'vim-scripts/confluencewiki.vim'
 " Applications
 " ------------
 Bundle 'davidoc/taskpaper.vim'
+Bundle 'szw/vim-dict'
 
 filetype plugin indent on                                        " required!
 
@@ -175,6 +176,12 @@ nnoremap <F7> :GoldenRatioToggle<CR>
 "set mouse=n " only work in normal mode (not in visual or insert mode)
 
 "==============================================================================
+" Dictionary
+"==============================================================================
+" generally set on unix systems here
+set dictionary+=/usr/share/dict/words
+
+"==============================================================================
 " Programming Languages
 "==============================================================================
 
@@ -237,11 +244,12 @@ autocmd FileType css setlocal expandtab shiftwidth=4 tabstop=4 softtabstop=4
 
 " markdown
 " --------
-autocmd BufNewFile,BufRead *.md setlocal ft=markdown
+autocmd BufNewFile,BufRead *.md setlocal ft=markdown complete+=k
 
 " asciidoc
 " --------
-autocmd BufNewFile,BufRead *.asciidoc,*.ad setlocal syntax=asciidoc
+autocmd BufNewFile,BufRead *.asciidoc,*.ad setlocal syntax=asciidoc complete+=k
+
 
 " confluence
 " ----------
