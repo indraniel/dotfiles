@@ -1,7 +1,7 @@
 # rudimentary golang setup
 
-export PATH=$HOME/go/bin:$PATH
-export GOROOT=$HOME/go
+export PATH=$HOME/golang/bin:$PATH
+export GOROOT=$HOME/golang
 export GOBIN=$GOROOT/bin
 export GOOS=$(uname | awk '{print tolower($0)}')
 
