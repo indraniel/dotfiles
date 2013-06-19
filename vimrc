@@ -87,6 +87,7 @@ Bundle 'puppetlabs/puppet-syntax-vim'
 Bundle 'vim-scripts/confluencewiki.vim'
 Bundle 'JuliaLang/julia-vim'
 Bundle 'jnwhiteh/vim-golang'
+Bundle 'gerw/vim-latex-suite'
 
 " Applications
 " ------------
