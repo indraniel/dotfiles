@@ -38,7 +38,7 @@ Bundle 'gmarik/vundle'
 " UI Additions
 " ------------
 Bundle 'w0ng/vim-hybrid'
-Bundle 'chriskempson/vim-tomorrow-theme'
+Bundle 'chriskempson/tomorrow-theme', {'rtp': 'vim/'}
 Bundle 'altercation/vim-colors-solarized'
 Bundle '29decibel/codeschool-vim-theme'
 Bundle 'nanotech/jellybeans.vim'
