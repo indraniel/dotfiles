@@ -28,6 +28,22 @@ function setup_symlinks() {
     ln -vs $DOTFILE_DIR/git-prompt.sh $HOME/.git-prompt.sh
 
     os=$(uname)
+
+    # bashrc configs
+    if [ "$os" == "Linux" ]; then
+        ln -vs $DOTFILE_DIR/bashrc-tgi-linux $HOME/.bashrc
+    elif [[ "$os" == "Darwin" ]] && [[ $HOSTNAME =~ "mini" ]]; then
+        ln -sv $DOTFILE_DIR/bashrc-osx $HOME/.bashrc
+    elif [ "$os" == "Darwin" ]; then
+        ln -sv $DOTFILE_DIR/bashrc-osx-tgi-laptop $HOME/.bashrc
+    fi
+
+    # profile configs
+    if [ "$os" == "Darwin" ]; then
+        ln -sv $DOTFILE_DIR/profile-osx $HOME/.profile
+    fi
+
+    # tmux configs
     if [ "$os" == "Linux" ]; then
         ln -vs $DOTFILE_DIR/tmux-linux.conf $HOME/.tmux.conf
     elif [ "$os" == "Darwin" ]; then
