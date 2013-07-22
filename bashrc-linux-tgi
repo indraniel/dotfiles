@@ -1,14 +1,9 @@
 # .bashrc
 
-# source global definitions
-if [ -f /etc/bashrc ]; then	# redhat
-    . /etc/bashrc
-elif [ -f /etc/bash.bashrc ]; then # debian
+# source global definitions (debian-based distros)
+if [ -f /etc/bash.bashrc ]; then 
     . /etc/bash.bashrc
 fi
-
-# pythonbrew stuff
-[[ -s "$HOME/.pythonbrew/etc/bashrc" ]] && source "$HOME/.pythonbrew/etc/bashrc"
 
 # source the gapp bashrc
 if [ -f /gapp/noarch/share/login/gapp.bashrc ]; then
@@ -20,23 +15,7 @@ if [ -f ~/.bash_alias ]; then
     . ~/.bash_alias
 fi
 
-###### idas customizations ###### 
-
-# based on a suggestion from kswanson
-function last_two_dirs {
-    pwd | perl -pe 's/$ENV{q(HOME)}/~/' | perl -F/ -lane 'if (@F > 3) {print join("/", "...", @F[-2, -1]) } else {print}'
-}
-
-#PS1=' \! {`whoami`}`hostname`:`pwd`>'
-
-# The original prompt that I crafted upon starting work here -- idas
-#PS1="\[\033[1;35;48m[\033[1;31;48m\u@\h:\033[1;34;48m\w\033[1;31;48m:\!\033[1;35;48m]\033[1;30;48m$\033[0m \]"
-
-
-# new $PS1 prompt approach (2006-12-13)
-# Taken from "http://www.linuxquestions.org/questions/showthread.php?t=449425"
-
-# Color Variables for Prompt
+# Useful Color Variables
 GRAD1='\333\262\261\260'
 GRAD2='\260\261\262\333'
 YLOBRN='\[\033[01;33;43m\]'
@@ -63,70 +42,25 @@ PINK='\[\033[01;35m\]'
 NORM='\[\033[01;00;0m\]'
 CYAN='\[\033[01;36m\]'
 
-
 export GRAD1 GRAD2 YLOBRN WHTBRN REDBRN GRNBRN REDBLK PPLBLK WHTBLK NONE HBLU BLU YEL WHT PRPL RED GRN GRN2 GRAY NORM CYAN BLUBRN HBLK PINK
  
 # enable git completion niceties
 source ~/.git-completion.bash
 
-#PS1="$CYAN[\s]$YEL[\t] $GRN\u$YEL@$BLU\h $WHT[\w]\$$NONE $NORM" 
-#PS1="$CYAN[\t]$GRN\u$BLU@$BLU\h $RED[\w]$NORM\$ " 
-#PS1="$CYAN\!:$GRN\u$BLU@$BLU\h $RED[\w]$NORM\$ " # idas prompt from 2005-10
-#PS1="[\u@\h \W$(__git_ps1 " (%s)")]\$ "  # from git-completion
-#export PS1=$BLU'\u@\h '$GRN2'\w'$RED'$(__git_ps1 " (%s)")'$GRAY' >'$NONE" " #from ssmith
-#export PS1=$BLU'\u@\h '$GRN2'$(last_two_dirs)'$RED'$(__git_ps1 " (%s)")'$GRAY' $'$NONE" " #from ssmith & kswansons last few dirs suggestion # from 2011-01
-
-# original prompt from from adam coffman (acoffman)
-#PS1="
-#╭─\[$(tput sgr0)\]( \[$(tput setaf 4)\]\w\[$(tput sgr0)\] as \[$(tput setaf 2)\]\u\[$(tput sgr0)\] at \[$(tput setaf 6)\]\h\[$(tput sgr0)\] )
-#╰─\[$(tput bold)\]\[$(tput setaf 1)\]⚡\[$(tput sgr0)\] "
-
-# including git directory
+# setup custom prompt
 PS1='╭─\[$(tput -T xterm sgr0)\]( \[$(tput -T xterm setaf 3)\]\w\[$(tput -T xterm setaf 1)\]$(__git_ps1 " (%s)")\[$(tput -T xterm sgr0)\] as \[$(tput -T xterm setaf 2)\]\u\[$(tput -T xterm sgr0)\] at \[$(tput -T xterm setaf 6)\]\h\[$(tput -T xterm sgr0)\] )
 ╰─\[$(tput -T xterm bold)\]\[$(tput -T xterm setaf 1)\]$\[$(tput -T xterm sgr0)\] '
-
-#if [ "$COLORTERM" == 'gnome-terminal' ]
-#then
-#    export PS1=$BLU'\u@\h'$RED'$(__git_ps1 " (%s)")'$NORM'$'" " #test prompt
-#elif [ "$XTERM_VERSION" == 'XTerm(256)' ]
-#then
-#    export PS1=$BLU'\u@\h'$RED'$(__git_ps1 " (%s)")'$NORM'$'" " #test prompt
-#else 
-#    export PS1=$BLU'\u@\h'$RED'$(__git_ps1 " (%s)")'$NORM'$'" " #test prompt
-#fi
-
-GSCPAN=svn+ssh://svn/srv/svn/gscpan
 
 # enable the less command to display colors
 LESS="-eiMXR"
 export LESS
 
-# adjust PYTHONPATH
-#PYTHONPATH=/usr/lib/python2.6/:/usr/lib/python2.6/dist-packages/:$PYTHONPATH
-#export PYTHONPATH=/home/archive/python/python-2.6.5/lib/python2.6/site-packages
+# customize PATH
+export PATH=$HOME/vim73/bin:/bin:$PATH
 
-# account for Perl local::Lib module
-#eval $(perl -I/home/archive/idas-perl-modules/lib/perl5 -Mlocal::lib=/home/archive/idas-perl-modules)
-
-# ruby local gem installations
-#export GEM_HOME=$HOME/.gems
-#export GEM_PATH=$HOME/.gems:/usr/local/lib/ruby/gems/1.8/
-#export PATH=$PATH:$HOME/.gems/bin
-#export PATH=/home/archive/haskell/local/cabal/bin:/home/archive/haskell/local/bin:/home/archive/ruby/local/bin:$HOME/.gems/bin:$PATH
-#export PATH=/home/archive/python/python-2.6.5/bin:/home/archive/ruby/local/bin:$HOME/.gems/bin:$PATH
-export PATH=/home/archive/python/python-2.6.5/bin:$HOME/vim73/bin:/bin:$PATH
+# rvm additions
 source $HOME/.rvm/scripts/rvm
-#export GEM_HOME=/gscuser/idas/.gems
-#export GEM_PATH=/gscuser/idas/.gems:/usr/local/lib/ruby/gems/1.8/
-
 export LD_LIBRARY_PATH=/gscuser/idas/.rvm/rubies/default/lib:$LD_LIBRARY_PATH
 
 # some vim niceties when ssh-ing 
 alias xvim="vim -c 'set t_Co=256' -c 'color mustang'"
-
-# gpg key info
-export GPGID=48D5D91D
-
-function e {
-    emacs "$1" &
-}
