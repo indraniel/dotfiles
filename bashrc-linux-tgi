@@ -56,7 +56,10 @@ LESS="-eiMXR"
 export LESS
 
 # customize PATH
-export PATH=$HOME/vim73/bin:/bin:$PATH
+export PATH=$HOME/.pyenv/bin:$HOME/vim73/bin:/bin:$PATH
+
+# pyenv setup
+if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
 
 # rvm additions
 source $HOME/.rvm/scripts/rvm
