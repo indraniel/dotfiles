@@ -61,9 +61,5 @@ export PATH=$HOME/.pyenv/bin:$HOME/vim73/bin:/bin:$PATH
 # pyenv setup
 if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
 
-# rvm additions
-source $HOME/.rvm/scripts/rvm
-export LD_LIBRARY_PATH=/gscuser/idas/.rvm/rubies/default/lib:$LD_LIBRARY_PATH
-
 # some vim niceties when ssh-ing 
 alias xvim="vim -c 'set t_Co=256' -c 'color mustang'"
