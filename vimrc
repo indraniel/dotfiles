@@ -111,7 +111,10 @@ elseif $TERM_PROGRAM == 'iTerm.app'
     colorscheme railscasts
 elseif $TERM == 'screen-256color'
     set t_Co=256
-    colorscheme kraihlight
+    colorscheme railscasts
+elseif $TERM == 'xterm-256color'
+    set t_Co=256
+    colorscheme railscasts
 else 
     colorscheme default
 endif
