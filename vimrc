@@ -43,7 +43,7 @@ Bundle 'altercation/vim-colors-solarized'
 Bundle '29decibel/codeschool-vim-theme'
 Bundle 'nanotech/jellybeans.vim'
 Bundle 'nelstrom/vim-mac-classic-theme'
-Bundle 'Lokaltog/vim-powerline'
+Bundle 'bling/vim-airline'
 Bundle 'roman/golden-ratio'
 Bundle 'vim-scripts/LargeFile'
 Bundle 'indraniel/vim-github-colorscheme'
@@ -141,9 +141,16 @@ endif
 "==============================================================================
 set ruler
 set showmode
-let g:Powerline_symbols='fancy'
-"let g:Powerline_theme='skwp'
-"let g:Powerline_colorscheme='skwp'
+" airline settings
+let g:airline_theme='bubblegum'
+let g:airline_powerline_fonts=0
+let g:airline_left_sep = '⮀'
+let g:airline_left_alt_sep = '⮁'
+let g:airline_right_sep = '⮂'
+let g:airline_right_alt_sep = '⮃'
+let g:airline_branch_prefix = '⭠'
+let g:airline_readonly_symbol = '⭤'
+let g:airline_linecolumn_prefix = '⭡'
 
 " always show the status bar
 set laststatus=2
