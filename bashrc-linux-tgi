@@ -56,13 +56,16 @@ LESS="-eiMXR"
 export LESS
 
 # customize PATH
-export PATH=$HOME/.pyenv/bin:$HOME/.rbenv/bin:$HOME/vim73/bin:/bin:$PATH
+export PATH=$HOME/.pyenv/bin:$HOME/.rbenv/bin:$HOME/.plenv/bin:$HOME/vim73/bin:/bin:$PATH
 
 # rbenv setup
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
 # pyenv setup
 if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
+
+# plenv setup
+if which plenv > /dev/null; then eval "$(plenv init -)"; fi
 
 # some vim niceties when ssh-ing 
 alias xvim="vim -c 'set t_Co=256' -c 'color mustang'"
