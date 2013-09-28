@@ -47,6 +47,7 @@ Bundle 'bling/vim-airline'
 Bundle 'roman/golden-ratio'
 Bundle 'vim-scripts/LargeFile'
 Bundle 'indraniel/vim-github-colorscheme'
+Bundle 'Pychimp/vim-sol'
 
 " Navigation
 " ----------
