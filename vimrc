@@ -48,6 +48,7 @@ Bundle 'roman/golden-ratio'
 Bundle 'vim-scripts/LargeFile'
 Bundle 'indraniel/vim-github-colorscheme'
 Bundle 'Pychimp/vim-sol'
+Bundle 'baskerville/bubblegum'
 
 " Navigation
 " ----------
