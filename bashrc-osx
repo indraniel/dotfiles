@@ -22,6 +22,9 @@ if [ -f /usr/share/git-core/git-prompt.sh ]; then
     source /usr/share/git-core/git-prompt.sh
 fi
 
+# set the default editor
+export EDITOR=/usr/bin/vim
+
 # original $PATH from initial purchase
 #/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin
 
