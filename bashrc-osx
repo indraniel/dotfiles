@@ -28,6 +28,9 @@ fi
 # account for 'homebrew'ed software
 export PATH=/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin
 
+# Postgres.app
+export PATH=/Applications/Postgres.app/Contents/MacOS/bin:$PATH
+
 # rbenv setup
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
