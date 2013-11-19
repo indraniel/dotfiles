@@ -22,6 +22,10 @@ set showmatch
 set hlsearch
 set incsearch
 
+" Encryption
+" ----------
+set cryptmethod=blowfish
+
 "==============================================================================
 " Plugins (managed by Vundle on github)
 "==============================================================================
