@@ -236,6 +236,11 @@ autocmd FileType cpp setlocal cindent shiftwidth=4 tabstop=4 softtabstop=4 expan
 autocmd FileType objc setlocal cindent shiftwidth=4 tabstop=4 softtabstop=4 expandtab
 let c_no_curly_error=1
 
+" Objective C
+" -----------
+autocmd BufNewFile,BufRead *.m setlocal ft=objc
+autocmd FileType objc setlocal cindent tabstop=4 softtabstop=4 shiftwidth=4 expandtab
+
 " Octave/Matlab
 " -------------
 autocmd FileType matlab setlocal tabstop=8 softtabstop=2 shiftwidth=2 expandtab
