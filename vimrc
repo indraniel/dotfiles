@@ -243,7 +243,7 @@ autocmd FileType objc setlocal cindent tabstop=4 softtabstop=4 shiftwidth=4 expa
 
 " Octave/Matlab
 " -------------
-autocmd FileType matlab setlocal tabstop=8 softtabstop=2 shiftwidth=2 expandtab
+"autocmd FileType matlab setlocal tabstop=8 softtabstop=2 shiftwidth=2 expandtab
 
 " r
 " -------------
