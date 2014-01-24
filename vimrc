@@ -53,6 +53,8 @@ Bundle 'vim-scripts/LargeFile'
 Bundle 'indraniel/vim-github-colorscheme'
 Bundle 'Pychimp/vim-sol'
 Bundle 'baskerville/bubblegum'
+Bundle 'Lokaltog/vim-distinguished'
+Bundle 'matthewtodd/vim-twilight'
 
 " Navigation
 " ----------
