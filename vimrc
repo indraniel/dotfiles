@@ -97,6 +97,7 @@ Bundle 'JuliaLang/julia-vim'
 Bundle 'jnwhiteh/vim-golang'
 Bundle 'gerw/vim-latex-suite'
 Bundle 'msanders/cocoa.vim'
+Bundle 'vim-scripts/Vim-R-plugin'
 
 " Applications
 " ------------
@@ -249,7 +250,8 @@ autocmd FileType objc setlocal cindent tabstop=4 softtabstop=4 shiftwidth=4 expa
 
 " r
 " -------------
-autocmd FileType r setlocal tabstop=8 softtabstop=2 shiftwidth=2 expandtab
+autocmd BufNewFile,BufRead *.r,*.R setlocal ft=r
+autocmd FileType r setlocal tabstop=4 softtabstop=2 shiftwidth=2 expandtab
 
 " vim
 " ---
