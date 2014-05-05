@@ -55,6 +55,9 @@ PS1='╭─\[$(tput -T xterm sgr0)\]( \[$(tput -T xterm setaf 3)\]\w\[$(tput -T 
 LESS="-eiMXR"
 export LESS
 
+# commands beginning with one space don't get stored in .bash_history
+export HISTIGNORE=' *'
+
 # customize PATH
 export PATH=$HOME/.goenv/bin:$HOME/.pyenv/bin:$HOME/.rbenv/bin:$HOME/.plenv/bin:$HOME/vim73/bin:/bin:$PATH
 

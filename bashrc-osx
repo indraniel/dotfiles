@@ -25,6 +25,9 @@ fi
 # set the default editor
 export EDITOR=/usr/bin/vim
 
+# commands beginning with one space don't get stored in .bash_history
+export HISTIGNORE=' *'
+
 # original $PATH from initial purchase
 #/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin
 
