@@ -1,0 +1,32 @@
+# set a fancy prompt (non-color, unless we know we "want" color)
+case "$TERM" in
+    xterm) colorize=yes;;
+    xterm-color) colorize=yes;;
+    xterm-256color) colorize=yes;;
+esac
+
+if [ "$colorize" == "yes" ]; then
+    # enable aliases
+    alias ls='ls -G'
+    alias grep='grep --color=auto'
+
+    # setup a custom prompt
+    PS1='╭─\[$(tput -T xterm sgr0)\]( \[$(tput -T xterm setaf 3)\]\w\[$(tput -T xterm setaf 1)\]$(__git_ps1 " (%s)")\[$(tput -T xterm sgr0)\] as \[$(tput -T xterm setaf 2)\]\u\[$(tput -T xterm sgr0)\] at \[$(tput -T xterm setaf 6)\]\h\[$(tput -T xterm sgr0)\] )
+╰─\[$(tput -T xterm bold)\]\[$(tput -T xterm setaf 1)\]$\[$(tput -T xterm sgr0)\] '
+fi
+
+unset colorize
+
+# enable branch notification niceties on the prompt
+if [ -f /usr/share/git-core/git-prompt.sh ]; then
+    source /usr/share/git-core/git-prompt.sh
+fi
+
+# set the default editor
+export EDITOR=/usr/bin/vim
+
+# commands beginning with one space don't get stored in .bash_history
+export HISTIGNORE=' *'
+
+# original $PATH from initial purchase
+/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/opt/X11/bin
