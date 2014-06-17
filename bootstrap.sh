@@ -57,7 +57,7 @@ function bootUp() {
 
     os=$(uname)
     if [ "$os" == "Darwin" ]; then
-        mvim --version | grep 7.3 || die "MacVim version is too low!\nPlease download a higher version(7.3+)."
+        mvim --version | grep 7.4 || die "MacVim version is too low!\nPlease download a higher version(7.3+)."
     fi
 
     # backup noteable existing stuff

@@ -20,6 +20,8 @@ unset colorize
 # enable branch notification niceties on the prompt
 if [ -f /usr/share/git-core/git-prompt.sh ]; then
     source /usr/share/git-core/git-prompt.sh
+else
+    source ~/.git-prompt.sh
 fi
 
 # set the default editor
@@ -29,4 +31,4 @@ export EDITOR=/usr/bin/vim
 export HISTIGNORE=' *'
 
 # original $PATH from initial purchase
-/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/opt/X11/bin
+export PATH=/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/opt/X11/bin
