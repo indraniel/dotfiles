@@ -55,6 +55,7 @@ Bundle 'Pychimp/vim-sol'
 Bundle 'baskerville/bubblegum'
 Bundle 'Lokaltog/vim-distinguished'
 Bundle 'matthewtodd/vim-twilight'
+Bundle 'jonathanfilip/vim-lucius'
 
 " Navigation
 " ----------
