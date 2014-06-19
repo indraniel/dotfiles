@@ -31,4 +31,10 @@ export EDITOR=/usr/bin/vim
 export HISTIGNORE=' *'
 
 # original $PATH from initial purchase
-export PATH=/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/opt/X11/bin
+#export PATH=/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/opt/X11/bin
+
+# account for 'homebrew'ed software
+export PATH=$HOME/.pyenv/bin:/Applications:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/opt/X11/bin
+
+# pyenv setup
+if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
