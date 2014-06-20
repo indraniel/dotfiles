@@ -34,7 +34,7 @@ export HISTIGNORE=' *'
 #export PATH=/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/opt/X11/bin
 
 # account for 'homebrew'ed software
-export PATH=$HOME/.pyenv/bin:$HOME/.rbenv/bin:$HOME/.Renv/bin:$HOME/.plenv/bin:/Applications:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/opt/X11/bin
+export PATH=$HOME/.goenv/bin:$HOME/.pyenv/bin:$HOME/.rbenv/bin:$HOME/.Renv/bin:$HOME/.plenv/bin:/Applications:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/opt/X11/bin
 
 # rbenv setup
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
@@ -47,3 +47,6 @@ if which plenv > /dev/null; then eval "$(plenv init -)"; fi
 
 # Renv setup
 if which Renv > /dev/null; then eval "$(Renv init -)"; fi
+
+# goenv setup
+if which goenv > /dev/null; then eval "$(goenv init -)"; fi
