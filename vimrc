@@ -56,6 +56,7 @@ Bundle 'baskerville/bubblegum'
 Bundle 'Lokaltog/vim-distinguished'
 Bundle 'matthewtodd/vim-twilight'
 Bundle 'jonathanfilip/vim-lucius'
+Bundle 'reedes/vim-pencil'
 
 " Navigation
 " ----------
@@ -204,6 +205,11 @@ nnoremap <F7> :GoldenRatioToggle<CR>
 "==============================================================================
 " generally set on unix systems here
 set dictionary+=/usr/share/dict/words
+
+"==============================================================================
+" vim-pencil setups
+"==============================================================================
+let g:pencil#wrapModeDefault = 'hard'
 
 "==============================================================================
 " Programming Languages
