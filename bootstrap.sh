@@ -60,15 +60,6 @@ function bootUp() {
         mvim --version | grep 7.4 || die "MacVim version is too low!\nPlease download a higher version(7.3+)."
     fi
 
-    # backup noteable existing stuff
-    note "Backing up noteable configs..."
-    for i in $HOME/.vim $HOME/.vimrc $HOME/.gvimrc $HOME/.screenrc $HOME/.tmux.conf; do 
-        if [ -e $i ]; then
-            note "--> $i"
-            mv -f $i $i.backup; 
-        fi
-    done
-
     note "Re-making .vim directory..."
     setup_symlinks
 
