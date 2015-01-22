@@ -26,6 +26,8 @@ function setup_symlinks() {
     ln -vs $DOTFILE_DIR/vim $HOME/.vim
     ln -vs $DOTFILE_DIR/screenrc $HOME/.screenrc
     ln -vs $DOTFILE_DIR/bash/utils/git-prompt/git-prompt.sh $HOME/.git-prompt.sh
+    ln -vs $DOTFILE_DIR/bash/utils/bash-preexec/bash-preexec.sh \
+        $HOME/.bash-preexec.sh
 
     os=$(uname)
 
@@ -51,7 +53,27 @@ function setup_symlinks() {
     fi
 }
 
+function setup_bash_utils() {
+    # bash preexec logging
+    git clone git://github.com/rcaloras/bash-preexec.git \
+        $DOTFILE_DIR/bash/utils/bash-preexec
+}
+
+function setup_logging_directory() {
+    CMD_LOGS_DIR=$HOME/.logs
+    if [ ! -d "$CMD_LOGS_DIR" ]; then
+        note "--> creating logging directory $CMD_LOGS_DIR"
+        mkdir -p $CMD_LOGS_DIR
+    fi
+}
+
 function bootUp() {
+    note "setup bash utilities"
+    setup_bash_utils
+
+    note "setup logging"
+    setup_logging_directory
+
     note "Checking vim version..."
     vim --version | grep 7.3 || die "Your vim's version is too low!\nPlease download higher version(7.3+) from http://www.vim.org/download.php"
 
