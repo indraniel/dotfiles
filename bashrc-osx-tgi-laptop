@@ -3,6 +3,7 @@ case "$TERM" in
     xterm) colorize=yes;;
     xterm-color) colorize=yes;;
     xterm-256color) colorize=yes;;
+    screen-256color) colorize=yes;;
 esac
 
 if [ "$colorize" == "yes" ]; then
