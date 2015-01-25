@@ -100,6 +100,9 @@ Bundle 'fatih/vim-go'
 Bundle 'gerw/vim-latex-suite'
 Bundle 'msanders/cocoa.vim'
 Bundle 'vim-scripts/Vim-R-plugin'
+Bundle 'amdt/vim-niji'
+Bundle 'sjl/tslime'
+Bundle 'vim-scripts/paredit'
 
 " Applications
 " ------------
@@ -269,6 +272,24 @@ autocmd FileType vim setlocal expandtab shiftwidth=2 tabstop=8 softtabstop=2
 autocmd FileType javascript setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2
 autocmd BufNewFile,BufRead *.json setlocal ft=javascript
 let javascript_enable_domhtmlcss=1
+
+" Racket/Schema/Clojure-Lisp related
+" ----------------------------------
+let g:tslime_ensure_trailing_newlines = 1
+let g:tslime_normal_mapping = '<localleader>t'
+let g:tslime_visual_mapping = '<localleader>t'
+let g:tslime_vars_mapping = '<localleader>T'
+
+let g:niji_dark_colours = [
+    \ [ '81', '#5fd7ff'],
+    \ [ '99', '#875fff'],
+    \ [ '1',  '#dc322f'],
+    \ [ '76', '#5fd700'],
+    \ [ '3',  '#b58900'],
+    \ [ '2',  '#859900'],
+    \ [ '6',  '#2aa198'],
+    \ [ '4',  '#268bd2'],
+    \ ]
 
 " cmake
 " -----
