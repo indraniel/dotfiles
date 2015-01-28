@@ -65,8 +65,8 @@ LOG_DIR=$HOME/.logs
 preexec() {
     # don't log root enabled commands
     if [ "$(id -u)" -ne 0 ]; then
-        CMD_LOG="$LOG_DIR/bash-history-$(date -u "+%Y-%m-%d").log"
-        echo "[$(date -u)] : $USER@$(hostname) : $(pwd) : $(history 1)" >> ${CMD_LOG}
+        CMD_LOG="$LOG_DIR/bash-history-$(date "+%Y-%m-%d").log"
+        echo "[$(date)] : $USER@$(hostname) : $(pwd) : $(history 1)" >> ${CMD_LOG}
     fi
 }
 
