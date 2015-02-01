@@ -206,6 +206,8 @@ nnoremap <F7> :GoldenRatioToggle<CR>
 let os = substitute(system('uname'), "\n", "", "")
 if os == "Darwin"
     let g:ycm_path_to_python_interpreter = "/usr/bin/python"
+    let g:ycm_autoclose_preview_window_after_completion = 1
+    let g:ycm_min_num_of_chars_for_completion = 1
 endif
 
 "==============================================================================
