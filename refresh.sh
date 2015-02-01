@@ -27,11 +27,11 @@ function reset_YCM() {
     if [ "$os" == "Darwin" ]; then
         # need to use exact python that vim was compiled against
         perl -p -i -e 's|^\s*PYTHON_BINARY=python\d?$|PYTHON_BINARY=/System/Library/Frameworks/Python.framework/Versions/2.7/bin/python|;' install.sh
+        ./install.sh --clang-completer
     elif [ "$os" == "Linux" ]; then
-        perl -p -i -e 's|^\s*PYTHON_BINARY=python\d?$|PYTHON_BINARY=~/.pyenv/versions/2.7.5/bin/python|;' install.sh
+        ./install.sh
     fi
 
-    ./install.sh --clang-completer
 }
 
 cd "$(dirname "$0")"
