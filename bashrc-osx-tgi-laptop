@@ -26,6 +26,7 @@ else
 fi
 
 # set the default editor
+alias vim='mvim -v'
 export EDITOR=/usr/bin/vim
 
 # commands beginning with one space don't get stored in .bash_history

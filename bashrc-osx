@@ -24,6 +24,7 @@ if [ -f /usr/share/git-core/git-prompt.sh ]; then
 fi
 
 # set the default editor
+alias vim='mvim -v'
 export EDITOR=/usr/bin/vim
 
 # commands beginning with one space don't get stored in .bash_history
