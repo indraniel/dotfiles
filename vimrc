@@ -62,8 +62,6 @@ Bundle 'reedes/vim-pencil'
 " ----------
 Bundle 'scrooloose/nerdtree'
 Bundle 'jistr/vim-nerdtree-tabs'
-Bundle 'tpope/vim-rails'
-Bundle 'vim-perl/vim-perl'
 
 " Git Integrations
 " ----------------
@@ -82,8 +80,10 @@ Bundle 'tpope/vim-surround'
 
 " Language Syntax
 " ---------------
+Bundle 'vim-perl/vim-perl'
 Bundle 'pfdevilliers/Pretty-Vim-Python'
 Bundle 'vim-ruby/vim-ruby'
+Bundle 'tpope/vim-rails'
 Bundle 'pangloss/vim-javascript'
 Bundle 'itspriddle/vim-jquery'
 Bundle 'zaiste/VimClojure'
