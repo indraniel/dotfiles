@@ -63,6 +63,7 @@ Bundle 'reedes/vim-pencil'
 Bundle 'scrooloose/nerdtree'
 Bundle 'jistr/vim-nerdtree-tabs'
 Bundle 'majutsushi/tagbar'
+Bundle 'Valloric/YouCompleteMe'
 
 " Git Integrations
 " ----------------
@@ -197,6 +198,17 @@ let g:golden_ratio_autocommand = 0
 " golden ratio resize toggle
 " --------------------------
 nnoremap <F7> :GoldenRatioToggle<CR>
+
+"==============================================================================
+" YouCompleteMe Adjustments
+"==============================================================================
+" needs to use the exact python that vim was originally compiled against
+let os = substitute(system('uname'), "\n", "", "")
+if os == "Darwin"
+    let g:ycm_path_to_python_interpreter = "/usr/bin/python"
+elseif os == "Linux"
+    let g:ycm_path_to_python_interpreter = "~/.pyenv/versions/2.7.5/bin/python"
+endif
 
 "==============================================================================
 " Mouse
