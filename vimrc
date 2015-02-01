@@ -62,6 +62,7 @@ Bundle 'reedes/vim-pencil'
 " ----------
 Bundle 'scrooloose/nerdtree'
 Bundle 'jistr/vim-nerdtree-tabs'
+Bundle 'majutsushi/tagbar'
 
 " Git Integrations
 " ----------------
