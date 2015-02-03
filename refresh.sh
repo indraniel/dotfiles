@@ -29,7 +29,7 @@ function reset_YCM() {
         perl -p -i -e 's|^\s*PYTHON_BINARY=python\d?$|PYTHON_BINARY=/System/Library/Frameworks/Python.framework/Versions/2.7/bin/python|;' install.sh
         ./install.sh --clang-completer
     elif [ "$os" == "Linux" ]; then
-        ./install.sh
+        echo "Please custom-compile the vim YouCompleteMe plugin (if necessary)!"
     fi
 
 }
