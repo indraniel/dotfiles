@@ -1,5 +1,10 @@
 # .bashrc
 
+if [[ "$__bashrc_imported_flag" == "defined-${USER}" ]]; then
+    return 0
+fi
+__bashrc_imported_flag="defined-${USER}"
+
 # source global definitions (debian-based distros)
 if [ -f /etc/bash.bashrc ]; then 
     . /etc/bash.bashrc
