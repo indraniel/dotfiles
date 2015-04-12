@@ -1,3 +1,8 @@
+if [[ "$__bashrc_imported_flag" == "defined-${USER}" ]]; then
+    return 0
+fi
+__bashrc_imported_flag="defined-${USER}"
+
 # set a fancy prompt (non-color, unless we know we "want" color)
 case "$TERM" in
     xterm) colorize=yes;;
