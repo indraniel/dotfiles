@@ -92,7 +92,7 @@ export LESS
 export HISTIGNORE=' *'
 
 # customize PATH
-export PATH=$HOME/.goenv/bin:$HOME/.Renv/bin:$HOME/.pyenv/bin:$HOME/.rbenv/bin:$HOME/.plenv/bin:$HOME/vim74/bin:/bin:$PATH
+export PATH=$HOME/.goenv/bin:$HOME/.Renv/bin:$HOME/.pyenv/bin:$HOME/.rbenv/bin:$HOME/.plenv/bin:$HOME/vim74/bin:$HOME/software/cmake/bin:/bin:$PATH
 
 # rbenv setup
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
