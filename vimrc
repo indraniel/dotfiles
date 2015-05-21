@@ -215,7 +215,7 @@ let os = substitute(system('uname'), "\n", "", "")
 if os == "Darwin"
     let g:ycm_path_to_python_interpreter = "/usr/bin/python"
 elseif os == "Linux"
-    let g:ycm_path_to_python_interpreter = "/gscuser/idas/.pyenv/versions/2.7.5/bin/python"
+    let g:ycm_path_to_python_interpreter = "/gscuser/idas/.pyenv/versions/2.7.9/bin/python"
 endif
 
 let g:ycm_autoclose_preview_window_after_completion = 1
