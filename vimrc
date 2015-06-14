@@ -102,9 +102,9 @@ Bundle 'fatih/vim-go'
 Bundle 'gerw/vim-latex-suite'
 Bundle 'msanders/cocoa.vim'
 Bundle 'vim-scripts/Vim-R-plugin'
-Bundle 'amdt/vim-niji'
-Bundle 'sjl/tslime'
-Bundle 'vim-scripts/paredit'
+Bundle 'vim-scripts/vim-niji'
+Bundle 'vim-scripts/tslime.vim'
+Bundle 'vim-scripts/paredit.vim'
 
 " Applications
 " ------------
