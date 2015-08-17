@@ -88,7 +88,7 @@ Bundle 'vim-ruby/vim-ruby'
 Bundle 'tpope/vim-rails'
 Bundle 'pangloss/vim-javascript'
 Bundle 'itspriddle/vim-jquery'
-Bundle 'zaiste/VimClojure'
+Bundle 'guns/vim-clojure-static'
 Bundle 'tpope/vim-markdown'
 " Choices are (1) 'tpope/vim-markdown', or (2) 'gmarik/vim-markdown' :
 " which is a fork of (3) 'hallison/vim-markdown' or (4) 'plasticboy/vim-markdown'
@@ -111,6 +111,7 @@ Bundle 'vim-scripts/paredit.vim'
 " ------------
 Bundle 'davidoc/taskpaper.vim'
 Bundle 'szw/vim-dict'
+Bundle 'tpope/fireplace'
 
 filetype plugin indent on                                        " required!
 
