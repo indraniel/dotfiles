@@ -111,7 +111,7 @@ Bundle 'vim-scripts/paredit.vim'
 " ------------
 Bundle 'davidoc/taskpaper.vim'
 Bundle 'szw/vim-dict'
-Bundle 'tpope/fireplace'
+Bundle 'tpope/vim-fireplace'
 
 filetype plugin indent on                                        " required!
 
