@@ -98,7 +98,10 @@ export PATH=$HOME/.goenv/bin:$HOME/.Renv/bin:$HOME/.pyenv/bin:$HOME/.rbenv/bin:$
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
 # pyenv setup
-if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
+if which pyenv > /dev/null; then
+    export PYENV_ROOT=$HOME/.pyenv
+    eval "$(pyenv init -)";
+fi
 
 # pyenv virtualenv setup
 if which pyenv > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi
