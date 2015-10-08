@@ -57,6 +57,7 @@ Bundle 'Lokaltog/vim-distinguished'
 Bundle 'matthewtodd/vim-twilight'
 Bundle 'jonathanfilip/vim-lucius'
 Bundle 'reedes/vim-pencil'
+Bundle 'ervandew/screen'
 
 " Navigation
 " ----------
