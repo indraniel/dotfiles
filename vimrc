@@ -374,7 +374,7 @@ endif " has("autocmd")
 
 " tab shortcuts
 " -------------
-map <C-t> :tabnew<CR>   " CTRL + t -- opens a new tab
+nnoremap tt :tabnew<CR>   " <normal mode> tt -- opens a new tab
 map <C-h> :tabp<CR>     " CTRL + h -- moves one tab to the left
 map <C-l> :tabn<CR>     " CTRL + l -- moves one tab to the right
 
