@@ -105,7 +105,7 @@ Bundle 'msanders/cocoa.vim'
 Bundle 'jalvesaq/R-Vim-runtime'
 Bundle 'vim-scripts/Vim-R-plugin'
 Bundle 'vim-scripts/vim-niji'
-Bundle 'vim-scripts/tslime.vim'
+Bundle 'jgdavey/tslime.vim'
 Bundle 'vim-scripts/paredit.vim'
 
 " Applications
