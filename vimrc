@@ -106,7 +106,7 @@ Bundle 'jalvesaq/R-Vim-runtime'
 Bundle 'vim-scripts/Vim-R-plugin'
 Bundle 'vim-scripts/vim-niji'
 Bundle 'jgdavey/tslime.vim'
-Bundle 'vim-scripts/paredit.vim'
+Bundle 'kovisoft/paredit'
 
 " Applications
 " ------------
