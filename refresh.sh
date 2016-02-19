@@ -32,10 +32,28 @@ function reset_YCM() {
         # need to use exact python that vim was compiled against
         perl -p -i -e 's|^\s*PYTHON_BINARY=python\d?$|PYTHON_BINARY=/System/Library/Frameworks/Python.framework/Versions/2.7/bin/python|;' install.sh
         ./install.sh --clang-completer
-    elif [ "$OS" == "Linux" ]; then
-        echo "Please custom-compile the vim YouCompleteMe plugin (if necessary)!"
-    fi
 
+    elif [ "$OS" == "Linux" ]; then
+        tmpdir=/tmp/ycm_build
+        mkdir ${tmpdir} && cd ${tmpdir}
+
+        llvm_root=${HOME}/software/clang-and-llvm-3.7.1/local
+        libclang=${llvm_root}/lib/libclang.so
+        python=${HOME}/.pyenv/versions/2.7.9
+
+        cmake -G "Unix Makefiles" \
+            -DPYTHON_LIBRARY=${python}/lib/libpython2.7.so \
+            -DPYTHON_INCLUDE_DIR=${python}/include/python2.7/ \
+            -DPYTHON_EXECUTABLE=${python}/bin/python \
+            -DPATH_TO_LLVM_ROOT=${llvm_root} \
+            . ~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp ;
+        make ycm_support_libs VERBOSE=1 ;
+        cd ${tmpdir}/ycm && \
+            cmake \-E copy \
+            ${libclang} ycm/CMakeFiles/ycm_core.dir/link.txtTARGET_FILE_DIR:ycm_core ;
+
+        rm -rf ${tmpdir}
+    fi
 }
 
 cd "$(dirname "$0")"
