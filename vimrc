@@ -108,6 +108,7 @@ Bundle 'vim-scripts/Vim-R-plugin'
 Bundle 'vim-scripts/vim-niji'
 Bundle 'jgdavey/tslime.vim'
 Bundle 'kovisoft/paredit'
+Bundle 'derekwyatt/vim-scala'
 
 " Applications
 " ------------
