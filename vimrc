@@ -333,6 +333,10 @@ let g:niji_dark_colours = [
     \ [ '4',  '#268bd2'],
     \ ]
 
+let g:rbpt_max = 16
+let g:rbpt_loadcmd_toggle = 0
+nnoremap <F3> :RainbowParenthesesToggle<CR>
+
 " cmake
 " -----
 autocmd BufNewFile,BufRead CMakeLists.txt setlocal ft=cmake
