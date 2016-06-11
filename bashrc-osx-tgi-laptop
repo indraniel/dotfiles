@@ -29,6 +29,9 @@ fi
 alias vim='mvim -v'
 export EDITOR=/usr/bin/vim
 
+# location of custom emacs
+alias emacs=/usr/local/Cellar/emacs-plus/24.5/bin/emacs
+
 # commands beginning with one space don't get stored in .bash_history
 export HISTIGNORE=' *'
 
