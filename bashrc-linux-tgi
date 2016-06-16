@@ -122,3 +122,7 @@ alias vim="LD_LIBRARY_PATH=${HOME}/software/gcc/gcc-5.3.0/lib:${LD_LIBRARY_PATH}
 # setup JAVA
 export JAVA_HOME=/gapp/x64linux/opt/java/jdk/jdk1.8.0_60
 export PATH=$JAVA_HOME/bin:$PATH
+
+# setup SCALA
+export SCALA_HOME=${HOME}/software/scala/scala-2.11.8
+export PATH=$SCALA_HOME/bin:$PATH
