@@ -57,7 +57,7 @@ Bundle 'Lokaltog/vim-distinguished'
 Bundle 'matthewtodd/vim-twilight'
 Bundle 'jonathanfilip/vim-lucius'
 Bundle 'reedes/vim-pencil'
-Bundle 'ervandew/screen'
+Bundle 'epeli/slimux'
 
 " Navigation
 " ----------
@@ -211,6 +211,13 @@ let g:golden_ratio_autocommand = 0
 " golden ratio resize toggle
 " --------------------------
 nnoremap <F7> :GoldenRatioToggle<CR>
+
+"==============================================================================
+" slimux Adjustments
+"==============================================================================
+nnoremap /sl :SlimuxREPLSendLine<CR>
+vnoremap /ss :SlimuxREPLSendSelection<CR>
+nnoremap /sb :SlimuxREPLSendBuffer<CR>
 
 "==============================================================================
 " YouCompleteMe Adjustments
