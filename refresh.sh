@@ -37,7 +37,7 @@ function reset_YCM() {
         tmpdir=/tmp/ycm_build
         mkdir ${tmpdir} && cd ${tmpdir}
 
-        llvm_root=${HOME}/software/clang-and-llvm-3.7.1/local
+        llvm_root=${HOME}/software/clang-and-llvm-3.8.0/local
         libclang=${llvm_root}/lib/libclang.so
         python=${HOME}/.pyenv/versions/2.7.9
 
