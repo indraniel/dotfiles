@@ -201,6 +201,15 @@ nnoremap <F2> :NERDTreeTabsToggle<CR>
 "==============================================================================
 " Tagbar Adjustments
 "==============================================================================
+" some source code breakdowns for R scripts (using in conjunction with ctags)
+let g:tagbar_type_r = {
+    \ 'ctagstype' : 'r',
+    \ 'kinds'     : [
+        \ 'f:Functions',
+        \ 'g:GlobalVariables',
+        \ 'v:FunctionVariables',
+    \ ]
+\ }"
 nnoremap <F8> :TagbarToggle<CR>
 
 "==============================================================================
