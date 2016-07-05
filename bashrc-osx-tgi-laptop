@@ -29,6 +29,11 @@ fi
 alias vim='mvim -v'
 export EDITOR=/usr/bin/vim
 
+# get vim's slimux/tmux integration to work correctly on MacOS (OSX)
+# see https://github.com/epeli/slimux/issues/61
+export EVENT_NOKQUEUE=1
+export EVENT_NOPOLL=1
+
 # location of custom emacs
 alias emacs=/usr/local/Cellar/emacs-plus/24.5/bin/emacs
 
