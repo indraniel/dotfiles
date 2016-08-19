@@ -117,7 +117,7 @@ if which goenv > /dev/null; then eval "$(goenv init -)"; fi
 
 # some vim niceties when ssh-ing 
 alias xvim="vim -c 'set t_Co=256' -c 'color mustang'"
-alias vim="LD_LIBRARY_PATH=${HOME}/software/gcc/gcc-5.3.0/lib:${LD_LIBRARY_PATH} $(which vim)"
+alias vim="LD_LIBRARY_PATH=${HOME}/software/gcc/gcc-5.3.0/lib:${LD_LIBRARY_PATH} $(which vim) -X"
 
 # setup JAVA
 export JAVA_HOME=/gapp/x64linux/opt/java/jdk/jdk1.8.0_60
