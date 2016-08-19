@@ -91,6 +91,9 @@ export LESS
 # commands beginning with one space don't get stored in .bash_history
 export HISTIGNORE=' *'
 
+# SET default EDITOR
+export EDITOR="/gscuser/idas/vim74/bin/vim -X"
+
 # customize PATH
 export PATH=$HOME/.goenv/bin:$HOME/.Renv/bin:$HOME/.pyenv/bin:$HOME/.rbenv/bin:$HOME/.plenv/bin:$HOME/vim74/bin:$HOME/software/cmake/bin:/bin:$PATH
 
