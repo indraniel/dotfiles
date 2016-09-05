@@ -12,7 +12,7 @@ if [ "$colorize" == "yes" ]; then
     alias grep='grep --color=auto'
 
     # setup a custom prompt
-    PS1='╭─\[$(tput -T xterm sgr0)\]( \[$(tput -T xterm setaf 3)\]\w\[$(tput -T xterm setaf 1)\]$(__git_ps1 " (%s)")\[$(tput -T xterm sgr0)\] as \[$(tput -T xterm setaf 2)\]\u\[$(tput -T xterm sgr0)\] at \[$(tput -T xterm setaf 6)\]\h\[$(tput -T xterm sgr0)\] on \[$(tput -T xterm setaf 3)\]\t\[$(tput -T xterm sgr0)\] )
+    PS1='╭─\[$(tput -T xterm sgr0)\]( \[$(tput -T xterm setaf 3)\]\w\[$(tput -T xterm setaf 1)\]$(__git_ps1 " (%s)")\[$(tput -T xterm sgr0)\] as \[$(tput -T xterm setaf 2)\]\u\[$(tput -T xterm sgr0)\] at \[$(tput -T xterm setaf 6)\]\h\[$(tput -T xterm sgr0)\] on \[$(tput -T xterm setaf 3)\]\D{%m/%d} \t\[$(tput -T xterm sgr0)\] )
 ╰─\[$(tput -T xterm bold)\]\[$(tput -T xterm setaf 1)\]$\[$(tput -T xterm sgr0)\] '
 fi
 
