@@ -338,6 +338,7 @@ let g:tslime_ensure_trailing_newlines = 1
 let g:tslime_normal_mapping = '<localleader>t'
 let g:tslime_visual_mapping = '<localleader>t'
 let g:tslime_vars_mapping = '<localleader>T'
+let g:paredit_leader = ','
 
 let g:niji_dark_colours = [
     \ [ '81', '#5fd7ff'],
