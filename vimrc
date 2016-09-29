@@ -411,6 +411,7 @@ if version > 700
     inoremap <expr> <cr> pumvisible() ? "\<c-y>" : "\<c-g>u\<cr>"
     inoremap <expr> <c-n> pumvisible() ? "\<lt>c-n>" : "\<lt>c-n>\<lt>c-r>=pumvisible() ? \"\\<lt>down>\" : \"\"\<lt>cr>"
     inoremap <expr> <m-;> pumvisible() ? "\<lt>c-n>" : "\<lt>c-x>\<lt>c-o>\<lt>c-n>\<lt>c-p>\<lt>c-r>=pumvisible() ? \"\\<lt>down>\" : \"\"\<lt>cr>"
+    inoremap <C-Space> <C-x><C-o>
 endif
 
 "==============================================================================
