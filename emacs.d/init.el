@@ -60,6 +60,9 @@ re-downloaded in order to locate PACKAGE."
 (setq tab-width 4)        ;; set your desired tab width
 (setq indent-tabs-mode nil) ;; use tabs for indentation
 
+; show the column number
+(setq column-number-mode t)
+
 ; company / auto-completion setup
 
 (defun my/python-mode-hook ()
