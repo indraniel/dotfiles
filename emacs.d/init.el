@@ -20,7 +20,6 @@ re-downloaded in order to locate PACKAGE."
 (package-initialize)
 
 (require-package 'evil)
-(require-package 'evil-tabs)
 (require-package 'company)
 (require-package 'company-jedi)
 (require-package 'zenburn-theme)
@@ -56,12 +55,6 @@ re-downloaded in order to locate PACKAGE."
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
-
-; setup evil tabs
-(global-evil-tabs-mode t)
-(define-key evil-normal-state-map (kbd "tt") 'elscreen-create)
-(define-key evil-normal-state-map (kbd "C-h") 'elscreen-previous)
-(define-key evil-normal-state-map (kbd "C-l") 'elscreen-next)
 
 ; set tabs/space width
 (setq tab-width 4)        ;; set your desired tab width
