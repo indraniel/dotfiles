@@ -31,6 +31,7 @@ re-downloaded in order to locate PACKAGE."
 (require-package 'clojure-mode)
 (require-package 'all-the-icons)
 (require-package 'neotree)
+(require-package 'helm)
 ;; (require-package 'projectile) ;; 
 
 (setq make-backup-files nil) ; stop creating backup~ files
@@ -62,6 +63,10 @@ re-downloaded in order to locate PACKAGE."
 
 ; show the column number
 (setq column-number-mode t)
+
+; helm setup
+(require 'helm-config)
+(helm-mode 1)
 
 ; company / auto-completion setup
 
