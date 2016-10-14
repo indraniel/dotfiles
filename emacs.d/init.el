@@ -30,6 +30,9 @@ re-downloaded in order to locate PACKAGE."
 (require-package 'paredit)
 (require-package 'rainbow-delimiters)
 (require-package 'clojure-mode)
+(require-package 'all-the-icons)
+(require-package 'neotree)
+;; (require-package 'projectile) ;; 
 
 (setq make-backup-files nil) ; stop creating backup~ files
 
@@ -93,3 +96,10 @@ re-downloaded in order to locate PACKAGE."
 
 ;; Clojure
 (add-hook 'clojure-mode-hook 'lisp-stuff)
+
+;; neotree setup
+(require 'neotree)
+(global-set-key [f2] 'neotree-toggle)
+(setq neo-theme (if window-system 'icons 'arrow))
+(evil-define-key 'normal neotree-mode-map (kbd "q") 'neotree-hide)
+(evil-define-key 'normal neotree-mode-map (kbd "RET") 'neotree-enter)
