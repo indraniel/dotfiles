@@ -34,14 +34,6 @@ re-downloaded in order to locate PACKAGE."
 (require-package 'helm)
 ;; (require-package 'projectile) ;; 
 
-(setq make-backup-files nil) ; stop creating backup~ files
-
-(setq evil-search-module 'evil-search
-      evil-want-C-u-scroll t
-      evil-want-C-w-in-emacs-state t)
-
-(require 'evil)
-(evil-mode t)
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -57,6 +49,20 @@ re-downloaded in order to locate PACKAGE."
  ;; If there is more than one, they won't work right.
  )
 
+;; setup evil mode
+(setq evil-search-module 'evil-search
+      evil-want-C-u-scroll t
+      evil-want-C-w-in-emacs-state t)
+
+(require 'evil)
+(evil-mode t)
+
+;; stop creating backup~ files
+(setq make-backup-files nil)
+
+;; suppress the splash/startup screen
+(setq inhibit-startup-screen t)
+
 ; set tabs/space width
 (setq tab-width 4)        ;; set your desired tab width
 (setq indent-tabs-mode nil) ;; use tabs for indentation
@@ -68,8 +74,7 @@ re-downloaded in order to locate PACKAGE."
 (require 'helm-config)
 (helm-mode 1)
 
-; company / auto-completion setup
-
+;; company / auto-completion setup
 (defun my/python-mode-hook ()
   (add-to-list 'company-backends 'company-jedi))
 (add-hook 'python-mode-hook 'my/python-mode-hook)
@@ -77,13 +82,11 @@ re-downloaded in order to locate PACKAGE."
 (add-hook 'after-init-hook 'global-company-mode) ; company mode enable on all buffers
 
 ; setup an appropriate color theme
-
 (if (display-graphic-p)
     (load-theme 'solarized-light t)
     (load-theme 'zenburn t))
 
 ;; Lisp
-
 (defun lisp-stuff ()
   (enable-paredit-mode)
   (rainbow-delimiters-mode 1)
