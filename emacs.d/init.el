@@ -100,9 +100,13 @@ re-downloaded in order to locate PACKAGE."
 		      :height 120
 		      :weight 'normal))
 
+(defun terminal-mode-setup ()
+  (load-theme 'zenburn t)
+  (setq fci-rule-color "yellow"))
+
 (if (display-graphic-p)
     (graphical-mode-setup)
-    (load-theme 'zenburn t))
+    (terminal-mode-setup))
 
 ;; Lisp
 (defun lisp-stuff ()
