@@ -65,14 +65,14 @@ re-downloaded in order to locate PACKAGE."
 ;; suppress the splash/startup screen
 (setq inhibit-startup-screen t)
 
-; set tabs/space width
+;; set tabs/space width
 (setq tab-width 4)        ;; set your desired tab width
 (setq indent-tabs-mode nil) ;; use tabs for indentation
 
-; show the column number
+;; show the column number
 (setq column-number-mode t)
 
-; helm setup
+;; helm setup
 (require 'helm-config)
 (helm-mode 1)
 (define-key helm-map (kbd "j") 'helm-next-line)
