@@ -32,7 +32,8 @@ re-downloaded in order to locate PACKAGE."
 (require-package 'all-the-icons)
 (require-package 'neotree)
 (require-package 'helm)
-;; (require-package 'projectile) ;; 
+(require-package 'projectile)
+(require-package 'magit)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
