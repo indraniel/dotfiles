@@ -85,9 +85,17 @@ re-downloaded in order to locate PACKAGE."
 
 (add-hook 'after-init-hook 'global-company-mode) ; company mode enable on all buffers
 
-; setup an appropriate color theme
+;; setup an appropriate color theme and fonts
+; the size is equal to height divided by 10 (e.g. 13pt = 130/10)
+(defun graphical-mode-setup ()
+  (load-theme 'solarized-light t)
+  (set-face-attribute 'default nil
+		      :family "Monaco"
+		      :height 120
+		      :weight 'normal))
+
 (if (display-graphic-p)
-    (load-theme 'solarized-light t)
+    (graphical-mode-setup)
     (load-theme 'zenburn t))
 
 ;; Lisp
