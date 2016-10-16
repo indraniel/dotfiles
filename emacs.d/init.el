@@ -73,6 +73,9 @@ re-downloaded in order to locate PACKAGE."
 ; helm setup
 (require 'helm-config)
 (helm-mode 1)
+(define-key helm-map (kbd "j") 'helm-next-line)
+(define-key helm-map (kbd "k") 'helm-previous-line)
+(define-key helm-map (kbd "q") 'helm-quit)
 
 ;; company / auto-completion setup
 (defun my/python-mode-hook ()
