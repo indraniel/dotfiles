@@ -36,6 +36,7 @@ re-downloaded in order to locate PACKAGE."
 (require-package 'magit)
 (require-package 'ess)
 (require-package 'highlight-indentation)
+(require-package 'fill-column-indicator)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -72,6 +73,9 @@ re-downloaded in order to locate PACKAGE."
 
 ;; show the column number
 (setq column-number-mode t)
+
+;; show the column indicator (80-column point)
+(setq fci-rule-column 80)
 
 ;; helm setup
 (require 'helm-config)
