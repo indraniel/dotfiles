@@ -61,6 +61,12 @@ re-downloaded in order to locate PACKAGE."
 (require 'evil)
 (evil-mode t)
 
+;;; additional evil colon commands
+;;; http://emacs.stackexchange.com/questions/10350/how-can-i-add-a-new-colon-command-to-evil
+(evil-ex-define-cmd "number" 'linum-mode)
+(evil-ex-define-cmd "colcolumn" 'fci-mode)
+(evil-ex-define-cmd "colorindent" 'highlight-indentation-mode)
+
 ;; stop creating backup~ files
 (setq make-backup-files nil)
 
