@@ -35,6 +35,7 @@ re-downloaded in order to locate PACKAGE."
 (require-package 'projectile)
 (require-package 'magit)
 (require-package 'ess)
+(require-package 'highlight-indentation)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
