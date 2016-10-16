@@ -107,3 +107,4 @@ re-downloaded in order to locate PACKAGE."
 (setq neo-theme 'arrow)
 (evil-define-key 'normal neotree-mode-map (kbd "q") 'neotree-hide)
 (evil-define-key 'normal neotree-mode-map (kbd "RET") 'neotree-enter)
+(evil-define-key 'normal neotree-mode-map (kbd "R") 'neotree-refresh)
