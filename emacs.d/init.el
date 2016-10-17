@@ -35,6 +35,7 @@ re-downloaded in order to locate PACKAGE."
 (require-package 'neotree)
 (require-package 'helm)
 (require-package 'projectile)
+(require-package 'helm-projectile)
 (require-package 'magit)
 (require-package 'ess)
 (require-package 'highlight-indentation)
@@ -106,6 +107,11 @@ re-downloaded in order to locate PACKAGE."
 (define-key helm-map (kbd "C-j") 'helm-next-line)
 (define-key helm-map (kbd "C-k") 'helm-previous-line)
 (define-key helm-map (kbd "C-q") 'helm-quit)
+
+;; projectile setup
+(projectile-global-mode)
+(setq projectile-completion-system 'helm)
+(helm-projectile-on)
 
 ;; company / auto-completion setup
 (defun my/python-mode-hook ()
@@ -185,6 +191,7 @@ re-downloaded in order to locate PACKAGE."
 (global-set-key [f2] 'neotree-toggle)
 (setq neo-window-fixed-size nil)
 (setq neo-theme 'arrow)
+;(neotree-projectile-action)
 (evil-define-key 'normal neotree-mode-map (kbd "q") 'neotree-hide)
 (evil-define-key 'normal neotree-mode-map (kbd "RET") 'neotree-enter)
 (evil-define-key 'normal neotree-mode-map (kbd "R") 'neotree-refresh)
