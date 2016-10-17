@@ -101,6 +101,7 @@ re-downloaded in order to locate PACKAGE."
 ;; setup an appropriate color theme and fonts
 ; the size is equal to height divided by 10 (e.g. 13pt = 130/10)
 (defun graphical-mode-setup ()
+  (tool-bar-mode -1)
   (load-theme 'solarized-light t)
   (set-face-attribute 'default nil
 		      :family "Monaco"
