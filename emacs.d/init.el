@@ -126,7 +126,28 @@ re-downloaded in order to locate PACKAGE."
 (add-hook 'emacs-lisp-mode-hook #'lisp-stuff)
 
 ;; Clojure
-(add-hook 'clojure-mode-hook 'lisp-stuff)
+(add-hook 'clojure-mode-hook #'lisp-stuff)
+
+;; Cider
+(add-hook 'cider-repl-mode-hook #'company-mode)
+(add-hook 'cider-repl-mode-hook #'evil-mode)
+(add-hook 'cider-repl-mode-hook #'lisp-stuff)
+(add-hook 'cider-repl-mode-hook #'eldoc-mode)
+
+(add-hook 'cider-mode-hook #'evil-mode)
+(add-hook 'cider-mode-hook #'company-mode)
+(add-hook 'cider-mode-hook #'lisp-stuff)
+
+(evil-declare-key 'normal cider-repl-mode-map (kbd "C-a") 'beginning-of-line)
+(evil-declare-key 'normal cider-repl-mode-map (kbd "C-e") 'end-of-line)
+(evil-declare-key 'normal cider-repl-mode-map (kbd "C-l") 'cider-repl-clear-buffer)
+(evil-declare-key 'normal cider-repl-mode-map (kbd "C-p") 'cider-repl-backward-input)
+(evil-declare-key 'normal cider-repl-mode-map (kbd "C-n") 'cider-repl-forward-input)
+(evil-declare-key 'normal cider-repl-mode-map (kbd "q") 'cider-quit)
+
+(evil-declare-key 'normal cider-mode-map (kbd ",cpe") 'cider-eval-last-sexp)
+(evil-declare-key 'normal cider-mode-map (kbd ",cpp") 'cider-eval-last-sexp-to-repl)
+(evil-declare-key 'visual cider-mode-map (kbd "cper") 'cider-eval-region)
 
 ;; neotree setup
 (require 'neotree)
