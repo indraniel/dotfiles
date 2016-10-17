@@ -23,6 +23,7 @@ re-downloaded in order to locate PACKAGE."
 (require-package 'evil-tabs)
 (require-package 'company)
 (require-package 'company-jedi)
+(require-package 'pyvenv)
 (require-package 'pyenv-mode-auto)
 (require-package 'zenburn-theme)
 (require-package 'arjen-grey-theme)
