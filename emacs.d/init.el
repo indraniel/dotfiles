@@ -26,6 +26,7 @@ re-downloaded in order to locate PACKAGE."
 (require-package 'pyvenv)
 (require-package 'pyenv-mode-auto)
 (require-package 'zenburn-theme)
+(require-package 'twilight-bright-theme)
 (require-package 'arjen-grey-theme)
 (require-package 'solarized-theme)
 (require-package 'cider)
