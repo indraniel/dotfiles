@@ -75,6 +75,7 @@ re-downloaded in order to locate PACKAGE."
 (evil-ex-define-cmd "colorindent" 'highlight-indentation-mode)
 (evil-ex-define-cmd "wrap" 'toggle-truncate-lines)
 (evil-ex-define-cmd "name" 'show-file-name)
+(evil-ex-define-cmd "ls" 'ibuffer)
 
 ;; stop creating backup~ files
 (setq make-backup-files nil)
@@ -123,6 +124,21 @@ re-downloaded in order to locate PACKAGE."
 (if (display-graphic-p)
     (graphical-mode-setup)
     (terminal-mode-setup))
+
+;; ibuffer
+;; from https://nathantypanski.com/blog/2014-08-03-a-vim-like-emacs-config.html
+(evil-define-key 'normal ibuffer-mode-map
+  (kbd "j") 'ibuffer-
+  (kbd "m") 'ibuffer-mark-forward
+  (kbd "t") 'ibuffer-toggle-marks
+  (kbd "u") 'ibuffer-unmark-forward
+  (kbd "=") 'ibuffer-diff-with-file
+  (kbd "j") 'ibuffer-jump-to-buffer
+  (kbd "M-g") 'ibuffer-jump-to-buffer
+  (kbd "M-s a C-s") 'ibuffer-do-isearch
+  (kbd "M-s a M-C-s") 'ibuffer-do-isearch-regexp
+  ;; ...
+  )
 
 ;; Lisp
 (defun lisp-stuff ()
