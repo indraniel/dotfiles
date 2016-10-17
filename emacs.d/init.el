@@ -67,6 +67,7 @@ re-downloaded in order to locate PACKAGE."
 (evil-ex-define-cmd "number" 'linum-mode)
 (evil-ex-define-cmd "colcolumn" 'fci-mode)
 (evil-ex-define-cmd "colorindent" 'highlight-indentation-mode)
+(evil-ex-define-cmd "wrap" 'toggle-truncate-lines)
 
 ;; stop creating backup~ files
 (setq make-backup-files nil)
