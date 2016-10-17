@@ -54,6 +54,12 @@ re-downloaded in order to locate PACKAGE."
  ;; If there is more than one, they won't work right.
  )
 
+; Custom functions
+(defun show-file-name ()
+  "SHow the full path file name in the minibuffer."
+  (interactive)
+  (message (buffer-file-name)))
+
 ;; setup evil mode
 (setq evil-search-module 'evil-search
       evil-want-C-u-scroll t
@@ -68,6 +74,7 @@ re-downloaded in order to locate PACKAGE."
 (evil-ex-define-cmd "colcolumn" 'fci-mode)
 (evil-ex-define-cmd "colorindent" 'highlight-indentation-mode)
 (evil-ex-define-cmd "wrap" 'toggle-truncate-lines)
+(evil-ex-define-cmd "name" 'show-file-name)
 
 ;; stop creating backup~ files
 (setq make-backup-files nil)
