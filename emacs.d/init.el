@@ -79,7 +79,7 @@ re-downloaded in order to locate PACKAGE."
 (evil-ex-define-cmd "colorindent" 'highlight-indentation-mode)
 (evil-ex-define-cmd "wrap" 'toggle-truncate-lines)
 (evil-ex-define-cmd "name" 'show-file-name)
-(evil-ex-define-cmd "ls" 'ibuffer)
+(evil-ex-define-cmd "ls" 'projectile-ibuffer)
 
 ;; stop creating backup~ files
 (setq make-backup-files nil)
