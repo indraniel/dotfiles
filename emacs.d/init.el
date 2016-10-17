@@ -20,6 +20,7 @@ re-downloaded in order to locate PACKAGE."
 (package-initialize)
 
 (require-package 'evil)
+(require-package 'evil-tabs)
 (require-package 'company)
 (require-package 'company-jedi)
 (require-package 'pyenv-mode-auto)
@@ -92,6 +93,12 @@ re-downloaded in order to locate PACKAGE."
 
 ;; show the column indicator (80-column point)
 (setq fci-rule-column 80)
+
+;; evil tabs setup
+(global-evil-tabs-mode t)
+(define-key evil-normal-state-map (kbd "tt") 'elscreen-create)
+(define-key evil-normal-state-map (kbd "C-h") 'elscreen-previous)
+(define-key evil-normal-state-map (kbd "C-l") 'elscreen-next)
 
 ;; helm setup
 (require 'helm-config)
