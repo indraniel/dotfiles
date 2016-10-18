@@ -192,6 +192,7 @@ re-downloaded in order to locate PACKAGE."
 ;; neotree setup
 (require 'neotree)
 (global-set-key [f2] 'neotree-toggle)
+(global-set-key [f3] 'neotree-projectile-action)
 (setq projectile-switch-project-action 'neotree-projectile-action)
 (setq neo-window-fixed-size nil)
 (setq neo-theme 'arrow)
