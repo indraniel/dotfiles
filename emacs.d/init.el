@@ -21,8 +21,6 @@ re-downloaded in order to locate PACKAGE."
 
 (require-package 'evil)
 (require-package 'evil-tabs)
-;(require-package 'eyebrowse)
-;(require-package 'persp-mode)
 (require-package 'company)
 (require-package 'company-jedi)
 (require-package 'pyvenv)
@@ -104,22 +102,6 @@ re-downloaded in order to locate PACKAGE."
 (define-key evil-normal-state-map (kbd "tt") 'elscreen-create)
 (define-key evil-normal-state-map (kbd "C-h") 'elscreen-previous)
 (define-key evil-normal-state-map (kbd "C-l") 'elscreen-next)
-
-;; eyebrowse setup
-; (eyebrowse-mode t)
-; (setq eyebrowse-wrap-around t)
-; (add-hook 'eyebrowse-post-window-switch-hook #'neo-global--attach)
-; (define-key evil-normal-state-map (kbd "tt") 'eyebrowse-create-window-config)
-; (define-key evil-normal-state-map (kbd "C-h") 'eyebrowse-prev-window-config)
-; (define-key evil-normal-state-map (kbd "C-l") 'eyebrowse-next-window-config)
-; (define-key evil-normal-state-map (kbd "tq") 'eyebrowse-close-window-config)
-
-; persp-mode setup
-; (with-eval-after-load "persp-mode-autoloads"
-;   (setq wg-morph-on nil) ;; switch off animation
-;   (setq persp-autokill-buffer-on-remove 'kill-weak)
-;   (add-hook 'after-init-hook #'(lambda () (persp-mode 1))))
-;
 
 ;; helm setup
 (require 'helm-config)
