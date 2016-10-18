@@ -127,6 +127,7 @@ re-downloaded in order to locate PACKAGE."
 (defun graphical-mode-setup ()
   (tool-bar-mode -1)
   (load-theme 'solarized-light t)
+  (setq fci-rule-width 3)
   (set-face-attribute 'default nil
 		      :family "Monaco"
 		      :height 120
