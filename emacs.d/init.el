@@ -191,9 +191,9 @@ re-downloaded in order to locate PACKAGE."
 ;; neotree setup
 (require 'neotree)
 (global-set-key [f2] 'neotree-toggle)
+(setq projectile-switch-project-action 'neotree-projectile-action)
 (setq neo-window-fixed-size nil)
 (setq neo-theme 'arrow)
-;(neotree-projectile-action)
 (evil-define-key 'normal neotree-mode-map (kbd "q") 'neotree-hide)
 (evil-define-key 'normal neotree-mode-map (kbd "RET") 'neotree-enter)
 (evil-define-key 'normal neotree-mode-map (kbd "R") 'neotree-refresh)
