@@ -20,7 +20,7 @@ re-downloaded in order to locate PACKAGE."
 (package-initialize)
 
 (require-package 'evil)
-(require-package 'evil-tabs)
+(require-package 'eyebrowse)
 (require-package 'company)
 (require-package 'company-jedi)
 (require-package 'pyvenv)
@@ -42,6 +42,7 @@ re-downloaded in order to locate PACKAGE."
 (require-package 'ess)
 (require-package 'highlight-indentation)
 (require-package 'fill-column-indicator)
+(require-package 'spaceline)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -106,11 +107,14 @@ re-downloaded in order to locate PACKAGE."
 ;; show the column indicator (80-column point)
 (setq fci-rule-column 80)
 
-;; evil tabs setup
-(global-evil-tabs-mode t)
-(define-key evil-normal-state-map (kbd "tt") 'elscreen-create)
-(define-key evil-normal-state-map (kbd "C-h") 'elscreen-previous)
-(define-key evil-normal-state-map (kbd "C-l") 'elscreen-next)
+;; eyebrowse setup
+(eyebrowse-mode t)
+(setq eyebrowse-wrap-around t)
+(add-hook 'eyebrowse-post-window-switch-hook #'neo-global--attach)
+(define-key evil-normal-state-map (kbd "tt") 'eyebrowse-create-window-config)
+(define-key evil-normal-state-map (kbd "C-h") 'eyebrowse-prev-window-config)
+(define-key evil-normal-state-map (kbd "C-l") 'eyebrowse-next-window-config)
+(define-key evil-normal-state-map (kbd "tq") 'eyebrowse-close-window-config)
 
 ;; helm setup
 (require 'helm-config)
@@ -208,3 +212,8 @@ re-downloaded in order to locate PACKAGE."
 (evil-define-key 'normal neotree-mode-map (kbd "q") 'neotree-hide)
 (evil-define-key 'normal neotree-mode-map (kbd "RET") 'neotree-enter)
 (evil-define-key 'normal neotree-mode-map (kbd "R") 'neotree-refresh)
+
+;; spaceline setup
+(require 'spaceline-config)
+(spaceline-spacemacs-theme)
+(spaceline-helm-mode)
