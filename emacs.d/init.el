@@ -93,6 +93,9 @@ re-downloaded in order to locate PACKAGE."
 (set-face-background 'vertical-border "gray")
 (set-face-foreground 'vertical-border (face-background 'vertical-border))
 
+;; turn off the scroll bars
+(scroll-bar-mode -1)
+
 ;; set tabs/space width
 (setq tab-width 4)        ;; set your desired tab width
 (setq indent-tabs-mode nil) ;; use tabs for indentation
