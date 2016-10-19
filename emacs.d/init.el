@@ -87,6 +87,12 @@ re-downloaded in order to locate PACKAGE."
 ;; suppress the splash/startup screen
 (setq inhibit-startup-screen t)
 
+;; Set symbol for the window border in terminal mode
+;;http://stackoverflow.com/questions/18210631/how-to-change-the-character-composing-the-emacs-vertical-border
+;;https://www.reddit.com/r/emacs/comments/3u0d0u/how_do_i_make_the_vertical_window_divider_more/
+(set-face-background 'vertical-border "gray")
+(set-face-foreground 'vertical-border (face-background 'vertical-border))
+
 ;; set tabs/space width
 (setq tab-width 4)        ;; set your desired tab width
 (setq indent-tabs-mode nil) ;; use tabs for indentation
