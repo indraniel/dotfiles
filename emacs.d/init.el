@@ -83,6 +83,10 @@ re-downloaded in order to locate PACKAGE."
 (evil-ex-define-cmd "name" 'show-file-name)
 (evil-ex-define-cmd "ls" 'projectile-ibuffer)
 
+;; buffer moving commands
+(define-key evil-normal-state-map (kbd "C-h") 'previous-buffer)
+(define-key evil-normal-state-map (kbd "C-l") 'next-buffer)
+
 ;; stop creating backup~ files
 (setq make-backup-files nil)
 
@@ -116,8 +120,8 @@ re-downloaded in order to locate PACKAGE."
 (setq eyebrowse-wrap-around t)
 (add-hook 'eyebrowse-post-window-switch-hook #'neo-global--attach)
 (define-key evil-normal-state-map (kbd "tt") 'eyebrowse-create-window-config)
-(define-key evil-normal-state-map (kbd "C-h") 'eyebrowse-prev-window-config)
-(define-key evil-normal-state-map (kbd "C-l") 'eyebrowse-next-window-config)
+(define-key evil-normal-state-map (kbd "C-a") 'eyebrowse-prev-window-config)
+(define-key evil-normal-state-map (kbd "C-g") 'eyebrowse-next-window-config)
 (define-key evil-normal-state-map (kbd "tq") 'eyebrowse-close-window-config)
 
 ;; helm setup
