@@ -99,7 +99,10 @@ re-downloaded in order to locate PACKAGE."
 (scroll-bar-mode -1)
 
 ;; set tabs/space width
-(setq tab-width 4)        ;; set your desired tab width
+;; http://stackoverflow.com/questions/5528349/emacs-makefile-tab-size
+(setq default-tab-width 4)
+(setq tab-width 4)
+(setq c-basic-indent 4)
 (setq indent-tabs-mode nil) ;; use tabs for indentation
 
 ;; show the column number
