@@ -44,6 +44,7 @@ re-downloaded in order to locate PACKAGE."
 (require-package 'highlight-indentation)
 (require-package 'fill-column-indicator)
 (require-package 'spaceline)
+(require-package 'diminish)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -225,3 +226,11 @@ re-downloaded in order to locate PACKAGE."
 (require 'spaceline-config)
 (spaceline-spacemacs-theme)
 (spaceline-helm-mode)
+
+;; diminish setup / cleanup mode line a bit
+(require 'diminish)
+(diminish 'visual-line-mode)
+(diminish 'projectile-mode)
+(diminish 'company-mode)
+(diminish 'helm-mode)
+(diminish 'undo-tree-mode)
