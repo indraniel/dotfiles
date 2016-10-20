@@ -19,6 +19,7 @@ re-downloaded in order to locate PACKAGE."
 
 (package-initialize)
 
+(require-package 'auto-indent-mode)
 (require-package 'evil)
 (require-package 'eyebrowse)
 (require-package 'company)
