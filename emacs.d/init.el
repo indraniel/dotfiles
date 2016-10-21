@@ -121,8 +121,8 @@ re-downloaded in order to locate PACKAGE."
 (setq eyebrowse-wrap-around t)
 (add-hook 'eyebrowse-post-window-switch-hook #'neo-global--attach)
 (define-key evil-normal-state-map (kbd "tt") 'eyebrowse-create-window-config)
-(define-key evil-normal-state-map (kbd "C-a") 'eyebrowse-prev-window-config)
-(define-key evil-normal-state-map (kbd "C-g") 'eyebrowse-next-window-config)
+(define-key evil-normal-state-map (kbd "th") 'eyebrowse-prev-window-config)
+(define-key evil-normal-state-map (kbd "tl") 'eyebrowse-next-window-config)
 (define-key evil-normal-state-map (kbd "tq") 'eyebrowse-close-window-config)
 
 ;; helm setup
