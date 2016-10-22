@@ -27,6 +27,7 @@ fi
 
 # set the default editor
 alias vim='mvim -v'
+alias emacs=/usr/local/bin/emacs
 export EDITOR=/usr/bin/vim
 
 # get vim's slimux/tmux integration to work correctly on MacOS (OSX)
