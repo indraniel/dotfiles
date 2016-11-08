@@ -109,7 +109,7 @@ re-downloaded in order to locate PACKAGE."
 (setq default-tab-width 4)
 (setq tab-width 4)
 (setq c-basic-indent 4)
-(setq indent-tabs-mode nil) ;; use tabs for indentation
+(setq-default indent-tabs-mode nil) ;; don't use tabs for indentation
 
 ;; show the column number
 (setq column-number-mode t)
