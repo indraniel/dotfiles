@@ -34,6 +34,7 @@ re-downloaded in order to locate PACKAGE."
 (require-package 'paredit)
 (require-package 'rainbow-delimiters)
 (require-package 'clojure-mode)
+(require-package 'markdown-mode)
 (require-package 'all-the-icons)
 (require-package 'neotree)
 (require-package 'helm)
