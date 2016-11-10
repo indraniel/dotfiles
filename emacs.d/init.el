@@ -21,6 +21,8 @@ re-downloaded in order to locate PACKAGE."
 
 (require-package 'auto-indent-mode)
 (require-package 'evil)
+(require-package 'vimish-fold)
+(require-package 'evil-vimish-fold)
 (require-package 'eyebrowse)
 (require-package 'company)
 (require-package 'company-jedi)
