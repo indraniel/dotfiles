@@ -237,3 +237,7 @@ re-downloaded in order to locate PACKAGE."
 (diminish 'company-mode)
 (diminish 'helm-mode)
 (diminish 'undo-tree-mode)
+
+;; adjustments for GNU Makefile
+(add-to-list 'auto-mode-alist '("Makefile.*" . makefile-gmake-mode))
+(add-to-list 'auto-mode-alist '("\\.mk" . makefile-gmake-mode))
