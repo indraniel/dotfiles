@@ -70,6 +70,13 @@ re-downloaded in order to locate PACKAGE."
   (interactive)
   (message (buffer-file-name)))
 
+(defun infer-indentation-style ()
+  "if source file uses tabs, we use tabs, otherwise use spaces"
+  (let ((space-count (how-many-region (point-min) (point-max) "^  "))
+        (tab-count (how-many-region (point-min) (point-max) "^\t")))
+    (if (> space-count tab-count) (setq indent-tabs-mode nil))
+    (if (> tab-count space-count) (setq indent-tabs-mode t))))
+
 ;; setup evil mode
 (setq evil-search-module 'evil-search
       evil-want-C-u-scroll t
