@@ -98,6 +98,10 @@ re-downloaded in order to locate PACKAGE."
 (define-key evil-normal-state-map (kbd "C-h") 'previous-buffer)
 (define-key evil-normal-state-map (kbd "C-l") 'next-buffer)
 
+;; enable folding
+(vimish-fold-global-mode 1)
+(evil-vimish-fold-mode 1)
+
 ;; stop creating backup~ files
 (setq make-backup-files nil)
 
