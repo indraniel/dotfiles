@@ -48,16 +48,27 @@ NORM='\[\033[01;00;0m\]'
 CYAN='\[\033[01;36m\]'
 
 # colors via tput
-#reset=$(tput sgr0)
-#bold=$(tput bold)
-#grey=$(tput setaf 0)
-#red=$(tput setaf 1)
-#green=$(tput setaf 2)
-#yellow=$(tput setaf 3)
-#blue=$(tput setaf 4)
-#magenta=$(tput setaf 5)
-#cyan=$(tput setaf 6)
-#white=$(tput setaf 7)
+reset=$(tput sgr0)
+bold=$(tput bold)
+grey=$(tput setaf 0)
+red=$(tput setaf 1)
+green=$(tput setaf 2)
+yellow=$(tput setaf 3)
+blue=$(tput setaf 4)
+magenta=$(tput setaf 5)
+cyan=$(tput setaf 6)
+white=$(tput setaf 7)
+
+xreset=$(tput -T xterm sgr0)
+xbold=$(tput -T xterm bold)
+xgrey=$(tput -T xterm setaf 0)
+xred=$(tput -T xterm setaf 1)
+xgreen=$(tput -T xterm setaf 2)
+xyellow=$(tput -T xterm setaf 3)
+xblue=$(tput -T xterm setaf 4)
+xmagenta=$(tput -T xterm setaf 5)
+xcyan=$(tput -T xterm setaf 6)
+xwhite=$(tput -T xterm setaf 7)
 
 export GRAD1 GRAD2 YLOBRN WHTBRN REDBRN GRNBRN REDBLK PPLBLK WHTBLK NONE HBLU BLU YEL WHT PRPL RED GRN GRN2 GRAY NORM CYAN BLUBRN HBLK PINK
  
@@ -81,8 +92,13 @@ preexec() {
 }
 
 # setup custom prompt
-PS1='╭─\[$(tput -T xterm sgr0)\]( \[$(tput -T xterm setaf 3)\]\w\[$(tput -T xterm setaf 1)\]$(__git_ps1 " (%s)")\[$(tput -T xterm sgr0)\] as \[$(tput -T xterm setaf 2)\]\u\[$(tput -T xterm sgr0)\] at \[$(tput -T xterm setaf 6)\]\h\[$(tput -T xterm sgr0)\] on \[$(tput -T xterm setaf 3)\]\D{%m/%d} \t\[$(tput -T xterm sgr0)\] )
-╰─\[$(tput -T xterm bold)\]\[$(tput -T xterm setaf 1)\]$\[$(tput -T xterm sgr0)\] '
+if [ "$TERM" = "eterm-color" ]; then
+    # emacs prompt
+    PS1='╭─( ${yellow}\w${reset}${red}$(__git_ps1 " (%s)")${reset} as ${green}\u${reset} at ${cyan}\h${reset} on ${yellow}\D{%m/%d} \t${reset} )\n╰─${bold}${red}\$${reset} '
+else 
+    # regular xterm prompt
+    PS1='╭─\[${xreset}\]( \[${xyellow}\]\w\[${xred}\]$(__git_ps1 " (%s)")\[${xreset}\] as \[${xgreen}\]\u\[${xreset}\] at \[${xcyan}\]\h\[${xreset}\] on \[${xyellow}\]\D{%m/%d} \t\[${xreset}\] )\n╰─\[${xbold}\]\[${xred}\]$\[${xreset}\] '
+fi
 
 # enable the less command to display colors
 LESS="-eiMXR"
