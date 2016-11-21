@@ -168,6 +168,7 @@ re-downloaded in order to locate PACKAGE."
 		      :weight 'normal))
 
 (defun terminal-mode-setup ()
+  (menu-bar-mode -1)
   (load-theme 'zenburn t)
   (setq fci-rule-color "yellow"))
 
