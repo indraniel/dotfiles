@@ -145,6 +145,7 @@ re-downloaded in order to locate PACKAGE."
 (define-key helm-map (kbd "C-j") 'helm-next-line)
 (define-key helm-map (kbd "C-k") 'helm-previous-line)
 (define-key helm-map (kbd "C-q") 'helm-quit)
+(define-key evil-normal-state-map (kbd ",,") 'helm-buffers-list)
 
 ;; projectile setup
 (projectile-global-mode)
