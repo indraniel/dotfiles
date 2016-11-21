@@ -252,3 +252,12 @@ re-downloaded in order to locate PACKAGE."
 ;; adjustments for GNU Makefile
 (add-to-list 'auto-mode-alist '("Makefile.*" . makefile-gmake-mode))
 (add-to-list 'auto-mode-alist '("\\.mk" . makefile-gmake-mode))
+
+;; adjustments for R
+(add-to-list 'auto-mode-alist '("\\.R$" . R-mode))
+(add-to-list 'auto-mode-alist '("\\.r$" . R-mode))
+
+(defun R-stuff ()
+  (setq ess-indent-level 2)
+  (ess-electric-brace t))
+(add-hook 'ess-mode-hook #'R-stuff)
