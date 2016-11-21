@@ -23,7 +23,6 @@ re-downloaded in order to locate PACKAGE."
 (require-package 'evil)
 (require-package 'vimish-fold)
 (require-package 'evil-vimish-fold)
-(require-package 'evil-tabs)
 (require-package 'company)
 (require-package 'company-jedi)
 (require-package 'pyvenv)
@@ -129,12 +128,6 @@ re-downloaded in order to locate PACKAGE."
 
 ;; show the column indicator (80-column point)
 (setq fci-rule-column 80)
-
-;; evil tabs setup
-(global-evil-tabs-mode t)
-(define-key evil-normal-state-map (kbd "tt") 'elscreen-create)
-(define-key evil-normal-state-map (kbd "C-h") 'elscreen-previous)
-(define-key evil-normal-state-map (kbd "C-l") 'elscreen-next)
 
 ;; helm setup
 (require 'helm-config)
