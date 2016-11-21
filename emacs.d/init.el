@@ -23,7 +23,7 @@ re-downloaded in order to locate PACKAGE."
 (require-package 'evil)
 (require-package 'vimish-fold)
 (require-package 'evil-vimish-fold)
-(require-package 'eyebrowse)
+(require-package 'evil-tabs)
 (require-package 'company)
 (require-package 'company-jedi)
 (require-package 'pyvenv)
@@ -130,14 +130,11 @@ re-downloaded in order to locate PACKAGE."
 ;; show the column indicator (80-column point)
 (setq fci-rule-column 80)
 
-;; eyebrowse setup
-(eyebrowse-mode t)
-(setq eyebrowse-wrap-around t)
-(add-hook 'eyebrowse-post-window-switch-hook #'neo-global--attach)
-(define-key evil-normal-state-map (kbd "tt") 'eyebrowse-create-window-config)
-(define-key evil-normal-state-map (kbd "th") 'eyebrowse-prev-window-config)
-(define-key evil-normal-state-map (kbd "tl") 'eyebrowse-next-window-config)
-(define-key evil-normal-state-map (kbd "tq") 'eyebrowse-close-window-config)
+;; evil tabs setup
+(global-evil-tabs-mode t)
+(define-key evil-normal-state-map (kbd "tt") 'elscreen-create)
+(define-key evil-normal-state-map (kbd "C-h") 'elscreen-previous)
+(define-key evil-normal-state-map (kbd "C-l") 'elscreen-next)
 
 ;; helm setup
 (require 'helm-config)
