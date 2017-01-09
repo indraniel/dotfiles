@@ -47,28 +47,30 @@ PINK='\[\033[01;35m\]'
 NORM='\[\033[01;00;0m\]'
 CYAN='\[\033[01;36m\]'
 
-# colors via tput
-reset=$(tput sgr0)
-bold=$(tput bold)
-grey=$(tput setaf 0)
-red=$(tput setaf 1)
-green=$(tput setaf 2)
-yellow=$(tput setaf 3)
-blue=$(tput setaf 4)
-magenta=$(tput setaf 5)
-cyan=$(tput setaf 6)
-white=$(tput setaf 7)
+# colors via tput (only in an interactive terminal)
+if [[ $- == *i* ]]; then
+    reset=$(tput sgr0)
+    bold=$(tput bold)
+    grey=$(tput setaf 0)
+    red=$(tput setaf 1)
+    green=$(tput setaf 2)
+    yellow=$(tput setaf 3)
+    blue=$(tput setaf 4)
+    magenta=$(tput setaf 5)
+    cyan=$(tput setaf 6)
+    white=$(tput setaf 7)
 
-xreset=$(tput -T xterm sgr0)
-xbold=$(tput -T xterm bold)
-xgrey=$(tput -T xterm setaf 0)
-xred=$(tput -T xterm setaf 1)
-xgreen=$(tput -T xterm setaf 2)
-xyellow=$(tput -T xterm setaf 3)
-xblue=$(tput -T xterm setaf 4)
-xmagenta=$(tput -T xterm setaf 5)
-xcyan=$(tput -T xterm setaf 6)
-xwhite=$(tput -T xterm setaf 7)
+    xreset=$(tput -T xterm sgr0)
+    xbold=$(tput -T xterm bold)
+    xgrey=$(tput -T xterm setaf 0)
+    xred=$(tput -T xterm setaf 1)
+    xgreen=$(tput -T xterm setaf 2)
+    xyellow=$(tput -T xterm setaf 3)
+    xblue=$(tput -T xterm setaf 4)
+    xmagenta=$(tput -T xterm setaf 5)
+    xcyan=$(tput -T xterm setaf 6)
+    xwhite=$(tput -T xterm setaf 7)
+fi
 
 export GRAD1 GRAD2 YLOBRN WHTBRN REDBRN GRNBRN REDBLK PPLBLK WHTBLK NONE HBLU BLU YEL WHT PRPL RED GRN GRN2 GRAY NORM CYAN BLUBRN HBLK PINK
  
