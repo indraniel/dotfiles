@@ -104,6 +104,9 @@ re-downloaded in order to locate PACKAGE."
 ;; stop creating backup~ files
 (setq make-backup-files nil)
 
+;; disable auto-save feature
+(setq auto-save-default nil)
+
 ;; suppress the splash/startup screen
 (setq inhibit-startup-screen t)
 
