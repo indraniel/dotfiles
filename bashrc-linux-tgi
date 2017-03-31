@@ -149,3 +149,9 @@ export PATH=$JAVA_HOME/bin:$PATH
 # setup SCALA
 export SCALA_HOME=${HOME}/software/scala/scala-2.11.8
 export PATH=$SCALA_HOME/bin:$PATH
+
+# setup ocaml (linus261 specific)
+# opam config env --root $OPAMROOT
+export OPAMROOT=/home/archive/ocaml-4.04.0/root
+export PATH=/home/archive/ocaml-4.04.0/local/bin:$PATH
+source /home/archive/ocaml-4.04.0/root/opam-init/init.sh > /dev/null 2> /dev/null || true
