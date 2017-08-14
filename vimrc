@@ -110,6 +110,7 @@ Bundle 'vim-scripts/vim-niji'
 Bundle 'jgdavey/tslime.vim'
 Bundle 'kovisoft/paredit'
 Bundle 'derekwyatt/vim-scala'
+Bundle 'ensime/ensime-vim'
 Bundle 'hylang/vim-hy'
 
 
@@ -417,6 +418,10 @@ for tool in s:opam_packages
   endif
 endfor
 " ## end of OPAM user-setup addition for vim / base ## keep this line
+
+" scala
+" -----
+let g:ensime_server_v2=1
 
 "==============================================================================
 " History Niceties
