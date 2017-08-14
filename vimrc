@@ -111,6 +111,8 @@ Bundle 'jgdavey/tslime.vim'
 Bundle 'kovisoft/paredit'
 Bundle 'derekwyatt/vim-scala'
 Bundle 'ensime/ensime-vim'
+Bundle 'jmcantrell/vim-virtualenv'
+Bundle 'lambdalisue/vim-pyenv'
 Bundle 'hylang/vim-hy'
 
 
