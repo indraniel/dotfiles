@@ -19,7 +19,7 @@ function note() {
 
 function vim_refresh() {
     if [ "$OS" == "Darwin" ]; then
-        /Applications/mvim -v +'set nospell' +BundleInstall! +BundleClean! +mapclear +qa!
+        mvim -v +'set nospell' +BundleInstall! +BundleClean! +mapclear +qa!
     else
         vim +'set nospell' +BundleInstall! +BundleClean! +mapclear +qa!
     fi
