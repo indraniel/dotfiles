@@ -110,6 +110,8 @@ Bundle 'vim-scripts/vim-niji'
 Bundle 'jgdavey/tslime.vim'
 Bundle 'kovisoft/paredit'
 Bundle 'derekwyatt/vim-scala'
+Bundle 'hylang/vim-hy'
+
 
 " Applications
 " ------------
@@ -291,6 +293,11 @@ autocmd FileType python setlocal smartindent shiftwidth=4 softtabstop=4 formatop
 let python_highlight_all=1
 let python_highlight_exceptions=0
 let python_hightlight_builtins=0
+
+" hylang
+" ------
+autocmd BufNewFile,BufRead *.hy setlocal ft=hy
+autocmd FileType hy setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab
 
 " ruby
 " ----
