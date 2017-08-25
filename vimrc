@@ -114,6 +114,7 @@ Bundle 'ensime/ensime-vim'
 Bundle 'jmcantrell/vim-virtualenv'
 Bundle 'lambdalisue/vim-pyenv'
 Bundle 'hylang/vim-hy'
+Bundle 'kovisoft/slimv'
 
 
 " Applications
@@ -342,8 +343,9 @@ autocmd FileType javascript setlocal expandtab shiftwidth=2 tabstop=2 softtabsto
 autocmd BufNewFile,BufRead *.json setlocal ft=javascript
 let javascript_enable_domhtmlcss=1
 
-" Racket/Schema/Clojure-Lisp related
-" ----------------------------------
+" Racket/Scheme/Clojure/Common-Lisp related
+" -----------------------------------------
+autocmd BufNewFile,BufRead *.clj,*.cl,*.lisp,*.scm setlocal ft=lisp
 let g:tslime_ensure_trailing_newlines = 1
 let g:tslime_normal_mapping = '<localleader>t'
 let g:tslime_visual_mapping = '<localleader>t'
@@ -363,6 +365,11 @@ let g:niji_dark_colours = [
 
 let g:rbpt_max = 16
 let g:rbpt_loadcmd_toggle = 0
+let g:slimv_lisp = 'ros run'
+let g:silmv_impl = 'sbcl'
+let g:swank_block_size = 65536
+let g:slimv_swank_cmd = '! tmux new-window -d -n REPL-SBCL "ros run -Q --load ~/.vim/bundle/slimv/slime/start-swank.lisp"'
+"let g:slimv_swank_cmd = '!osascript -e "tell application \"iTerm\" to do script \"ros run -Q --load ~/.vim/bundle/slimv/slime/start-swank.lisp\""'
 nnoremap <F3> :RainbowParenthesesToggle<CR>
 
 " cmake
