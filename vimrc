@@ -345,7 +345,7 @@ let javascript_enable_domhtmlcss=1
 
 " Racket/Scheme/Clojure/Common-Lisp related
 " -----------------------------------------
-autocmd BufNewFile,BufRead *.clj,*.cl,*.lisp,*.scm setlocal ft=lisp
+autocmd BufNewFile,BufRead *.cl,*.lisp, setlocal ft=lisp
 let g:tslime_ensure_trailing_newlines = 1
 let g:tslime_normal_mapping = '<localleader>t'
 let g:tslime_visual_mapping = '<localleader>t'
