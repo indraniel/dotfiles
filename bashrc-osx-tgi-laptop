@@ -141,5 +141,5 @@ export -f it2profile
 # set the default editor
 alias vim='mvim -v'
 alias emacs="/usr/local/bin/emacs"
-export EDITOR=/usr/bin/vim
+export EDITOR="/usr/local/bin/mvim -v"
 
