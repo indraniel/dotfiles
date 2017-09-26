@@ -368,7 +368,13 @@ let g:rbpt_loadcmd_toggle = 0
 let g:slimv_lisp = 'ros run'
 let g:silmv_impl = 'sbcl'
 let g:swank_block_size = 65536
-let g:slimv_swank_cmd = '! tmux new-window -d -n REPL-SBCL "ros run -Q --load ~/.vim/bundle/slimv/slime/start-swank.lisp"'
+if $TERM == 'screen-256color'
+    let g:slimv_swank_cmd = '! tmux new-window -d -n REPL-SBCL "ros run -Q --load ~/.vim/bundle/slimv/slime/start-swank.lisp"'
+elseif $TERM == 'xterm-256color'
+    let g:slimv_swank_cmd = '! xterm -e ros run -Q --load ~/.vim/bundle/slimv/slime/start-swank.lisp'
+else
+    let g:slimv_swank_cmd = "! osascript -e 'tell application \"iterm2\"' -e 'activate' -e 'tell current window to set tb to create tab with default profile' -e 'tell current session of current window to write text \"cd $PWD; ros run -Q --load ~/.vim/bundle/slimv/slime/start-swank.lisp\"' -e 'end tell'"
+endif
 "let g:slimv_swank_cmd = '!osascript -e "tell application \"iTerm\" to do script \"ros run -Q --load ~/.vim/bundle/slimv/slime/start-swank.lisp\""'
 nnoremap <F3> :RainbowParenthesesToggle<CR>
 
