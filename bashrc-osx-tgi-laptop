@@ -1,3 +1,29 @@
+function tab {
+    # from: https://gist.github.com/bobthecow/757788
+    # and https://stackoverflow.com/questions/38692346/new-tab-in-iterm2
+	# this function is only meant for MacOS and iTerm2
+    local cmd=""
+    local cdto="$PWD"
+    local args="$@"
+
+    if [ -d "$1" ]; then
+        cdto=`cd "$1"; pwd`
+        args="${@:2}"
+    fi
+
+    if [ -n "$args" ]; then
+        cmd="$args"
+    fi
+
+    osascript &>/tmp/log <<EOF
+tell application "iTerm2"
+    activate
+    tell current window to set tb to create tab with default profile
+    tell current session of current window to write text "cd ${cdto};${cmd}"
+end tell
+EOF
+}
+
 # set a fancy prompt (non-color, unless we know we "want" color)
 case "$TERM" in
     xterm) colorize=yes;;
