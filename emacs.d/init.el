@@ -256,3 +256,8 @@ re-downloaded in order to locate PACKAGE."
   (setq ess-indent-level 2)
   (ess-electric-brace t))
 (add-hook 'ess-mode-hook #'R-stuff)
+
+;; roswell / common lisp / slime
+(load (expand-file-name "~/.roswell/helper.el"))
+(setq inferior-lisp-program "ros -Q run")
+;(setq inferior-lisp-program "ros -L sbcl -Q -l ~/.sbclrc run")
