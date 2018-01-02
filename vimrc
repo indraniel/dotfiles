@@ -115,7 +115,7 @@ Bundle 'jmcantrell/vim-virtualenv'
 Bundle 'lambdalisue/vim-pyenv'
 Bundle 'hylang/vim-hy'
 Bundle 'kovisoft/slimv'
-
+Bundle 'zah/nim.vim'
 
 " Applications
 " ------------
