@@ -20,6 +20,11 @@ if [ -f ~/.bash_alias ]; then
     . ~/.bash_alias
 fi
 
+# Handle custom MGI/LSF docker environment setup
+if [ -e /.dockerenv ]; then
+    source /opt/lsf9/conf/profile.lsf
+fi
+
 # Useful Color Variables
 GRAD1='\333\262\261\260'
 GRAD2='\260\261\262\333'
@@ -113,7 +118,10 @@ export HISTIGNORE=' *'
 export EDITOR="/gscuser/idas/vim74/bin/vim -X"
 
 # customize PATH
-export PATH=$HOME/.goenv/bin:$HOME/.Renv/bin:$HOME/.pyenv/bin:$HOME/.rbenv/bin:$HOME/.plenv/bin:$HOME/vim74/bin:$HOME/software/emacs-25.1/bin:$HOME/software/cmake/bin:/bin:$PATH
+export PATH=/gscmnt/gc2802/halllab/idas/software/openssl-1.0.2i/bin:/gscmnt/gc2802/halllab/idas/software/curl-7.58.0/bin:/gscmnt/gc2802/halllab/idas/software/git/bin:$HOME/vim74/bin:$HOME/software/emacs-25.1/bin:$HOME/software/cmake/bin:/bin:$PATH
+
+# customize LD_LIBRARY_PATH
+export LD_LIBRARY_PATH=/gscmnt/gc2802/halllab/idas/software/zlib-1.2.11/lib:/gscmnt/gc2802/halllab/idas/software/openssl-1.0.2i/lib:/gscmnt/gc2802/halllab/idas/software/curl-7.58.0/lib:$LD_LIBRARY_PATH
 
 # rbenv setup
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
@@ -152,6 +160,6 @@ export PATH=$SCALA_HOME/bin:$PATH
 
 # setup ocaml (linus261 specific)
 # opam config env --root $OPAMROOT
-export OPAMROOT=/home/archive/ocaml-4.04.0/root
-export PATH=/home/archive/ocaml-4.04.0/local/bin:$PATH
-source /home/archive/ocaml-4.04.0/root/opam-init/init.sh > /dev/null 2> /dev/null || true
+#export OPAMROOT=/home/archive/ocaml-4.04.0/root
+#export PATH=/home/archive/ocaml-4.04.0/local/bin:$PATH
+#source /home/archive/ocaml-4.04.0/root/opam-init/init.sh > /dev/null 2> /dev/null || true
