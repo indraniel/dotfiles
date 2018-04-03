@@ -2,7 +2,7 @@
 " Basic
 "==============================================================================
 set nocompatible
-set esckeys
+"set esckeys
 
 " Text Formatting 
 " ---------------
@@ -24,7 +24,7 @@ set incsearch
 
 " Encryption
 " ----------
-set cryptmethod=blowfish
+"set cryptmethod=blowfish2
 
 "==============================================================================
 " Plugins (managed by Vundle on github)
