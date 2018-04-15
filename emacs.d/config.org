@@ -1,0 +1,133 @@
+* Introduction
+
+We utilize =use-package= to handle downloading and configuring other packages.
+Currently =init.el= will check for the presence of =use-package= on launch
+and downloads it and installs it if necessary.
+
+The bulk of the emacs configuration is done within this org file.  On launch,
+this file is being sourced into =~/.emacs.d/init.el=.  The prose is being
+automatically stripped and the remaining =config.el= file is parsed.
+
+/This is also the reason why this file should never be called =init.org=!/
+
+
+* Themes
+One of the most important parts of every configuration :-)
+#+BEGIN_SRC emacs-lisp
+(unless (package-installed-p 'spacemacs-theme)
+  (package-refresh-contents)
+  (package-install 'spacemacs-theme))
+
+(unless (package-installed-p 'oceanic-theme)
+  (package-refresh-contents)
+  (package-install 'oceanic-theme))
+
+(unless (package-installed-p 'twilight-theme)
+  (package-refresh-contents)
+  (package-install 'twilight-theme))
+#+END_SRC
+
+
+* Basic Setup
+
+** UI Configuration
+*** Remove the startup screen
+#+BEGIN_SRC emacs-lisp
+(setq inhibit-startup-message t)
+#+END_SRC
+*** Disable menus and scrollbars
+If you want to re-enable, then change =-1= to =1=.
+#+BEGIN_SRC emacs-lisp
+(tool-bar-mode -1)
+(menu-bar-mode -1)
+(scroll-bar-mode -1)
+#+END_SRC
+*** Disable the bell
+Remove this line if you want to re-enable.
+#+BEGIN_SRC emacs-lisp
+(setq ring-bell-function 'ignore)
+#+END_SRC
+*** Highlight the current line
+#+BEGIN_SRC emacs-lisp
+  (when window-system
+    (global-hl-line-mode t)
+    (set-face-background hl-line-face "gray25"))
+#+END_SRC
+*** Enable text symbols
+This will change =lambda= to an actual symbol and a few others as well -- only in GUI mode though
+#+BEGIN_SRC emacs-lisp
+(when window-system
+  (global-prettify-symbols-mode t))
+#+END_SRC
+*** Make scrolling with emacs a bit nicer
+#+BEGIN_SRC emacs-lisp
+(setq scroll-conservatively 100)
+#+END_SRC
+
+*** Beacon Highlight
+When changing buffers or workspaces, this will momentarily highlight the
+last known position of the cursor.
+#+BEGIN_SRC emacs-lisp
+(use-package beacon
+  :ensure t
+  :config
+    (beacon-mode 1))
+#+END_SRC
+** Functionality
+*** Disable backups and auto-saves
+This feels redundant when working with a VCS like git majority of the time.
+#+BEGIN_SRC emacs-lisp
+(setq make-backup-files nil)
+(setq auto-save-default nil)
+#+END_SRC
+*** Change yes-or-no questions into y-or-n questions
+Need to type less this way
+#+BEGIN_SRC emacs-lisp
+(defalias 'yes-or-no-p 'y-or-n-p)
+#+END_SRC
+
+*** Newbie help
+This is a helpful tool to assist me figuring out what all those strange-fangled emacs keybindings do
+#+BEGIN_SRC emacs-lisp
+(use-package which-key
+  :ensure t
+  :init
+  (which-key-mode))
+#+END_SRC
+
+
+* Terminal
+=ansi-term= configuration
+** Default shell should be bash
+It's what I use 99.99% of the time.
+#+BEGIN_SRC emacs-lisp
+(defvar my-term-shell "/bin/bash")
+(defadvice ansi-term (before force-bash)
+  (interactive (list my-term-shell)))
+(ad-activate 'ansi-term)
+#+END_SRC
+** Helpful keybinding
+Make =Super + Enter= open a new terminal.
+#+BEGIN_SRC emacs-lisp
+(global-set-key (kbd "<s-return>") 'ansi-term)
+#+END_SRC
+
+
+* IDO
+** enable ido mode
+#+BEGIN_SRC emacs-lisp
+  (setq ido-enable-flex-matching nil)
+  (setq ido-create-new-buffer 'always)
+  (setq ido-everywhere t)
+  (ido-mode 1)
+#+END_SRC
+
+* File Type Handling
+** Org
+*** Org Bullets
+#+BEGIN_SRC emacs-lisp
+  (use-package org-bullets
+    :ensure t
+    :config
+    (add-hook 'org-mode-hook (lambda () (org-bullets-mode))))
+#+END_SRC
