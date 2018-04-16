@@ -10,6 +10,10 @@ automatically stripped and the remaining =config.el= file is parsed.
 
 /This is also the reason why this file should never be called =init.org=!/
 
+Inspiration about setting this up comes from the following link:
+
+- https://github.com/wasamasa/dotemacs/blob/master/init.org
+
 
 * Themes
 One of the most important parts of every configuration :-)
@@ -64,6 +68,10 @@ This will change =lambda= to an actual symbol and a few others as well -- only i
 (setq scroll-conservatively 100)
 #+END_SRC
 
+*** show the column number
+#+BEGIN_SRC emacs-lisp
+(setq column-number-mode t)
+#+END_SRC
 *** Beacon Highlight
 When changing buffers or workspaces, this will momentarily highlight the
 last known position of the cursor.
@@ -96,6 +104,64 @@ This is a helpful tool to assist me figuring out what all those strange-fangled 
 #+END_SRC
 
 
+* Evil Mode Setup
+  
+This is very much a work-in-progress.  Evil configuration inspiration
+cames from the following links:
+
+- https://github.com/wasamasa/dotemacs/blob/master/init.org
+- https://github.com/bradwright/emacs-d/blob/master/packages/init-evil.el
+- https://github.com/aaronbieber/dotfiles/blob/master/configs/emacs.d/lisp/init-evil.el
+- https://github.com/chrismccord/dot_emacs/blob/master/bundles/anything-bundle.el
+
+** configure evil
+*** Ensure that =Esc= quits out of all states, whenever possible
+    
+This is based on [[https://stackoverflow.com/questions/8483182/evil-mode-best-practice/10166400#10166400][stackoverflow: "Evil Mode best practice?"]]
+=minibuffer-keyboard-quit= will abort recursive edit.  In Delete Selection mode,
+if the mark is active, just deactivate it;  then it takes a second =keyboard-quit= to abort
+the minibuffer.
+#+BEGIN_SRC emacs-lisp
+  (defun minibuffer-keyboard-quit ()
+    "Abort recursive edit."
+    (interactive)
+    (if (and delete-selection-mode transient-mark-mode mark-active)
+        (setq deactivate-mark t)
+      (when (get-buffer "*Completions*") (delete-windows-on "*Completions*"))
+      (abort-recursive-edit)))
+
+  (defun evil-esc-quit-everything ()
+    (define-key evil-normal-state-map [escape] 'keyboard-escape-quit)
+    (define-key evil-visual-state-map [escape] 'keyboard-quit)
+    (define-key minibuffer-local-map [escape] 'minibuffer-keyboard-quit)
+    (define-key minibuffer-local-ns-map [escape] 'minibuffer-keyboard-quit)
+    (define-key minibuffer-local-completion-map [escape] 'minibuffer-keyboard-quit)
+    (define-key minibuffer-local-must-match-map [escape] 'minibuffer-keyboard-quit)
+    (define-key minibuffer-local-isearch-map [escape] 'minibuffer-keyboard-quit))
+#+END_SRC
+
+*** Enable some vim-ism
+
+These are still hardwired into my fingers.  Maybe I'll stop using them someday...
+#+BEGIN_SRC emacs-lisp
+  (defun evil-old-vim-cmds ()
+     (evil-ex-define-cmd "number" 'linum-mode)
+     (evil-ex-define-cmd "n" 'next-buffer)
+     (evil-ex-define-cmd "N" 'previous-buffer))
+#+END_SRC
+
+** load and configure Evil
+#+BEGIN_SRC emacs-lisp
+(use-package evil
+  :ensure t
+  :init
+  (evil-mode 1)
+  :config ;; tweak evil after loading it
+  (evil-esc-quit-everything)
+  (evil-old-vim-cmds))
+#+END_SRC
+
+
 * Terminal
 =ansi-term= configuration
 ** Default shell should be bash
@@ -122,6 +188,7 @@ Make =Super + Enter= open a new terminal.
   (ido-mode 1)
 #+END_SRC
 
+
 * File Type Handling
 ** Org
 *** Org Bullets
@@ -130,4 +197,15 @@ Make =Super + Enter= open a new terminal.
     :ensure t
     :config
     (add-hook 'org-mode-hook (lambda () (org-bullets-mode))))
-#+END_SRC
+#+END_SR
+
+    
+* TODO
+
+Look into the following packages:
+
+- https://github.com/expez/evil-smartparens
+- https://github.com/abo-abo/lispy
+- https://github.com/noctuid/lispyville
+- https://www.reddit.com/r/emacs/comments/83fzwt/pdftools_evil_bindings/
+- https://www.reddit.com/r/emacs/comments/7loyln/evil_collection_has_hit_melpa_enjoy_the_full_vim/
