@@ -82,6 +82,10 @@ last known position of the cursor.
     (beacon-mode 1))
 #+END_SRC
 ** Functionality
+*** do not automatically add new line at the end of file
+#+BEGIN_SRC emacs-lisp
+(setq next-line-add-newlines nil)
+#+END_SRC
 *** Disable backups and auto-saves
 This feels redundant when working with a VCS like git majority of the time.
 #+BEGIN_SRC emacs-lisp
