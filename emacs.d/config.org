@@ -14,6 +14,17 @@ Inspiration about setting this up comes from the following link:
 
 - https://github.com/wasamasa/dotemacs/blob/master/init.org
 
+  
+* Constants
+
+Let's define a few useful constants.
+
+#+BEGIN_SRC emacs-lisp
+  (defconst dot-emacs "~/.emacs.d")
+  (defconst my-home (getenv "HOME"))
+  (defconst my-bin (concat my-home "/bin"))
+#+END_SRC
+
 
 * Themes
 One of the most important parts of every configuration :-)
@@ -108,6 +119,35 @@ This is a helpful tool to assist me figuring out what all those strange-fangled 
 #+END_SRC
 
 
+
+* Company Mode
+ Setup based on reading [[https://hristos.triantafillou.us/editing-with-emacs-python-part-2/][editing with emacs: python part 2]]
+#+BEGIN_SRC emacs-lisp
+(use-package company
+  :ensure t
+  :config
+  (add-hook 'after-init-hook 'global-company-mode)
+  (setq
+    company-idle-delay 0
+    company-minimum-prefix-length 1
+    company-tooltip-align-annotations t
+    company-tooltip-limit 20
+    company-auto-complete t)
+  (set-face-attribute
+   'company-preview nil :foreground "black" :underline nil)
+  (set-face-attribute
+   'company-preview-common nil :inherit 'company-preview)
+  (set-face-attribute
+   'company-tooltip nil :background "lightgray" :foreground "black")
+  (set-face-attribute
+   'company-tooltip-selection nil :background "steelblue" :foreground "white")
+  (set-face-attribute
+   'company-tooltip-common nil :foreground "red" :weight 'bold)
+  (set-face-attribute
+   'company-tooltip-common-selection nil :foreground "darkgreen" :weight 'bold))
+#+END_SRC
+
+
 * Evil Mode Setup
   
 This is very much a work-in-progress.  Evil configuration inspiration
@@ -156,14 +196,22 @@ These are still hardwired into my fingers.  Maybe I'll stop using them someday..
 
 ** load and configure Evil
 #+BEGIN_SRC emacs-lisp
-(use-package evil
-  :ensure t
-  :init
-  (evil-mode 1)
-  :config ;; tweak evil after loading it
-  (evil-esc-quit-everything)
-  (evil-old-vim-cmds))
+  (use-package evil
+    :ensure t
+    :init
+    (setq evil-want-integration nil)
+    :config ;; tweak evil after loading it
+    (evil-esc-quit-everything)
+    (evil-old-vim-cmds)
+    (evil-mode 1))
+
+  (use-package evil-collection
+    :after evil
+    :ensure t
+    :config
+    (evil-collection-init))
 #+END_SRC
+
 
 
 * Terminal
@@ -193,7 +241,7 @@ Make =Super + Enter= open a new terminal.
 #+END_SRC
 
 
-* File Type Handling
+* Language Specifics
 ** Org
 *** Org Bullets
 #+BEGIN_SRC emacs-lisp
@@ -201,9 +249,53 @@ Make =Super + Enter= open a new terminal.
     :ensure t
     :config
     (add-hook 'org-mode-hook (lambda () (org-bullets-mode))))
-#+END_SR
+#+END_SRC
 
+** Python
+*** Company
+#+BEGIN_SRC emacs-lisp
+(use-package python-mode
+  :ensure t)
+
+(use-package pyenv-mode
+  :ensure t
+  :init
+    (pyenv-mode))
+
+(use-package company-anaconda
+  :ensure t
+  :config
+    (require 'company)
+    (add-to-list 'company-backends 'company-anaconda)
+    (add-to-list 'company-backends 'company-files)
+    (add-to-list 'company-backends 'company-etags))
+
+(use-package anaconda-mode
+  :ensure t
+  :config
+  (add-hook 'python-mode-hook 'anaconda-mode))
+
+(with-eval-after-load 'company
+    (add-hook 'python-mode-hook 'company-mode))
+
+;(defun python-mode-company-init ()
+;  (setq-local company-backends '((company-jedi
+;                                  company-files
+;                                  company-etags
+;                                  company-dabbrev-code))))
+;
+;(use-package company-jedi
+;  :ensure t
+;  :config
+;    (require 'company)
+;    (add-hook 'python-mode-hook 'python-mode-company-init))
+#+END_SRC
     
+Now when =python-mode= starts, it'll also startup =Jedi.el=, and the jedi server will be 
+automatically installed the first time a python file is opened, if it is not already.
+Additionally, python versions can be switched, on the fly, with a simple =M=x use-pyenvN=.
+    
+
 * TODO
 
 Look into the following packages:
