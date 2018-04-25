@@ -110,7 +110,7 @@ Bundle 'vim-scripts/vim-niji'
 Bundle 'jgdavey/tslime.vim'
 Bundle 'kovisoft/paredit'
 Bundle 'derekwyatt/vim-scala'
-Bundle 'ensime/ensime-vim'
+"Bundle 'ensime/ensime-vim'
 Bundle 'jmcantrell/vim-virtualenv'
 Bundle 'lambdalisue/vim-pyenv'
 Bundle 'hylang/vim-hy'
@@ -442,7 +442,7 @@ endfor
 
 " scala
 " -----
-let g:ensime_server_v2=1
+"let g:ensime_server_v2=1
 
 "==============================================================================
 " History Niceties
