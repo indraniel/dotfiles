@@ -55,7 +55,8 @@ If you want to re-enable, then change =-1= to =1=.
 #+BEGIN_SRC emacs-lisp
 (tool-bar-mode -1)
 (menu-bar-mode -1)
-(scroll-bar-mode -1)
+(when window-system
+ (scroll-bar-mode -1))
 #+END_SRC
 *** Disable the bell
 Remove this line if you want to re-enable.
