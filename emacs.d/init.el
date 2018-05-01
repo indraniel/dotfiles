@@ -3,7 +3,8 @@
 
 ; ensure the melpa packages are available
 (add-to-list 'package-archives
-	     '("melpa" . "https://melpa.org/packages/"))
+	     '("melpa" . "https://melpa.org/packages/")
+	     '("org" . "http://orgmode.org/elpa/"))
 (package-initialize)
 
 ; ensure that the use-package is installed and setup
