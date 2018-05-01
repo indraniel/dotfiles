@@ -250,12 +250,12 @@ Make =Super + Enter= open a new terminal.
       :ensure t)
     #+END_SRC
 *** Org Bullets
-#+BEGIN_SRC emacs-lisp
-  (use-package org-bullets
-    :ensure t
-    :config
-    (add-hook 'org-mode-hook (lambda () (org-bullets-mode))))
-#+END_SRC
+    #+BEGIN_SRC emacs-lisp
+    (use-package org-bullets
+	:ensure t
+	:config
+	(add-hook 'org-mode-hook (lambda () (org-bullets-mode))))
+    #+END_SRC
 *** Language Support
     This enables code evaluation of various languages
     #+BEGIN_SRC emacs-lisp
