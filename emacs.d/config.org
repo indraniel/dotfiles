@@ -264,6 +264,9 @@ Make =Super + Enter= open a new terminal.
       (org-babel-do-load-languages 'org-babel-load-languages
                                    '((python . t)))
     #+END_SRC
+*** Useful commands
+    When not running in GUI mode, the function =org-toggle-link-display= will show hyperlinks as plain text.
+    If we want to keep this behvaior permanent, simply add =(setq org-descriptive-links nil)= to this config.
 ** Python
 *** Company
 #+BEGIN_SRC emacs-lisp
@@ -307,6 +310,8 @@ Make =Super + Enter= open a new terminal.
 Now when =python-mode= starts, it'll also startup =Jedi.el=, and the jedi server will be 
 automatically installed the first time a python file is opened, if it is not already.
 Additionally, python versions can be switched, on the fly, with a simple =M=x use-pyenvN=.
+
+To activate a custom virtualenv, use the =pyevenv-activate= command.
     
 
 * TODO
