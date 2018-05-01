@@ -128,6 +128,7 @@ This is a helpful tool to assist me figuring out what all those strange-fangled 
   :ensure t
   :config
   (add-hook 'after-init-hook 'global-company-mode)
+  (add-hook 'after-evil-hook 'global-company-mode)
   (setq
     company-idle-delay 0
     company-minimum-prefix-length 1
