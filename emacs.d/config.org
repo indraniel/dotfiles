@@ -207,7 +207,7 @@ These are still hardwired into my fingers.  Maybe I'll stop using them someday..
     (evil-mode 1))
 
   (use-package evil-collection
-    :after evil
+    :after '(evil company)
     :ensure t
     :config
     (evil-collection-init))
