@@ -23,6 +23,7 @@ function note() {
 
 function setup_symlinks() {
     ln -vs $DOTFILE_DIR/vimrc $HOME/.vimrc
+    ln -vs $DOTFILE_DIR/init.vim $HOME/.config/nvim/init.vim
     ln -vs $DOTFILE_DIR/vim $HOME/.vim
     ln -vs $DOTFILE_DIR/screenrc $HOME/.screenrc
     ln -vs $DOTFILE_DIR/bash/utils/git-prompt/git-prompt.sh $HOME/.git-prompt.sh

@@ -115,13 +115,16 @@ export LESS
 export HISTIGNORE=' *'
 
 # SET default EDITOR
-export EDITOR="/gscuser/idas/vim74/bin/vim -X"
+export EDITOR="/gscuser/idas/software/neovim-v0.2.2/bin/nvim"
 
 # customize PATH
-export PATH=$HOME/.goenv/bin:$HOME/.Renv/bin:$HOME/.pyenv/bin:$HOME/.rbenv/bin:$HOME/.plenv/bin:/gscmnt/gc2802/halllab/idas/software/openssl-1.0.2i/bin:/gscmnt/gc2802/halllab/idas/software/curl-7.59.0/bin:/gscmnt/gc2802/halllab/idas/software/git/bin:$HOME/vim74/bin:$HOME/software/emacs-25.3/bin:$HOME/software/cmake/bin:/bin:$PATH
+export PATH=$HOME/.goenv/bin:$HOME/.Renv/bin:$HOME/.pyenv/bin:$HOME/.rbenv/bin:$HOME/.plenv/bin:/gscmnt/gc2802/halllab/idas/software/openssl-1.0.2i/bin:/gscmnt/gc2802/halllab/idas/software/curl-7.59.0/bin:/gscmnt/gc2802/halllab/idas/software/git/bin:$HOME/software/neovim-v0.2.2/bin:$HOME/software/emacs-25.3/bin:$HOME/software/cmake-3.11.1/bin:/bin:$PATH
 
 # customize LD_LIBRARY_PATH
 export LD_LIBRARY_PATH=/gscmnt/gc2802/halllab/idas/software/zlib-1.2.11/lib:/gscmnt/gc2802/halllab/idas/software/openssl-1.0.2i/lib:/gscmnt/gc2802/halllab/idas/software/curl-7.59.0/lib:$LD_LIBRARY_PATH
+
+# customize PKG_CONFIG_PATH
+export PKG_CONFIG_PATH=/gscmnt/gc2802/halllab/idas/software/zlib-1.2.11/lib/pkgconfig:/gscmnt/gc2802/halllab/idas/software/openssl-1.0.2i/lib/pkgconfig:/gscmnt/gc2802/halllab/idas/software/curl-7.59.0/lib/pkgconfig:$PKG_CONFIG_PATH
 
 # rbenv setup
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
@@ -145,8 +148,9 @@ if which Renv > /dev/null; then eval "$(Renv init -)"; fi
 if which goenv > /dev/null; then eval "$(goenv init -)"; fi
 
 # some vim niceties when ssh-ing 
-alias xvim="vim -c 'set t_Co=256' -c 'color mustang'"
-alias vim="LD_LIBRARY_PATH=${HOME}/software/gcc/gcc-5.3.0/lib:${LD_LIBRARY_PATH} $(which vim) -X"
+alias xvim="LD_LIBRARY_PATH=${HOME}/software/gcc/gcc-4.8.4/lib64:${LD_LIBRARY_PATH} $(which nvim) -c 'set t_Co=256' -c 'color mustang'"
+alias vim="LD_LIBRARY_PATH=${HOME}/software/gcc/gcc-4.8.4/lib64:${LD_LIBRARY_PATH} $(which nvim)"
+alias nvim="LD_LIBRARY_PATH=${HOME}/software/gcc/gcc-4.8.4/lib64:${LD_LIBRARY_PATH} $(which nvim)"
 alias emacs="emacs -nw"
 alias assh="ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null"
 
