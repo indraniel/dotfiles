@@ -150,6 +150,7 @@ if which goenv > /dev/null; then eval "$(goenv init -)"; fi
 # some vim niceties when ssh-ing 
 alias xvim="LD_LIBRARY_PATH=${HOME}/software/gcc/gcc-4.8.4/lib64:${LD_LIBRARY_PATH} $(which nvim) -c 'set t_Co=256' -c 'color mustang'"
 alias vim="LD_LIBRARY_PATH=${HOME}/software/gcc/gcc-4.8.4/lib64:${LD_LIBRARY_PATH} $(which nvim)"
+alias vim8="LD_LIBRARY_PATH=${HOME}/software/gcc/gcc-4.8.4/lib64:${LD_LIBRARY_PATH} $HOME/software/vim-8.1/bin/vim -X"
 alias nvim="LD_LIBRARY_PATH=${HOME}/software/gcc/gcc-4.8.4/lib64:${LD_LIBRARY_PATH} $(which nvim)"
 alias emacs="emacs -nw"
 alias assh="ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null"
@@ -161,6 +162,10 @@ export PATH=$JAVA_HOME/bin:$PATH
 # setup SCALA
 export SCALA_HOME=${HOME}/software/scala/scala-2.11.8
 export PATH=$SCALA_HOME/bin:$PATH
+
+# set our reference cache to the CCDG reference cache
+export REF_PATH=/gscmnt/gc2802/halllab/ccdg_resources/genomes/.cache/%2s/%2s/%s
+export REF_CACHE=/gscmnt/gc2802/halllab/ccdg_resources/genomes/.cache/%2s/%2s/%s
 
 # setup ocaml (linus261 specific)
 # opam config env --root $OPAMROOT
