@@ -43,7 +43,6 @@ Plugin 'VundleVim/Vundle.vim'
 " ------------
 Plugin 'w0ng/vim-hybrid'
 Plugin 'chriskempson/tomorrow-theme', {'rtp': 'vim/'}
-Plugin 'altercation/vim-colors-solarized'
 Plugin '29decibel/codeschool-vim-theme'
 Plugin 'nanotech/jellybeans.vim'
 Plugin 'nelstrom/vim-mac-classic-theme'
@@ -58,6 +57,7 @@ Plugin 'jonathanfilip/vim-lucius'
 Plugin 'reedes/vim-pencil'
 Plugin 'morhetz/gruvbox'
 Plugin 'epeli/slimux'
+Plugin 'lifepillar/vim-solarized8'
 
 " Navigation
 " ----------
