@@ -138,5 +138,6 @@ export -f it2profile
 # set the default editor
 alias nvim='/usr/local/bin/nvim'
 alias vim="$HOME/idas/local/vim8/bin/vim"
+alias mvim="$HOME/idas/local/vim8/MacVim.app/Contents/bin/mvim"
 export EDITOR="/usr/local/bin/nvim"
 
