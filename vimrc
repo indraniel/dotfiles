@@ -33,96 +33,87 @@ filetype off                                                       " required!
 
 let g:vundle_default_git_proto='git'
 set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+call vundle#begin()
 
 " let Vundle manage Vundle
 " required!
-Bundle 'gmarik/vundle'
+Plugin 'VundleVim/Vundle.vim'
 
 " UI Additions
 " ------------
-Bundle 'w0ng/vim-hybrid'
-Bundle 'chriskempson/tomorrow-theme', {'rtp': 'vim/'}
-Bundle 'altercation/vim-colors-solarized'
-Bundle '29decibel/codeschool-vim-theme'
-Bundle 'nanotech/jellybeans.vim'
-Bundle 'nelstrom/vim-mac-classic-theme'
-Bundle 'bling/vim-airline'
-Bundle 'roman/golden-ratio'
-Bundle 'vim-scripts/LargeFile'
-Bundle 'indraniel/vim-github-colorscheme'
-Bundle 'Pychimp/vim-sol'
-Bundle 'baskerville/bubblegum'
-Bundle 'Lokaltog/vim-distinguished'
-Bundle 'matthewtodd/vim-twilight'
-Bundle 'jonathanfilip/vim-lucius'
-Bundle 'reedes/vim-pencil'
-Bundle 'morhetz/gruvbox'
-Bundle 'epeli/slimux'
+Plugin 'w0ng/vim-hybrid'
+Plugin 'chriskempson/tomorrow-theme', {'rtp': 'vim/'}
+Plugin 'altercation/vim-colors-solarized'
+Plugin '29decibel/codeschool-vim-theme'
+Plugin 'nanotech/jellybeans.vim'
+Plugin 'nelstrom/vim-mac-classic-theme'
+Plugin 'bling/vim-airline'
+Plugin 'roman/golden-ratio'
+Plugin 'vim-scripts/LargeFile'
+Plugin 'Pychimp/vim-sol'
+Plugin 'baskerville/bubblegum'
+Plugin 'Lokaltog/vim-distinguished'
+Plugin 'matthewtodd/vim-twilight'
+Plugin 'jonathanfilip/vim-lucius'
+Plugin 'reedes/vim-pencil'
+Plugin 'morhetz/gruvbox'
+Plugin 'epeli/slimux'
 
 " Navigation
 " ----------
-Bundle 'scrooloose/nerdtree'
-Bundle 'jistr/vim-nerdtree-tabs'
-Bundle 'majutsushi/tagbar'
-Bundle 'Valloric/YouCompleteMe'
+Plugin 'scrooloose/nerdtree'
+Plugin 'jistr/vim-nerdtree-tabs'
+Plugin 'majutsushi/tagbar'
+Plugin 'Valloric/YouCompleteMe'
 
 " Git Integrations
 " ----------------
 if executable('git')
-    Bundle 'tpope/vim-git'
-    Bundle 'tpope/vim-fugitive'
-    Bundle 'gregsexton/gitv'
-    Bundle 'int3/vim-extradite'
+    Plugin 'tpope/vim-git'
+    Plugin 'tpope/vim-fugitive'
+    Plugin 'gregsexton/gitv'
+    Plugin 'int3/vim-extradite'
 endif
 
-Bundle 'tpope/vim-eunuch'
+Plugin 'tpope/vim-eunuch'
 
 " Commands
 " --------
-Bundle 'tpope/vim-surround'
+Plugin 'tpope/vim-surround'
 
 " Language Syntax
 " ---------------
-Bundle 'vim-perl/vim-perl'
-Bundle 'pfdevilliers/Pretty-Vim-Python'
-Bundle 'vim-ruby/vim-ruby'
-Bundle 'tpope/vim-rails'
-Bundle 'pangloss/vim-javascript'
-Bundle 'itspriddle/vim-jquery'
-Bundle 'guns/vim-clojure-static'
-Bundle 'kien/rainbow_parentheses.vim'
-Bundle 'tpope/vim-markdown'
+Plugin 'vim-perl/vim-perl'
+Plugin 'pfdevilliers/Pretty-Vim-Python'
+Plugin 'vim-ruby/vim-ruby'
+Plugin 'pangloss/vim-javascript'
+Plugin 'itspriddle/vim-jquery'
+Plugin 'guns/vim-clojure-static'
+Plugin 'kien/rainbow_parentheses.vim'
+Plugin 'tpope/vim-markdown'
 " Choices are (1) 'tpope/vim-markdown', or (2) 'gmarik/vim-markdown' :
 " which is a fork of (3) 'hallison/vim-markdown' or (4) 'plasticboy/vim-markdown'
-Bundle 'mihai-rotaru/vim-asciidoc-ft-syntax'
-Bundle 'laktek/distraction-free-writing-vim'
-Bundle 'nelstrom/vim-markdown-folding'
-Bundle 'puppetlabs/puppet-syntax-vim'
-Bundle 'vim-scripts/confluencewiki.vim'
-Bundle 'JuliaLang/julia-vim'
-Bundle 'fatih/vim-go'
-Bundle 'gerw/vim-latex-suite'
-Bundle 'msanders/cocoa.vim'
-Bundle 'jalvesaq/R-Vim-runtime'
-Bundle 'vim-scripts/Vim-R-plugin'
-Bundle 'vim-scripts/vim-niji'
-Bundle 'jgdavey/tslime.vim'
-Bundle 'kovisoft/paredit'
-Bundle 'derekwyatt/vim-scala'
-"Bundle 'ensime/ensime-vim'
-Bundle 'jmcantrell/vim-virtualenv'
-Bundle 'lambdalisue/vim-pyenv'
-Bundle 'hylang/vim-hy'
-Bundle 'kovisoft/slimv'
-Bundle 'zah/nim.vim'
+Plugin 'mihai-rotaru/vim-asciidoc-ft-syntax'
+Plugin 'laktek/distraction-free-writing-vim'
+Plugin 'nelstrom/vim-markdown-folding'
+Plugin 'fatih/vim-go'
+Plugin 'gerw/vim-latex-suite'
+Plugin 'vim-scripts/vim-niji'
+Plugin 'kovisoft/paredit'
+Plugin 'jmcantrell/vim-virtualenv'
+Plugin 'lambdalisue/vim-pyenv'
+Plugin 'hylang/vim-hy'
+Plugin 'kovisoft/slimv'
+Plugin 'zah/nim.vim'
+Plugin 'jpalardy/vim-slime'
 
 " Applications
 " ------------
-Bundle 'davidoc/taskpaper.vim'
-Bundle 'szw/vim-dict'
-Bundle 'tpope/vim-fireplace'
+Plugin 'szw/vim-dict'
+Plugin 'tpope/vim-fireplace'
+Plugin 'bhurlow/vim-parinfer'
 
+call vundle#end()                                                " required!
 filetype plugin indent on                                        " required!
 
 "==============================================================================
@@ -229,19 +220,12 @@ let g:golden_ratio_autocommand = 0
 nnoremap <F7> :GoldenRatioToggle<CR>
 
 "==============================================================================
-" slimux Adjustments
-"==============================================================================
-nnoremap /sl :SlimuxREPLSendLine<CR>
-vnoremap /ss :SlimuxREPLSendSelection<CR>
-nnoremap /sb :SlimuxREPLSendBuffer<CR>
-
-"==============================================================================
 " YouCompleteMe Adjustments
 "==============================================================================
 " needs to use the exact python that vim was originally compiled against
 let os = substitute(system('uname'), "\n", "", "")
 if os == "Darwin"
-    let g:ycm_path_to_python_interpreter = "/usr/bin/python"
+    let g:ycm_path_to_python_interpreter = "python"
 elseif os == "Linux"
     let g:ycm_path_to_python_interpreter = "/gscuser/idas/.pyenv/versions/2.7.13/bin/python"
 endif
@@ -345,11 +329,8 @@ let javascript_enable_domhtmlcss=1
 
 " Racket/Scheme/Clojure/Common-Lisp related
 " -----------------------------------------
+autocmd BufNewFile,BufRead *.clj,*.cljs, setlocal ft=clojure
 autocmd BufNewFile,BufRead *.cl,*.lisp, setlocal ft=lisp
-let g:tslime_ensure_trailing_newlines = 1
-let g:tslime_normal_mapping = '<localleader>t'
-let g:tslime_visual_mapping = '<localleader>t'
-let g:tslime_vars_mapping = '<localleader>T'
 let g:paredit_leader = ','
 
 let g:niji_dark_colours = [
@@ -363,6 +344,7 @@ let g:niji_dark_colours = [
     \ [ '4',  '#268bd2'],
     \ ]
 
+let g:slime_target = "vimterminal"
 let g:rbpt_max = 16
 let g:rbpt_loadcmd_toggle = 0
 let g:slimv_lisp = 'ros run'

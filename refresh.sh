@@ -18,11 +18,7 @@ function note() {
 }
 
 function vim_refresh() {
-    if [ "$OS" == "Darwin" ]; then
-        mvim -v +'set nospell' +BundleInstall! +BundleClean! +mapclear +qa!
-    else
-        vim +'set nospell' +BundleInstall! +BundleClean! +mapclear +qa!
-    fi
+    vim +PluginInstall +qall
 }
 
 function reset_YCM() {
@@ -30,8 +26,9 @@ function reset_YCM() {
 
     if [ "$OS" == "Darwin" ]; then
         # need to use exact python that vim was compiled against
-        perl -p -i -e 's|^\s*PYTHON_BINARY=python\d?$|PYTHON_BINARY=/System/Library/Frameworks/Python.framework/Versions/2.7/bin/python|;' install.sh
-        ./install.sh --clang-completer
+        # $HOME/.pyenv/versions/2.7.14/bin/python
+        cd $HOME/.vim/bundle/YouCompleteMe
+        ./install.py --clang-completer
 
     elif [ "$OS" == "Linux" ]; then
         CC=/opt/gcc-4.8.4/bin/gcc4.8 \

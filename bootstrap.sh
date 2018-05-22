@@ -75,27 +75,19 @@ function bootUp() {
     note "setup logging"
     setup_logging_directory
 
-    note "Checking vim version..."
-    vim --version | grep 7.3 || die "Your vim's version is too low!\nPlease download higher version(7.3+) from http://www.vim.org/download.php"
-
-    os=$(uname)
-    if [ "$os" == "Darwin" ]; then
-        mvim --version | grep 7.4 || die "MacVim version is too low!\nPlease download a higher version(7.3+)."
-    fi
-
     note "Re-making .vim directory..."
     setup_symlinks
 
     mkdir -p $HOME/.vim/bundle
 
     note "Installing Vundle..."
-    git clone git://github.com/gmarik/vundle.git $HOME/.vim/bundle/vundle
+    git clone git://github.com/VundleVim/Vundle.vim.git $HOME/.vim/bundle/vundle
 
 #    note "rsync-ing remaining dotfiles..."
 #    rsync --exclude ".git/" --exclude ".DS_Store" --exclude "bootstrap.sh" --exclude "README.md" -av . ~
 
     note "Installing plugins using Vundle..."
-    vim +'set nospell' +BundleInstall! +BundleClean! +qall!
+    vim +PluginInstall +qall
 
     note "dotfile setup complete!"
 }
