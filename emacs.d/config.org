@@ -214,6 +214,7 @@ These are still hardwired into my fingers.  Maybe I'll stop using them someday..
     :config ;; tweak evil after loading it
     (evil-esc-quit-everything)
     (evil-old-vim-cmds)
+    (global-undo-tree-mode 1) ; ensure undo-tree-mode is enabled
     (evil-mode 1))
 
   (use-package evil-collection
