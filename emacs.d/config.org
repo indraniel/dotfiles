@@ -338,6 +338,12 @@ Make =Super + Enter= open a new terminal.
 *** Useful commands
     When not running in GUI mode, the function =org-toggle-link-display= will show hyperlinks as plain text.
     If we want to keep this behvaior permanent, simply add =(setq org-descriptive-links nil)= to this config.
+*** Exports
+    #+BEGIN_SRC emacs-lisp
+      (use-package ox-gfm
+        :after '(org)
+        :ensure t)
+    #+END_SRC
 ** Python
 *** Company
 #+BEGIN_SRC emacs-lisp
