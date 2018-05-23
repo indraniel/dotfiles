@@ -113,6 +113,7 @@ Plugin 'jpalardy/vim-slime'
 Plugin 'szw/vim-dict'
 Plugin 'tpope/vim-fireplace'
 Plugin 'bhurlow/vim-parinfer'
+Plugin 'euclio/vim-markdown-composer'
 
 call vundle#end()                                                " required!
 filetype plugin indent on                                        " required!
