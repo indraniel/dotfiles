@@ -113,7 +113,9 @@ Plugin 'jpalardy/vim-slime'
 Plugin 'szw/vim-dict'
 Plugin 'tpope/vim-fireplace'
 Plugin 'bhurlow/vim-parinfer'
-Plugin 'euclio/vim-markdown-composer'
+if has('macunix')
+  Plugin 'euclio/vim-markdown-composer'
+endif
 
 call vundle#end()                                                " required!
 filetype plugin indent on                                        " required!
@@ -379,6 +381,8 @@ autocmd FileType css setlocal expandtab shiftwidth=4 tabstop=4 softtabstop=4
 " markdown
 " --------
 autocmd BufNewFile,BufRead *.md setlocal ft=markdown complete+=k
+let g:markdown_composer_autostart = 0
+let g:markdown_composer_open_browser = 0
 
 " asciidoc
 " --------
