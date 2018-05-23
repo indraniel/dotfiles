@@ -359,6 +359,7 @@ Make =Super + Enter= open a new terminal.
   :ensure t
   :config
     (require 'company)
+    (require 'anaconda-mode)
     (add-to-list 'company-backends 'company-anaconda)
     (add-to-list 'company-backends 'company-files)
     (add-to-list 'company-backends 'company-etags))
