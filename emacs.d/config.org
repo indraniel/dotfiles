@@ -312,8 +312,62 @@ Make =Super + Enter= open a new terminal.
            )))
   #+END_SRC
 
+  
+* rainbow-delimiters
+  
+  Easily distinguish the delimiters pairs using colors espeically indent lisp modes.
+  
+  #+BEGIN_SRC emacs-lisp
+    (use-package rainbow-delimiters
+      :ensure t
+      :commands raindow-delimiters-mode
+      :init (add-hook 'lisp-mode-hook #'rainbow-delimiters-mode))
+  #+END_SRC
 
-* Language Specifics
+  
+* smartparens
+
+  Nicely handle parentheses and delimiters
+
+  #+BEGIN_SRC emacs-lisp
+    (use-package smartparens-config
+        :ensure smartparens
+        :config
+        (progn
+          (show-smartparens-global-mode t)))
+
+    (add-hook 'prog-mode-hook 'turn-on-smartparens-strict-mode)
+    (add-hook 'markdown-mode-hook 'turn-on-smartparens-strict-mode)
+
+    (use-package evil-cleverparens
+      :ensure t)
+  #+END_SRC
+
+  
+* parinfer
+  
+  #+BEGIN_SRC emacs-lisp
+      (use-package parinfer
+      :ensure t
+      :bind
+      (("C-," . parinfer-toggle-mode))
+      :init
+      (progn
+        (setq parinfer-extensions
+              '(defaults       ; should be included.
+                pretty-parens  ; different paren styles for different modes.
+                evil           ; If you use Evil.
+                smart-tab      ; C-b & C-f jump positions and smart shift with tab & S-tab
+                smart-yank))   ; Yank behavior depend on mode.
+        (add-hook 'clojure-mode-hook #'parinfer-mode)
+        (add-hook 'emacs-lisp-mode-hook #'parinfer-mode)
+        (add-hook 'common-lisp-mode-hook #'parinfer-mode)
+        (add-hook 'scheme-mode-hook #'parinfer-mode)
+        (add-hook 'lisp-mode-hook #'parinfer-mode)))
+  #+END_SRC
+
+
+* Programming Languages
 ** Org
 *** Ensure we have the latest version
     #+BEGIN_SRC emacs-lisp
@@ -391,6 +445,28 @@ Additionally, python versions can be switched, on the fly, with a simple =M=x us
 
 To activate a custom virtualenv, use the =pyevenv-activate= command.
     
+** Lisp
+*** Clojure
+    A modern Lisp for the JVM.
+    #+BEGIN_SRC emacs-lisp
+      (use-package clojure-mode
+        :ensure t
+        :mode "\\.clj$")
+
+      (use-package cider
+        :ensure t
+        :commands (cider-jack-in cider-mode)
+        :config
+        (setq nrepl-hide-special-buffers t))
+    #+END_SRC
+
+*** Racket
+    A Scheme-like lisp language
+    #+BEGIN_SRC emacs-lisp
+      (use-package geiser
+        :ensure t)
+        
+    #+END_SRC
 
 * TODO
 
