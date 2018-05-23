@@ -33,13 +33,9 @@ One of the most important parts of every configuration :-)
   (package-refresh-contents)
   (package-install 'spacemacs-theme))
 
-(unless (package-installed-p 'oceanic-theme)
+(unless (package-installed-p 'solarized-theme)
   (package-refresh-contents)
-  (package-install 'oceanic-theme))
-
-(unless (package-installed-p 'twilight-theme)
-  (package-refresh-contents)
-  (package-install 'twilight-theme))
+  (package-install 'solarized-theme))
 #+END_SRC
 
 
