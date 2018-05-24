@@ -313,6 +313,29 @@ Make =Super + Enter= open a new terminal.
   #+END_SRC
 
   
+* Neotree
+  
+  This is like a NerdTree-ish plugin from vim
+  
+  #+BEGIN_SRC emacs-lisp
+    (use-package neotree
+      :ensure t)
+      
+    (global-set-key [f2] 'neotree-toggle)
+  #+END_SRC
+  
+  Setup proper evil mode keybindings to navigate the tree
+  
+  #+BEGIN_SRC emacs-lisp
+    (add-hook 'neotree-mode-hook
+	(lambda ()
+	  (define-key evil-normal-state-local-map (kbd "TAB") 'neotree-enter)
+	  (define-key evil-normal-state-local-map (kbd "SPC") 'neotree-quick-look)
+	  (define-key evil-normal-state-local-map (kbd "q")   'neotree-hide)
+	  (define-key evil-normal-state-local-map (kbd "RET") 'neotree-enter)))  
+  #+END_SRC
+  
+
 * rainbow-delimiters
   
   Easily distinguish the delimiters pairs using colors espeically indent lisp modes.
