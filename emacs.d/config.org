@@ -243,6 +243,109 @@ Make =Super + Enter= open a new terminal.
 #+END_SRC
 
 
+* Elscreen
+  
+  #+BEGIN_SRC emacs-lisp
+    (use-package evil-tabs
+      :ensure t)
+
+    (evil-define-key 'normal evil-tabs-mode-map
+    "tn" 'elscreen-next
+    "tb" 'elscreen-previous
+    "tq" 'elscreen-kill
+    "tt" 'elscreen-create
+    "T" 'evil-tabs-current-buffer-to-tab)
+
+   ; (define-key evil-normal-state-map (kbd "C-l") 'elscreen-previous)
+   ; (define-key evil-normal-state-map (kbd "C-h") 'elscreen-next)
+   ; (define-key evil-normal-state-map (kbd "tq")  'elscreen-kill)
+   ; (define-key evil-normal-state-map (kbd "tt") 'elscreen-create)  
+
+   ; (set-face-attribute 'elscreen-tab-background-face nil
+   ;   :background "grey10"
+   ;   :foreground "grey90")
+   ;
+   ; (set-face-attribute 'elscreen-tab-control-face nil
+   ;   :background "grey20"
+   ;   :foreground "grey90")
+   ;
+   ; (set-face-attribute 'elscreen-tab-current-screen-face nil
+   ;   :background "grey20"
+   ;   :foreground "grey90")
+   ;
+   ; (set-face-attribute 'elscreen-tab-other-screen-face nil
+   ;   :background "grey30"
+   ;   :foreground "grey60")
+  #+END_SRC
+  
+  ;This configuration is based on [[http://blog.iss.ms/2014/03/01/202435]]
+  ;
+  ;#+BEGIN_SRC emacs-lisp
+  ;  (use-package tabbar
+  ;    :ensure t)
+
+  ;  (add-hook 'tabbar-mode
+  ;     (lambda () (require 'one-buffer-one-frame)))
+
+  ;  ;; Mouse wheel operation invalid on tab
+  ;  (tabbar-mwheel-mode -1)
+
+  ;  ;; disable the buttons displayed on the left
+  ;  (dolist (btn '(tabbar-buffer-home-button
+  ;		   tabbar-scroll-left-button
+  ;		   tabbar-scroll-right-button))
+  ;    (set btn (cons (cons "" nil) (cons "" nil))))
+
+  ;  ;; appearances
+  ;  (setq tabbar-separator '(1.0)) ; tab separator length
+  ;  (set-face-attribute 'tabbar-default nil
+  ;			:family "Ricty"
+  ;			:foreground "#c4c1b0"
+  ;			:background "#002c37"
+  ;			:height 1.0)
+
+  ;  (set-face-attribute 'tabbar-unselected nil
+  ;			:foreground "#002c37"
+  ;			:background "#c4c1b0"
+  ;			:box nil)
+
+  ;  (set-face-attribute 'tabbar-selected nil
+  ;			:foreground "#e4007e"
+  ;			:background "#ffffff"
+  ;			:box nil)
+
+  ;  (set-face-attribute 'tabbar-button nil
+  ;	    :box nil)
+
+  ;  (set-face-attribute 'tabbar-separator nil
+  ;	    :foreground "#002c37"
+  ;	    :background "#002c37"
+  ;	    :height 1.0)
+
+  ;  ;; function to close a tab
+  ;  (defun tabbar-buffer-close-tab (tab)
+  ;    (let ((buffer (tabbar-tab-value tab))))
+  ;    (one-buffer-one-frame nil
+  ;  	(with-current-buffer buffer
+  ;  	  (close-current-window-asktosave))))
+
+  ;  ;; function to create a new tab
+  ;  (defun tabbar-new-tab (&optional mode)
+  ;    "Creates a new tab, containing an empty buffer (with major-mode MODE
+  ;  if specified), in current window."
+  ;    (interactive)
+  ;    (let ((one-buffer-one-frame nil))
+  ;      (generate-new-buffer "Untitled" mode)))
+
+  ;  (add-hook 'tabbar-mode-hook
+  ;	      (lambda ()
+  ;		(define-key evil-normal-state-local-map (kbd "C-l") 'tabbar-forward)
+  ;		(define-key evil-normal-state-local-map (kbd "C-h") 'tabbar-backward)))
+  ;;		(define-key evil-normal-state-local-map (kbd "tq")  'tabbar-buffer-close-tab)
+  ;;		(define-key evil-normal-state-local-map (kbd "tt") 'tabbar-new-tab)))  
+  ;#+END_SRC
+
+
 * IDO
 ** enable ido mode
 #+BEGIN_SRC emacs-lisp
