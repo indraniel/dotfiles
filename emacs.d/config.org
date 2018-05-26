@@ -38,6 +38,17 @@ One of the most important parts of every configuration :-)
   (package-install 'solarized-theme))
 #+END_SRC
 
+** Setup Post Theme Hook
+
+  #+BEGIN_SRC emacs-lisp
+    (defvar after-load-theme-hook nil
+      "Hook run after a color theme is loaded using 'load-theme")
+
+    (defadvice load-theme (after run-after-load-theme-hook activate)
+      "Run 'after-load-theme-hook'."
+      (run-hooks 'after-load-theme-hook))
+  #+END_SRC
+
 
 * Basic Setup
 
