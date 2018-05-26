@@ -554,3 +554,17 @@ Look into the following packages:
 - https://github.com/noctuid/lispyville
 - https://www.reddit.com/r/emacs/comments/83fzwt/pdftools_evil_bindings/
 - https://www.reddit.com/r/emacs/comments/7loyln/evil_collection_has_hit_melpa_enjoy_the_full_vim/
+
+The following code was taken from: https://stackoverflow.com/questions/25791605/emacs-how-do-i-create-a-new-empty-buffer-whenever-creating-a-new-frame
+
+  #+BEGIN_SRC emacs-lisp
+
+  (defun lunaryorn-new-buffer-frame ()
+    "Create a new frame with a new empty buffer."
+    (interactive)
+    (let ((buffer (generate-new-buffer "untitled")))
+      (set-buffer-major-mode buffer)
+      (display-buffer buffer '(display-buffer-pop-up-frame . nil))))
+
+  (global-set-key (kbd "C-c n") #'lunaryorn-new-buffer-frame)
+  #+END_SRC
