@@ -103,6 +103,18 @@ last known position of the cursor.
   :config
     (beacon-mode 1))
 #+END_SRC
+*** format the line numbers a bit nicer
+    #+BEGIN_SRC emacs-lisp
+    (setq linum-format "%4d ")
+
+    (defun update-linum-format ()
+	  (setq linum-format "%4d ")
+	  (require 'linum)
+	  (set-face-foreground 'linum "#93a1a9")
+	  (set-face-background 'linum "#eee8d5"))
+
+    (add-hook 'after-load-theme-hook #'update-linum-format)
+    #+END_SRC
 ** Functionality
 *** do not automatically add new line at the end of file
 #+BEGIN_SRC emacs-lisp
