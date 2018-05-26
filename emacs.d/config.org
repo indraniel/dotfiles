@@ -36,6 +36,9 @@ One of the most important parts of every configuration :-)
 (unless (package-installed-p 'solarized-theme)
   (package-refresh-contents)
   (package-install 'solarized-theme))
+  
+;;actually load the theme
+(add-hook 'after-init-hook (lambda () (load-theme 'solarized-light)))
 #+END_SRC
 
 ** Setup Post Theme Hook
