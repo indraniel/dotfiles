@@ -194,13 +194,13 @@ cames from the following links:
     This piece of logic taken from [[https://stackoverflow.com/questions/557282/in-emacs-whats-the-best-way-for-keyboard-escape-quit-not-destroy-other-windows][Stackoverflow: "in Emacs, what's the best way for keyboard-escape-quit not destroy other windows?"]],
     will not automatically remove the window buffers when I hit the =Esc= button multiple times in a row.
     #+BEGIN_SRC emacs-lisp
-    ;(defadvice keyboard-escape-quit (around my-keyboard-escape-quit activate)
-    ;(let (orig-one-window-p)
-    ;    (fset 'orig-one-window-p (symbol-function 'one-window-p))
-    ;    (fset 'one-window-p (lambda (&optional nomini all-frames) t))
-    ;    (unwind-protect
-    ;        ad-do-it
-    ;    (fset 'one-window-p (symbol-function 'orig-one-window-p)))))
+    (defadvice keyboard-escape-quit (around my-keyboard-escape-quit activate)
+    (let (orig-one-window-p)
+	(fset 'orig-one-window-p (symbol-function 'one-window-p))
+	(fset 'one-window-p (lambda (&optional nomini all-frames) t))
+	(unwind-protect
+	    ad-do-it
+	(fset 'one-window-p (symbol-function 'orig-one-window-p)))))
     #+END_SRC
 
     This is based on [[https://stackoverflow.com/questions/8483182/evil-mode-best-practice/10166400#10166400][stackoverflow: "Evil Mode best practice?"]]
