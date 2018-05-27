@@ -101,6 +101,9 @@ Plugin 'fatih/vim-go'
 Plugin 'gerw/vim-latex-suite'
 Plugin 'vim-scripts/vim-niji'
 Plugin 'kovisoft/paredit'
+Plugin 'guns/vim-sexp'
+Plugin 'tpope/vim-repeat'
+Plugin 'tpope/vim-sexp-mappings-for-regular-people'
 Plugin 'plytophogy/vim-virtualenv'
 Plugin 'lambdalisue/vim-pyenv'
 Plugin 'hylang/vim-hy'
@@ -335,7 +338,6 @@ let javascript_enable_domhtmlcss=1
 " -----------------------------------------
 autocmd BufNewFile,BufRead *.clj,*.cljs, setlocal ft=clojure
 autocmd BufNewFile,BufRead *.cl,*.lisp, setlocal ft=lisp
-let g:paredit_leader = ','
 
 let g:niji_dark_colours = [
     \ [ '81', '#5fd7ff'],
