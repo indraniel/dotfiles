@@ -428,6 +428,28 @@ for tool in s:opam_packages
 endfor
 " ## end of OPAM user-setup addition for vim / base ## keep this line
 
+" nim
+" ---
+au BufNewFile,BufRead *.nim set filetype=nim
+
+" nim-lang helpful utility
+"    Pressing meta+g will then jump to the definition of the word your cursor
+"    is on. This uses the nim compiler instead of ctags, so it works on any
+"    nimrod file which is compilable without requiring you to maintain a
+"    database file.
+fun! JumpToDef()
+  if exists("*GotoDefinition_" . &filetype)
+    call GotoDefinition_{&filetype}()
+  else
+    exe "norm! \<C-]>"
+  endif
+endf
+
+" Jump to tag
+nn <M-g> :call JumpToDef()<cr>
+ino <M-g> <esc>:call JumpToDef()<cr>i
+
+
 " scala
 " -----
 "let g:ensime_server_v2=1

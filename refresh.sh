@@ -58,6 +58,10 @@ function reset_YCM() {
 #
 #        rm -rf ${tmpdir}
     fi
+
+    # ycm-nimsuggest -- assuming that nimsuggest is already somehwere in your $PATH
+    git clone https://github.com/BitR/ycm-nimsuggest \
+       $HOME/.vim/bundle/YouCompleteMe/third_party/ycmd/ycmd/completers/nim
 }
 
 cd "$(dirname "$0")"
