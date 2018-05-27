@@ -1,4 +1,4 @@
-* Introduction
+	 Introduction
 
 We utilize =use-package= to handle downloading and configuring other packages.
 Currently =init.el= will check for the presence of =use-package= on launch
@@ -427,11 +427,20 @@ Make =Super + Enter= open a new terminal.
   #+END_SRC
 
   
-* smartparens
+* parentheses handling : paredit / smartparens
 
-  Nicely handle parentheses and delimiters
+  Nicely handle parentheses and delimiters.  Some of this configuration is based off of reading http://paste.lisp.org/display/340427
 
   #+BEGIN_SRC emacs-lisp
+    (use-package paredit
+  	:ensure t)
+
+    (use-package evil-paredit
+  	:ensure t)
+  	
+    ;(use-package smartparens
+    ;    :ensure t)
+
     (use-package smartparens-config
         :ensure smartparens
         :config
@@ -440,32 +449,93 @@ Make =Super + Enter= open a new terminal.
 
     (add-hook 'prog-mode-hook 'turn-on-smartparens-strict-mode)
     (add-hook 'markdown-mode-hook 'turn-on-smartparens-strict-mode)
-
+  	
     (use-package evil-cleverparens
-      :ensure t)
+        :ensure t)
+
+    (defun paredit-wiggle-back ()
+      (paredit-forward)
+      (paredit-backward))
+
+    (defmacro defparedit-wrapper (name invoked-wrapper)
+      `(defun ,name ()
+  	  (interactive)
+  	  (paredit-wiggle-back)
+  	  (,invoked-wrapper)))
+
+    (defparedit-wrapper back-then-wrap paredit-wrap-sexp)
+    (defparedit-wrapper back-then-wrap-square paredit-wrap-square)
+    (defparedit-wrapper back-then-wrap-curly paredit-wrap-curly)
+    (defparedit-wrapper back-then-wrap-angled paredit-wrap-angled)
+    (defparedit-wrapper back-then-wrap-doublequote paredit-meta-doublequote)
+
+    (defun my-evil-paredit-keybindings ()
+      (define-key evil-normal-state-map "W" 'paredit-forward)
+      (define-key evil-normal-state-map "B" 'paredit-backward)
+      (define-key evil-normal-state-map "[e" 'paredit-forward-down)
+      (define-key evil-normal-state-map "]e" 'paredit-backward-up)
+
+      (define-key evil-normal-state-map ",W" 'back-then-wrap)
+      (define-key evil-normal-state-map ",w]" 'back-then-wrap-square)
+      (define-key evil-normal-state-map ",w}" 'back-then-wrap-curly)
+      (define-key evil-normal-state-map ",w>" 'back-then-wrap-angled)
+      (define-key evil-normal-state-map ",w\"" 'back-then-wrap-doublequote)
+
+      (define-key evil-normal-state-map ",S" 'paredit-splice-sexp)
+      (define-key evil-normal-state-map ",A" 'paredit-splice-sexp-killing-backward)
+      (define-key evil-normal-state-map ",D" 'paredit-splice-sexp-killing-forward)
+      (define-key evil-normal-state-map ",|" 'paredit-split-sexp)
+      (define-key evil-normal-state-map ",J" 'paredit-join-sexps)
+
+      (define-key evil-normal-state-map ",>" 'paredit-forward-slurp-sexp)
+      (define-key evil-normal-state-map ",." 'paredit-forward-barf-sexp) 
+      (define-key evil-normal-state-map ",<" 'paredit-backward-slurp-sexp)
+      (define-key evil-normal-state-map ",," 'paredit-backward-barf-sexp) 
+      (define-key evil-normal-state-map ",~" 'paredit-convolute-sexp))
+
+    (defun setup-paredit-mode ()
+      (evil-mode)
+      (paredit-mode)
+      (evil-paredit-mode)
+      ;(evil-cleverparens-mode)
+      ;(require 'smartparens)
+      (rainbow-delimiters-mode)
+      (my-evil-paredit-keybindings))
+
+    (add-hook 'clojure-mode-hook #'setup-paredit-mode)
+    (add-hook 'emacs-lisp-mode-hook #'setup-paredit-mode)
+    (add-hook 'common-lisp-mode-hook #'setup-paredit-mode)
+    (add-hook 'scheme-mode-hook #'setup-paredit-mode)
+    (add-hook 'lisp-mode-hook #'setup-paredit-mode)
   #+END_SRC
 
   
 * parinfer
   
   #+BEGIN_SRC emacs-lisp
-      (use-package parinfer
-      :ensure t
-      :bind
-      (("C-," . parinfer-toggle-mode))
-      :init
-      (progn
-        (setq parinfer-extensions
-              '(defaults       ; should be included.
-                pretty-parens  ; different paren styles for different modes.
-                evil           ; If you use Evil.
-                smart-tab      ; C-b & C-f jump positions and smart shift with tab & S-tab
-                smart-yank))   ; Yank behavior depend on mode.
-        (add-hook 'clojure-mode-hook #'parinfer-mode)
-        (add-hook 'emacs-lisp-mode-hook #'parinfer-mode)
-        (add-hook 'common-lisp-mode-hook #'parinfer-mode)
-        (add-hook 'scheme-mode-hook #'parinfer-mode)
-        (add-hook 'lisp-mode-hook #'parinfer-mode)))
+    (defun setup-parinfer ()
+       (parinfer-mode)
+       (define-key evil-insert-state-map "\"" 'parinfer-double-quote))
+
+    (use-package parinfer
+    :ensure t
+    :bind
+    (("C-," . parinfer-toggle-mode))
+    :init
+    (progn
+      (setq parinfer-extensions
+	    '(defaults       ; should be included.
+	      pretty-parens  ; different paren styles for different modes.
+	      evil           ; If you use Evil.
+	      smart-tab      ; C-b & C-f jump positions and smart shift with tab & S-tab
+	      smart-yank))   ; Yank behavior depend on mode.
+      (define-key evil-insert-state-map "\"" 'parinfer-double-quote)
+
+      (add-hook 'clojure-mode-hook #'setup-parinfer)
+      (add-hook 'emacs-lisp-mode-hook #'setup-parinfer)
+      (add-hook 'common-lisp-mode-hook #'setup-parinfer)
+      (add-hook 'scheme-mode-hook #'setup-parinfer)
+      (add-hook 'lisp-mode-hook #'setup-parinfer)))
   #+END_SRC
 
 
