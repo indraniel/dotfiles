@@ -227,14 +227,54 @@ cames from the following links:
        (define-key minibuffer-local-isearch-map [escape] 'minibuffer-keyboard-quit))
     #+END_SRC
 
+*** Buffer Manipulations
+
+  I'd like an easier way to cycle through buffers.  This is based on [[http://ergoemacs.org/emacs/elist_next_prev_user_buffer.html][Cycle Thru User Buffers]]:
+
+  #+BEGIN_SRC emacs-lisp
+    (defun my-user-buffer-q ()
+      "Return t if current buffer is a user buffer, else nil.
+       A user buffer is a buffer that doesn't start with '*'"
+      (interactive)
+      (if (string-equal "*" (substring (buffer-name) 0 1))
+        nil
+        (if (string-equal major-mode "dired-mode")
+         nil
+         t)))
+
+    (defun my-next-user-buffer ()
+      "Switch to the next user buffer"
+      (interactive)
+      (next-buffer)
+      (let ((i 0))
+        (while (< i 20)
+          (if (not (my-user-buffer-q))
+              (progn (next-buffer)
+                     (setq i (1+ 1)))
+              (progn (setq i 100))))))
+
+    (defun my-previous-user-buffer ()
+      "Switch to the previous user buffer"
+      (interactive)
+      (previous-buffer)
+      (let ((i 0))
+        (while (< i 20)
+          (if (not (my-user-buffer-q))
+              (progn (previous-buffer)
+                     (setq i (1+ 1)))
+              (progn (setq i 100))))))
+  #+END_SRC
+  
+  Now we'll setup the appropriate keybindings to these functions in the next section.
+
 *** Enable some vim-ism
 
 These are still hardwired into my fingers.  Maybe I'll stop using them someday...
 #+BEGIN_SRC emacs-lisp
   (defun evil-old-vim-cmds ()
      (evil-ex-define-cmd "number" 'linum-mode)
-     (evil-ex-define-cmd "n" 'next-buffer)
-     (evil-ex-define-cmd "N" 'previous-buffer))
+     (evil-ex-define-cmd "n" 'my-next-user-buffer)
+     (evil-ex-define-cmd "N" 'my-previous-user-buffer))
 #+END_SRC
 
 ** load and configure Evil
