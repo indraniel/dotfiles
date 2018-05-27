@@ -36,12 +36,18 @@ One of the most important parts of every configuration :-)
 (unless (package-installed-p 'solarized-theme)
   (package-refresh-contents)
   (package-install 'solarized-theme))
+#+END_SRC
+
+Loading the theme after intialization is based upon reading [[https://emacs.stackexchange.com/questions/2797/emacs-wont-load-theme-on-startup][Emacs won't load theme on startup]] 
   
+#+BEGIN_SRC emacs-lisp
 ;;actually load the theme
 (add-hook 'after-init-hook (lambda () (load-theme 'solarized-light)))
 #+END_SRC
 
 ** Setup Post Theme Hook
+   
+   This allow one to modify the theme after it's loaded up.  The code is inspired by the following reddit post: [[https://www.reddit.com/r/emacs/comments/4v7tcj/does_emacs_have_a_hook_for_when_the_theme_changes/][Does emacs have a hook for when the theme changes?]]
 
   #+BEGIN_SRC emacs-lisp
     (defvar after-load-theme-hook nil
