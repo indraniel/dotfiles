@@ -318,14 +318,20 @@ Make =Super + Enter= open a new terminal.
 
 * IDO
 ** enable ido mode
-#+BEGIN_SRC emacs-lisp
-  (setq ido-enable-flex-matching nil)
-  (setq ido-create-new-buffer 'always)
-  (setq ido-everywhere t)
-  (ido-mode 1)
-#+END_SRC
-
+   #+BEGIN_SRC emacs-lisp
+     (setq ido-enable-flex-matching nil)
+     (setq ido-create-new-buffer 'always)
+     (setq ido-everywhere t)
+     (ido-mode 1)
+   #+END_SRC
    
+   Get =ido= to work with evil when searching for files:
+
+   #+BEGIN_SRC emacs-lisp
+    (define-key evil-ex-map "e " 'ido-find-file)
+   #+END_SRC
+   
+
 * Folding
   This is to enable code folding for certain modes.  I'll have to develop on this further in the future.  The current logic was liberally taken from here[[https://www.reddit.com/r/emacs/comments/6fmpwb/evil_and_builtin_folding/][ reddit: "evil and built-in folding"]].
   #+BEGIN_SRC emacs-lisp
@@ -582,10 +588,11 @@ To activate a custom virtualenv, use the =pyevenv-activate= command.
                markdown-hide-urls nil) ; trigger with `markdown-toggle-url-hiding'
        
        :config
-       (add-hook! markdown-mode
+       (add-hook 'markdown-mode
+          (defun lambda ()
            (auto-fill-mode +1)
            (setq line-spacing 2
-               fill-column 100)))
+               fill-column 100))))
 
      (use-package markdown-toc
        :commands markdown-toc-generate-toc)
