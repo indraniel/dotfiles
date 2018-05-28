@@ -744,6 +744,10 @@ To activate a custom virtualenv, use the =pyevenv-activate= command.
         (evil-define-key 'normal clojure-mode-map "K" 'cider-doc))
 
       (add-hook 'cider-mode-hook #'my-cider-keybindings)
+
+      ;; enable auto-completions
+      (add-hook 'cider-repl-mode-hook #'company-mode)
+      (add-hook 'cider-mode-hook #'company-mode)
     #+END_SRC
 
 *** Racket
