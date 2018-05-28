@@ -776,6 +776,35 @@ To activate a custom virtualenv, use the =pyevenv-activate= command.
      (add-hook 'nimsuggest-mode-hook 'company-mode)
    #+END_SRC
 
+** tsv and csv handling
+   
+   #+BEGIN_SRC emacs-lisp
+    (use-package csv-mode
+      :ensure t)
+   #+END_SRC
+
+   Based on [[https://stackoverflow.com/questions/6886643/file-extension-hook-in-emacs][Stackoverflow: "File extension hook in Emacs"]] and [[https://emacs.stackexchange.com/questions/12396/run-command-when-opening-a-file-of-a-specific-filetype][Run command when opening a file of a specific filetype]]
+
+   #+BEGIN_SRC emacs-lisp
+    ;; this approach doesn't seem to work for some reason
+    ; (add-to-list 'auto-mode-alist
+    ;              '("\\.tsv$" . (lambda ()
+    ;                             (csv-mode)
+    ;                             (make-local-variable 'csv-separators)
+    ;                             (setq csv-separators (append '("\t") csv-separators))
+    ;                             (require 'csv-mode)
+    ;                             (provide 'init-csv-mode))))
+
+   #+END_SRC
+   
+   This seemingly better working solution is based upon: [[http://shallowsky.com/blog/linux/editors/emacs-tab-separated-files.html][Editing tab-separated files with Emacs]] 
+   
+   #+BEGIN_SRC emacs-lisp
+     (add-to-list 'auto-mode-alist
+                  '("\\.tsv$" . (lambda ()
+                                 (local-set-key (kbd "TAB") 'self-insert-command))))
+   
+   #+END_SRC
 
 * TODO
 
