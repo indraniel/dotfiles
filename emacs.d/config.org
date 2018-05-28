@@ -250,6 +250,27 @@ cames from the following links:
 - https://github.com/aaronbieber/dotfiles/blob/master/configs/emacs.d/lisp/init-evil.el
 - https://github.com/chrismccord/dot_emacs/blob/master/bundles/anything-bundle.el
 
+** Evil States
+
+  As the term "mode" is already taken up by emacs, evil uses the term "state"
+  to refer to the vim like modal states.  There are 4 types of "states"
+
+  - Normal (like vim's normal mode)
+  - Insert (like vim's insert mode)
+  - Emacs (the regular emacs state)
+  - Motion (sort of like vim's normal mode, but not -- see below)
+
+  Motion state is an Evil-specific thing, intended for modes where you don't edit
+  text, but still want Vim-style movement available, with all other keys of that
+  mode passing through. Help buffers are an example of such a case, the
+  package.el listing is another one.
+  
+  Typically you want commands moving point in =evil-motion-state-map= and
+  everything else in =evil-normal-state-map=. As Evil is set up to look up keys in
+  =evil-normal-state-map= first, then in =evil-motion-state-map=, movements will be
+  available in normal state as well.
+
+
 ** configure evil
 *** Ensure that =Esc= quits out of all states, whenever possible
 
@@ -806,12 +827,25 @@ To activate a custom virtualenv, use the =pyevenv-activate= command.
    
    #+END_SRC
 
-* TODO
-
-Look into the following packages:
-
-- https://github.com/expez/evil-smartparens
-- https://github.com/abo-abo/lispy
-- https://github.com/noctuid/lispyville
-- https://www.reddit.com/r/emacs/comments/83fzwt/pdftools_evil_bindings/
-- https://www.reddit.com/r/emacs/comments/7loyln/evil_collection_has_hit_melpa_enjoy_the_full_vim/
+* Useful inspiration
+  
+  - https://github.com/expez/evil-smartparens
+  - https://github.com/abo-abo/lispy
+  - https://github.com/noctuid/lispyville
+  - https://www.reddit.com/r/emacs/comments/83fzwt/pdftools_evil_bindings/
+  - https://www.reddit.com/r/emacs/comments/7loyln/evil_collection_has_hit_melpa_enjoy_the_full_vim/
+  - http://ergoemacs.org/emacs/emacs_table.html
+  - http://pragmaticemacs.com/
+  - https://superuser.com/questions/674458/how-to-set-field-seperator-in-emacs-csv-mode
+  - http://pub.gajendra.net/src/paredit-refcard.pdf
+  - https://ebzzry.io/en/emacs-pairs/
+  - http://paste.lisp.org/display/340427
+  - https://github.com/roman/emacs.d
+  - https://github.com/noctuid/evil-guide
+  - https://www.emacswiki.org/emacs/ModeTutorial
+  - https://github.com/bbatsov/prelude
+  - https://www.gnu.org/software/emacs/manual/html_node/elisp/Named-Features.html
+  - https://www.gnu.org/software/emacs/manual/html_node/elisp/Advising-Functions.html
+  - https://stackoverflow.com/questions/2580650/how-can-i-reload-emacs-after-changing-it
+  - https://www.gnu.org/software/emacs/manual/html_node/emacs/Colors.html
+  - https://github.com/clojure-expectations/expectations-mode/blob/master/expectations-mode.el
