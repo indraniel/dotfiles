@@ -766,6 +766,16 @@ To activate a custom virtualenv, use the =pyevenv-activate= command.
          (makefile-mode)))
    #+END_SRC
 
+** Nim
+   
+   #+BEGIN_SRC emacs-lisp
+     (use-package nim-mode
+       :ensure t
+       :mode "\\.nim$")
+
+     (add-hook 'nimsuggest-mode-hook 'company-mode)
+   #+END_SRC
+
 
 * TODO
 
