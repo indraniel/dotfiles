@@ -736,6 +736,14 @@ To activate a custom virtualenv, use the =pyevenv-activate= command.
         :commands (cider-jack-in cider-mode)
         :config
         (setq nrepl-hide-special-buffers t))
+
+      (defun my-cider-keybindings ()
+        (evil-define-key 'normal clojure-mode-map ",e" 'cider-eval-last-sexp)
+        (evil-define-key 'visual clojure-mode-map (kbd "<C-return>") 'cider-eval-region)
+        (evil-define-key 'normal clojure-mode-map (kbd "<C-return>") 'cider-eval-defun-at-point)
+        (evil-define-key 'normal clojure-mode-map "K" 'cider-doc))
+
+      (add-hook 'cider-mode-hook #'my-cider-keybindings)
     #+END_SRC
 
 *** Racket
@@ -858,3 +866,4 @@ To activate a custom virtualenv, use the =pyevenv-activate= command.
   - https://stackoverflow.com/questions/2580650/how-can-i-reload-emacs-after-changing-it
   - https://www.gnu.org/software/emacs/manual/html_node/emacs/Colors.html
   - https://github.com/clojure-expectations/expectations-mode/blob/master/expectations-mode.el
+  - https://github.com/otijhuis/evil-emacs.d/blob/master/config/custom-keybindings.el
