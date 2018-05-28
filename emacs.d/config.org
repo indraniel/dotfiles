@@ -95,7 +95,7 @@ Remove this line if you want to re-enable.
 #+BEGIN_SRC emacs-lisp
   (when window-system
     (global-hl-line-mode t)
-    (set-face-background hl-line-face "gray25"))
+    (set-face-background hl-line-face "gray10"))
 #+END_SRC
 *** Enable text symbols
 This will change =lambda= to an actual symbol and a few others as well -- only in GUI mode though
