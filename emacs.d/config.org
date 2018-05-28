@@ -680,6 +680,27 @@ To activate a custom virtualenv, use the =pyevenv-activate= command.
        :commands markdown-toc-generate-toc)
    #+END_SRC
 
+** Make
+   
+   I use [[https://www.gnu.org/software/make/manual/make.html][GNU Make]] most often.  Let's tailor the configuration around this.
+   
+   #+BEGIN_SRC emacs-lisp
+     ;(add-to-list 'auto-mode-alist '("Makefile.*" . makefile-gmake-mode))
+     (add-to-mode 'makefile-gmake-mode (list "Makefile"
+                                             "\\.mk$"))
+   #+END_SRC
+   
+   Ensure that tabs are properly setup when editing a Makefile.
+   
+   #+BEGIN_SRC emacs-lisp
+     (add-hook 'makefile-gmake-mode
+       (lambda ()
+         (setq indent-tabs-mode t)
+         (setq tab-width 4)
+         (electric-indent-local-mode 1)
+         (makefile-mode)))
+   #+END_SRC
+
 
 * TODO
 
