@@ -41,8 +41,9 @@ One of the most important parts of every configuration :-)
 Loading the theme after intialization is based upon reading [[https://emacs.stackexchange.com/questions/2797/emacs-wont-load-theme-on-startup][Emacs won't load theme on startup]] 
   
 #+BEGIN_SRC emacs-lisp
-;;actually load the theme
-(add-hook 'after-init-hook (lambda () (load-theme 'solarized-light)))
+  ;;actually load the theme
+  (add-hook 'after-init-hook (lambda ()
+                               (if (display-graphic-p) (load-theme 'solarized-light))))
 #+END_SRC
 
 ** Setup Post Theme Hook
