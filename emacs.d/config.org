@@ -337,7 +337,8 @@ cames from the following links:
         (evil-ex-define-cmd "number" 'linum-mode)
         (evil-ex-define-cmd "list" 'whitespace-mode)
         (evil-ex-define-cmd "n" 'my-next-user-buffer)
-        (evil-ex-define-cmd "N" 'my-previous-user-buffer))
+        (evil-ex-define-cmd "N" 'my-previous-user-buffer)
+        (evil-ex-define-cmd "ls" 'switch-to-buffer))
     #+END_SRC
 
 ** load and configure Evil
