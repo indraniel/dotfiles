@@ -1,4 +1,4 @@
-	 Introduction
+* Introduction
 
 We utilize =use-package= to handle downloading and configuring other packages.
 Currently =init.el= will check for the presence of =use-package= on launch
