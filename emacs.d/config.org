@@ -159,6 +159,56 @@ This is a helpful tool to assist me figuring out what all those strange-fangled 
   (which-key-mode))
 #+END_SRC
 
+*** Tabs and Spaces
+
+    =M-x untabify= will convert all the tabs into spaces in the current region.
+    =M-x tabify= will convert all spaces into tabs in the current region.
+    =tab-width= isused to determine the indentation level.
+    =C-x h= is an alias to =(mark-whole-buffer)=.
+    =C-q <TAB>= to insert just one TAB
+
+    - https://www.jwz.org/doc/tabs-vs-spaces.html
+    - https://emacs.stackexchange.com/questions/32940/how-to-detect-tabs-or-spaces-in-emacs
+    - https://stackoverflow.com/questions/69934/set-4-space-indent-in-emacs-in-text-mode
+    - https://masteringemacs.org/article/converting-tabs-whitespace
+    - http://ergoemacs.org/emacs/emacs_tabs_space_indentation_setup.html
+    - https://www.gnu.org/software/emacs/manual/html_node/emacs/Just-Spaces.html
+    - https://www.emacswiki.org/emacs/IndentationBasics
+    - https://www.emacswiki.org/emacs/NoTabs
+    - https://www.emacswiki.org/emacs/SmartTabs
+    - https://www.emacswiki.org/emacs/IndentationBasics
+    - https://www.reddit.com/r/emacs/comments/4drxlo/tabs_and_spaces/
+    - https://www.pement.org/emacs_tabs.htm
+
+    #+BEGIN_SRC emacs-lisp
+      ;; if our source file uses tabs, we use tabs
+      ;; if our source file uses spaces, we use spaces
+      ;; if neither, then uwe use the current indent-tabs-mode
+      (defun infer-indentation-style ()
+	     "Use majority rules when figuring out tabs and spaces"
+	     (let ((space-count (how-many "^ " (point-min) (point-max)))
+	           (tab-count (how-many "^\t" (point-min) (point-max))))
+	        (if (> space-count tab-count) (setq indent-tabs-mode nil))
+	        (if (> tab-count space-count) (setq indent-tabs-mode t))))
+
+      ;; turn off tabs by default
+      (setq-default indent-tabs-mode nil)
+      (infer-indentation-style)
+      (setq-default tab-width 4)
+      (defvaralias 'c-basic-offset 'tab-width)
+      (defvaralias 'cperl-indent-level 'tab-width)
+    #+END_SRC
+    
+    =indent-relative= inserts whitespace at point, extending to the same column 
+    as the indent point to the previous nonblank line.
+    
+    The variable =tab-stop-list= holds a list of all the tab stops to use when
+    =indent-relative= does not find an appropriate tab stop.  It is the fallback
+    used most often.
+    
+    #+BEGIN_SRC emacs-lisp
+      (setq tab-stop-list (number-sequence 4 120 4))
+    #+END_SRC
 
 
 * Company Mode
@@ -630,6 +680,20 @@ Additionally, python versions can be switched, on the fly, with a simple =M=x us
 To activate a custom virtualenv, use the =pyevenv-activate= command.
     
 ** Lisp
+*** General Lisp
+
+   Ensure that tabs are properly setup
+   
+   #+BEGIN_SRC emacs-lisp
+     (defun my-lisp-indent-mode ()
+       (setq tab-width 2))
+
+     (add-hook 'clojure-mode-hook #'my-lisp-indent-mode)
+     (add-hook 'emacs-lisp-mode-hook #'my-lisp-indent-mode)
+     (add-hook 'common-lisp-mode-hook #'my-lisp-indent-mode)
+     (add-hook 'scheme-mode-hook #'my-lisp-indent-mode)
+     (add-hook 'lisp-mode-hook #'my-lisp-indent-mode)
+   #+END_SRC
 *** Clojure
     A modern Lisp for the JVM.
     #+BEGIN_SRC emacs-lisp
