@@ -433,6 +433,7 @@ endfor
 " nim
 " ---
 au BufNewFile,BufRead *.nim set filetype=nim
+autocmd FileType nim setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab
 
 " nim-lang helpful utility
 "    Pressing meta+g will then jump to the definition of the word your cursor
