@@ -25,7 +25,10 @@
    ["black" "#d55e00" "#009e73" "#f8ec59" "#0072b2" "#cc79a7" "#56b4e9" "white"])
  '(custom-safe-themes
    (quote
-    ("d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" default))))
+    ("d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" default)))
+ '(package-selected-packages
+   (quote
+    (which-key use-package twilight-theme tabbar spacemacs-theme solarized-theme rainbow-delimiters python-mode pyenv-mode parinfer ox-gfm origami org-bullets org oceanic-theme neotree markdown-mode geiser evil-tabs evil-paredit evil-collection evil-cleverparens company-anaconda cider beacon))))
  
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
