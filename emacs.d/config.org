@@ -26,6 +26,17 @@ Let's define a few useful constants.
 #+END_SRC
 
 
+* Utilities
+
+  A way to add multple file extensions to major modes
+  
+  #+BEGIN_SRC emacs-lisp
+    (defun add-to-mode (mode lst)
+      (dolist (file lst)
+	(add-to-list 'auto-mode-alist (cons file mode))))
+  #+END_SRC
+
+
 * Themes
 One of the most important parts of every configuration :-)
 #+BEGIN_SRC emacs-lisp
