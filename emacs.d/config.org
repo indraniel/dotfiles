@@ -751,11 +751,46 @@ To activate a custom virtualenv, use the =pyevenv-activate= command.
     #+END_SRC
 
 *** Racket
-    A Scheme-like lisp language
+    A scheme-like lisp language.  First let's setup geiser, a generic emacs/scheme interaction mode.
+
     #+BEGIN_SRC emacs-lisp
-      (use-package geiser
-        :ensure t)
-        
+            (use-package geiser
+              :ensure t)
+    #+END_SRC
+
+    Now, lets setup some custom keybindings.  This is based on reading the following two links:
+
+    - [[https://stackoverflow.com/questions/6156286/emacs-lisp-call-function-with-prefix-argument-programmatically][stackoverflow: "emacs lisp call function with prefix argument programmatically"]]
+    - [[https://stackoverflow.com/questions/15309548/how-to-set-defcustom-variable][stackoverflow: "How to set defcustom variable"]] 
+
+    #+BEGIN_SRC emacs-lisp
+      (defun my-geiser-eval-last-sexp-to-buffer ()
+        (interactive)
+        (forward-char)
+        (setq geiser-mode-eval-to-buffer-prefix " ; => ")
+        (setq current-prefix-arg '(";=> ")) ; C-u
+        (call-interactively 'geiser-eval-last-sexp))
+
+      (defun my-geiser-keybindings ()
+        (evil-define-key 'normal geiser-mode-map (kbd "<C-return>") 'my-geiser-eval-last-sexp-to-buffer)
+        (evil-define-key 'insert geiser-mode-map (kbd "<C-return>") 'my-geiser-eval-last-sexp-to-buffer)
+        (evil-define-key 'normal geiser-mode-map (kbd "C-'") 'geiser-eval-last-sexp)
+        (evil-define-key 'insert geiser-mode-map (kbd "C-'") 'geiser-eval-last-sexp))
+
+      (add-hook 'geiser-mode-hook #'my-geiser-keybindings)
+
+      (defun my-geiser-repl-keybindings ()
+          (evil-define-key 'normal geiser-repl-mode-map "q" 'geiser-repl-exit))
+
+      (add-hook 'geiser-repl-mode-hook #'my-geiser-repl-keybindings)
+    #+END_SRC
+
+    Ensure that auto-completions are available both in the buffer and repl.
+
+    #+BEGIN_SRC emacs-lisp
+            ;; enable auto-completions
+            (add-hook 'geiser-repl-mode-hook #'company-mode)
+            (add-hook 'geiser-mode-hook #'company-mode)
     #+END_SRC
 
 ** Markdown
