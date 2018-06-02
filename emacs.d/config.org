@@ -820,6 +820,13 @@ To activate a custom virtualenv, use the =pyevenv-activate= command.
      (use-package markdown-toc
        :commands markdown-toc-generate-toc)
    #+END_SRC
+   
+   Enable markdown previews.
+   
+   #+BEGIN_SRC emacs-lisp
+     (use-package flymd
+       :ensure t)
+   #+END_SRC
 
 ** Make
    
