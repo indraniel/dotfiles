@@ -110,6 +110,7 @@ Plugin 'hylang/vim-hy'
 Plugin 'kovisoft/slimv'
 Plugin 'zah/nim.vim'
 Plugin 'jpalardy/vim-slime'
+Plugin 'broadinstitute/vim-wdl'
 
 " Applications
 " ------------
