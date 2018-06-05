@@ -962,3 +962,4 @@ To activate a custom virtualenv, use the =pyevenv-activate= command.
   - https://www.gnu.org/software/emacs/manual/html_node/emacs/Colors.html
   - https://github.com/clojure-expectations/expectations-mode/blob/master/expectations-mode.el
   - https://github.com/otijhuis/evil-emacs.d/blob/master/config/custom-keybindings.el
+  - https://2li.ch/emacs-configuration
