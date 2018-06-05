@@ -592,6 +592,7 @@ Make =Super + Enter= open a new terminal.
     (add-hook 'common-lisp-mode-hook #'setup-paredit-mode)
     (add-hook 'scheme-mode-hook #'setup-paredit-mode)
     (add-hook 'lisp-mode-hook #'setup-paredit-mode)
+    (add-hook 'slime-mode-hook #'setup-paredit-mode)
   #+END_SRC
 
   
@@ -792,6 +793,53 @@ To activate a custom virtualenv, use the =pyevenv-activate= command.
             ;; enable auto-completions
             (add-hook 'geiser-repl-mode-hook #'company-mode)
             (add-hook 'geiser-mode-hook #'company-mode)
+    #+END_SRC
+
+*** Common Lisp
+    Setup roswell
+    #+BEGIN_SRC emacs-lisp
+     (load (expand-file-name "~/.roswell/helper.el"))
+    #+END_SRC
+    
+    How to start a Common Lisp repl:
+
+    #+BEGIN_SRC emacs-lisp
+      (setf slime-lisp-implementations
+            `((sbcl    ("sbcl" "--dynamic-space-size" "2000"))
+              (roswell ("ros" "-Q" "run"))))
+      (setf slime-default-lisp 'roswell)
+    #+END_SRC
+   
+    How Common Lisp buffers should behave.  This is based on https://leanpub.com/fullstacklisp/read#leanpub-auto-emacs
+    
+    #+BEGIN_SRC emacs-lisp
+      (defun cl-lisp-hook-fn
+        (interactive)
+        ;; Start slime mode
+        (slime-mode)
+        ;; Start lisp mode
+        (lisp-mode)
+        ;; Some useful key-bindings
+        (local-set-key [tab] 'slime-complete-symbol)
+        (local-set-key (kbd "M-q") 'slime-reindent-defun)
+        ;; We set the the indent function.  common-lisp-indent-function
+        ;; will indent our code the right way
+        (set (make-local-variable lisp-indent-function) 'common-lisp-indent-function)
+        ;; We tell slime to not load failed compiled code
+        (setq slime-load-failed-fasl 'never))
+
+      ;; Finally we tell lisp-mode to run our function on startup
+      (add-hook 'common-lisp-mode-hook #'cl-lisp-hook-fn)
+    #+END_SRC
+    
+    The file extensions =common-lisp-mode= should occur on:
+
+    #+BEGIN_SRC emacs-lisp
+      (add-to-mode 'slime-mode (list "\\.lisp$"
+                                     "\\.cl$"))
+
+      (add-to-mode 'lisp-mode (list "\\.lisp$"
+                                     "\\.cl$"))
     #+END_SRC
 
 ** Markdown
