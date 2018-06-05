@@ -24,6 +24,8 @@ end tell
 EOF
 }
 
+function join_by { local IFS="$1"; shift; echo "$*"; }
+
 # set a fancy prompt (non-color, unless we know we "want" color)
 case "$TERM" in
     xterm) colorize=yes;;
@@ -92,7 +94,22 @@ export HISTIGNORE=' *'
 #export PATH=/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/opt/X11/bin
 
 # account for 'homebrew'ed software
-export PATH=$HOME/.goenv/bin:$HOME/.pyenv/bin:$HOME/.rbenv/bin:$HOME/.Renv/bin:$HOME/.plenv/bin:$HOME/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/opt/X11/bin
+declare -a extra_paths=(
+    $HOME/.goenv/bin
+    $HOME/.pyenv/bin
+    $HOME/.rbenv/bin
+    $HOME/.Renv/bin
+    $HOME/.plenv/bin
+    $HOME/bin
+    /usr/bin
+    /bin
+    /usr/sbin
+    /sbin
+    /usr/local/bin
+    /opt/X11/bin
+)
+NEW_PATHS=$(join_by : "${extra_paths[@]}")
+export PATH=$NEW_PATHS
 
 # rbenv setup
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
