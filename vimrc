@@ -351,7 +351,12 @@ let g:niji_dark_colours = [
     \ [ '4',  '#268bd2'],
     \ ]
 
-let g:slime_target = "vimterminal"
+if has('nvim')
+    let g:slime_target = "neovim"
+else
+    let g:slime_target = "vimterminal"
+endif
+
 let g:rbpt_max = 16
 let g:rbpt_loadcmd_toggle = 0
 let g:slimv_lisp = 'ros run'
