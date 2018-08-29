@@ -25,7 +25,7 @@ function setup_symlinks() {
     ln -vs $DOTFILE_DIR/vimrc $HOME/.vimrc
     ln -vs $DOTFILE_DIR/init.vim $HOME/.config/nvim/init.vim
     ln -vs $DOTFILE_DIR/vim $HOME/.vim
-    ln -vs $DOTFILE_DIR/screenrc $HOME/.screenrc
+#    ln -vs $DOTFILE_DIR/screenrc $HOME/.screenrc
     ln -vs $DOTFILE_DIR/bash/utils/git-prompt/git-prompt.sh $HOME/.git-prompt.sh
     ln -vs $DOTFILE_DIR/bash/utils/bash-preexec/bash-preexec.sh \
         $HOME/.bash-preexec.sh
@@ -35,10 +35,13 @@ function setup_symlinks() {
     # bashrc configs
     if [ "$os" == "Linux" ]; then
         ln -vs $DOTFILE_DIR/bashrc-tgi-linux $HOME/.bashrc
+    	ln -vs $DOTFILE_DIR/tmux-linux.conf $HOME/.tmux.conf
     elif [[ "$os" == "Darwin" ]] && [[ $HOSTNAME =~ "mini" ]]; then
         ln -sv $DOTFILE_DIR/bashrc-osx $HOME/.bashrc
+    	ln -vs $DOTFILE_DIR/tmux-osx.conf $HOME/.tmux.conf
     elif [ "$os" == "Darwin" ]; then
         ln -sv $DOTFILE_DIR/bashrc-osx-tgi-laptop $HOME/.bashrc
+    	ln -vs $DOTFILE_DIR/tmux-osx.conf $HOME/.tmux.conf
     fi
 
     # profile configs
