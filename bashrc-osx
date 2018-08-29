@@ -60,7 +60,7 @@ elif [ -f /Applications/Xcode.app/Contents/Developer/usr/share/git-core/git-prom
 fi
 
 # set the default editor
-alias vim='mvim -v'
+#alias vim='mvim -v'
 export EDITOR=/usr/bin/vim
 
 # commands beginning with one space don't get stored in .bash_history
@@ -70,10 +70,8 @@ export HISTIGNORE=' *'
 #/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin
 
 # account for 'homebrew'ed software
-export PATH=$HOME/.Renv/bin:$HOME/.goenv/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin
-
-# Postgres.app
-export PATH=/Applications/Postgres.app/Contents/MacOS/bin:$PATH
+#export PATH=$HOME/.Renv/bin:$HOME/.goenv/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin
+export PATH=/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin
 
 # rbenv setup
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
@@ -88,7 +86,7 @@ if which Renv > /dev/null; then eval "$(Renv init -)"; fi
 if which goenv > /dev/null; then eval "$(goenv init -)"; fi
 
 # ocaml/opam setup
-source $HOME/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
+#source $HOME/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
 
 # iTerm2 shortcuts
 # based on http://stackoverflow.com/questions/8598021/iterm-2-profiles
