@@ -490,7 +490,7 @@ map <C-l> :tabn<CR>     " CTRL + l -- moves one tab to the right
 
 " screen send shortcuts
 " ---------------------
-vmap <C-c><C-c> :ScreenSend<CR>
+vmap <C-c><C-c> :SlimeSend<CR>
 
 " OmniComplete -- Ctrl+N -- Remappings
 " taken from http://vim.sourceforge.net/tips/tip.php?tip_id=1386
