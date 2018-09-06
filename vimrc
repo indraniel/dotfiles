@@ -116,7 +116,6 @@ Plugin 'broadinstitute/vim-wdl'
 " ------------
 Plugin 'szw/vim-dict'
 Plugin 'tpope/vim-fireplace'
-Plugin 'bhurlow/vim-parinfer'
 if has('macunix')
   Plugin 'euclio/vim-markdown-composer'
 endif
