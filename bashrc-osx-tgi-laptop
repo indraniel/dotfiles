@@ -131,7 +131,7 @@ if which goenv > /dev/null; then eval "$(goenv init -)"; fi
 
 # java setup
 export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_45.jdk/Contents/Home
-export PATH=$HOME/software/maven/apache-maven-3.3.9/bin:$PATH
+export PATH=$HOME/idas/local/maven/apache-maven-3.5.4/bin:$PATH
 
 # scala setup
 export SCALA_HOME=$HOME/software/scala/scala-2.11.8
