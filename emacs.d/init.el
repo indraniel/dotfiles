@@ -28,8 +28,8 @@
     ("d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" default)))
  '(package-selected-packages
    (quote
-    (which-key use-package twilight-theme tabbar spacemacs-theme solarized-theme rainbow-delimiters python-mode pyenv-mode parinfer ox-gfm origami org-bullets org oceanic-theme neotree markdown-mode geiser evil-tabs evil-paredit evil-collection evil-cleverparens company-anaconda cider beacon))))
- 
+     )))
+    (origami evil org-bullets twilight-theme oceanic-theme beacon spacemacs-theme which-key use-package))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

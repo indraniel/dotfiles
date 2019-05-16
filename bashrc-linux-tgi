@@ -99,13 +99,24 @@ preexec() {
 }
 
 # setup custom prompt
-if [ "$TERM" = "eterm-color" ]; then
-    # emacs prompt
-    PS1='╭─( ${yellow}\w${reset}${red}$(__git_ps1 " (%s)")${reset} as ${green}\u${reset} at ${cyan}\h${reset} on ${yellow}\D{%m/%d} \t${reset} )\n╰─${bold}${red}\$${reset} '
-else 
-    # regular xterm prompt
-    PS1='╭─\[${xreset}\]( \[${xyellow}\]\w\[${xred}\]$(__git_ps1 " (%s)")\[${xreset}\] as \[${xgreen}\]\u\[${xreset}\] at \[${xcyan}\]\h\[${xreset}\] on \[${xyellow}\]\D{%m/%d} \t\[${xreset}\] )\n╰─\[${xbold}\]\[${xred}\]$\[${xreset}\] '
-fi
+ case "$TERM" in
+    "dumb")
+        export PS1="> "
+        ;;
+    "eterm-color")
+        export PS1='╭─( ${yellow}\w${reset}${red}$(__git_ps1 " (%s)")${reset} as ${green}\u${reset} at ${cyan}\h${reset} on ${yellow}\D{%m/%d} \t${reset} )\n╰─${bold}${red}\$${reset} '
+        ;;
+    xterm*|rxvt*|eterm*|screen*)
+        export PS1='╭─\[${xreset}\]( \[${xyellow}\]\w\[${xred}\]$(__git_ps1 " (%s)")\[${xreset}\] as \[${xgreen}\]\u\[${xreset}\] at \[${xcyan}\]\h\[${xreset}\] on \[${xyellow}\]\D{%m/%d} \t\[${xreset}\] )\n╰─\[${xbold}\]\[${xred}\]$\[${xreset}\] '
+        ;;
+ esac
+#if [ "$TERM" = "eterm-color" ]; then
+#    # emacs prompt
+#    PS1='╭─( ${yellow}\w${reset}${red}$(__git_ps1 " (%s)")${reset} as ${green}\u${reset} at ${cyan}\h${reset} on ${yellow}\D{%m/%d} \t${reset} )\n╰─${bold}${red}\$${reset} '
+#else 
+#    # regular xterm prompt
+#    PS1='╭─\[${xreset}\]( \[${xyellow}\]\w\[${xred}\]$(__git_ps1 " (%s)")\[${xreset}\] as \[${xgreen}\]\u\[${xreset}\] at \[${xcyan}\]\h\[${xreset}\] on \[${xyellow}\]\D{%m/%d} \t\[${xreset}\] )\n╰─\[${xbold}\]\[${xred}\]$\[${xreset}\] '
+#fi
 
 # enable the less command to display colors
 LESS="-eiMXR"
