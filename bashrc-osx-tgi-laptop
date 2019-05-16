@@ -64,13 +64,17 @@ if [ "$colorize" == "yes" ]; then
     xwhite=$(tput -T xterm setaf 7)
 
     # setup a custom prompt
-    if [ "$TERM" = "eterm-color" ]; then
-        # emacs prompt
-        PS1='╭─( ${yellow}\w${reset}${red}$(__git_ps1 " (%s)")${reset} as ${green}\u${reset} at ${cyan}\h${reset} on ${yellow}\D{%m/%d} \t${reset} )\n╰─${bold}${red}\$${reset} '
-    else 
-        # regular xterm prompt
-        PS1='╭─\[${xreset}\]( \[${xyellow}\]\w\[${xred}\]$(__git_ps1 " (%s)")\[${xreset}\] as \[${xgreen}\]\u\[${xreset}\] at \[${xcyan}\]\h\[${xreset}\] on \[${xyellow}\]\D{%m/%d} \t\[${xreset}\] )\n╰─\[${xbold}\]\[${xred}\]$\[${xreset}\] '
-    fi
+    case "$TERM" in
+        "dumb")
+            export PS1="> "
+            ;;
+        eterm-color)
+            export PS1='╭─( ${yellow}\w${reset}${red}$(__git_ps1 " (%s)")${reset} as ${green}\u${reset} at ${cyan}\h${reset} on ${yellow}\D{%m/%d} \t${reset} )\n╰─${bold}${red}\$${reset} '
+            ;;
+        xterm*|rxvt*|eterm*|screen*)
+            export PS1='╭─\[${xreset}\]( \[${xyellow}\]\w\[${xred}\]$(__git_ps1 " (%s)")\[${xreset}\] as \[${xgreen}\]\u\[${xreset}\] at \[${xcyan}\]\h\[${xreset}\] on \[${xyellow}\]\D{%m/%d} \t\[${xreset}\] )\n╰─\[${xbold}\]\[${xred}\]$\[${xreset}\] '
+            ;;
+    esac
 fi
 
 unset colorize
@@ -153,7 +157,7 @@ function it2profile() { echo -e "\033]50;SetProfile=$1\a"; }
 export -f it2profile
 
 # iterm2 shell integration
-if [ "$TERM" != "eterm-color" ]; then
+if [ "$TERM" != "eterm-color" ] || [ "$TERM" != "dumb" ]; then
     # inside emacs skip this
     test -e "${HOME}/.iterm2_shell_integration.bash" \
         && source "${HOME}/.iterm2_shell_integration.bash"
