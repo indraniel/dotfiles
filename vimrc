@@ -31,8 +31,10 @@ set incsearch
 "==============================================================================
 filetype off                                                       " required!
 
+let gitlab = 'https://gitlab.com/'
+
 let g:vundle_default_git_proto='git'
-set rtp+=~/.vim/bundle/vundle/
+set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 " let Vundle manage Vundle
@@ -45,7 +47,6 @@ Plugin 'w0ng/vim-hybrid'
 Plugin 'chriskempson/tomorrow-theme', {'rtp': 'vim/'}
 Plugin '29decibel/codeschool-vim-theme'
 Plugin 'nanotech/jellybeans.vim'
-Plugin 'nelstrom/vim-mac-classic-theme'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'roman/golden-ratio'
@@ -57,7 +58,6 @@ Plugin 'matthewtodd/vim-twilight'
 Plugin 'jonathanfilip/vim-lucius'
 Plugin 'reedes/vim-pencil'
 Plugin 'morhetz/gruvbox'
-Plugin 'epeli/slimux'
 Plugin 'lifepillar/vim-solarized8'
 
 " Navigation
@@ -65,7 +65,6 @@ Plugin 'lifepillar/vim-solarized8'
 Plugin 'scrooloose/nerdtree'
 Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'majutsushi/tagbar'
-Plugin 'Valloric/YouCompleteMe'
 
 " Git Integrations
 " ----------------
@@ -81,6 +80,12 @@ Plugin 'tpope/vim-eunuch'
 " Commands
 " --------
 Plugin 'tpope/vim-surround'
+
+" IDE-ish features
+" ----------------
+Plugin 'Shougo/deoplete.nvim'
+Plugin 'davidhalter/jedi-vim'
+Plugin 'deoplete-plugins/deoplete-jedi'
 
 " Language Syntax
 " ---------------
@@ -100,25 +105,20 @@ Plugin 'nelstrom/vim-markdown-folding'
 Plugin 'fatih/vim-go'
 Plugin 'gerw/vim-latex-suite'
 Plugin 'vim-scripts/vim-niji'
-Plugin 'kovisoft/paredit'
+"Plugin 'kovisoft/paredit'
 Plugin 'guns/vim-sexp'
-Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-sexp-mappings-for-regular-people'
+Plugin 'tpope/vim-repeat'
 Plugin 'plytophogy/vim-virtualenv'
 Plugin 'lambdalisue/vim-pyenv'
-Plugin 'hylang/vim-hy'
-Plugin 'kovisoft/slimv'
 Plugin 'zah/nim.vim'
-Plugin 'jpalardy/vim-slime'
 Plugin 'broadinstitute/vim-wdl'
 
 " Applications
 " ------------
 Plugin 'szw/vim-dict'
 Plugin 'tpope/vim-fireplace'
-if has('macunix')
-  Plugin 'euclio/vim-markdown-composer'
-endif
+Plugin gitlab.'HiPhish/repl.nvim'
 
 call vundle#end()                                                " required!
 filetype plugin indent on                                        " required!
@@ -150,21 +150,24 @@ syntax on
 let g:LargeFile=20 " Files larger than 20MB will not have syntax highlighting
 
 "==============================================================================
+" Leader
+"==============================================================================
+let mapleader = ","
+
+"==============================================================================
+" (neovim) Terminal adjustments
+"==============================================================================
+if has('nvim')
+  " see: http://vimcasts.org/episodes/neovim-terminal-mappings/
+  tnoremap <Esc> <C-\><C-n> 
+  tnoremap <C-v><Esc> <Esc> 
+endif
+
+"==============================================================================
 " Fonts
 "==============================================================================
 set listchars=tab:▸\ ,eol:¬,extends:❯,precedes:❮
 set showbreak=↪
-
-" Need to use powerline patched fonts. See here for details:
-" https://github.com/Lokaltog/vim-powerline/wiki/Patched-fonts
-if has("unix")
-  let os = substitute(system('uname'), "\n", "", "")
-  if os == "Darwin"
-    set guifont=Monaco\ for\ Powerline:h12
-  elseif os == "Linux"
-    set guifont=Ubuntu\ Mono\ 12
-  endif
-endif
 
 "==============================================================================
 " Status Bar (vim powerline) Adjustments
@@ -177,13 +180,17 @@ if !exists('g:airline_symbols')
   let g:airline_symbols = {}
 endif
 let g:airline_powerline_fonts=0
-let g:airline_left_sep = '⮀'
-let g:airline_left_alt_sep = '⮁'
-let g:airline_right_sep = '⮂'
-let g:airline_right_alt_sep = '⮃'
-let g:airline_symbols.branch = '⭠'
-let g:airline_symbols.readonly = '⭤'
-let g:airline_symbols.linenr = '⭡'
+" unicode symbols
+"let g:airline_left_sep = '▶'
+"let g:airline_right_sep = '◀'
+let g:airline_symbols.crypt = '🔒'
+let g:airline_symbols.linenr = '☰'
+let g:airline_symbols.maxlinenr = '㏑'
+let g:airline_symbols.branch = '⎇'
+let g:airline_symbols.paste = 'ρ'
+let g:airline_symbols.spell = 'Ꞩ'
+let g:airline_symbols.notexists = 'Ɇ'
+let g:airline_symbols.whitespace = 'Ξ'
 
 " always show the status bar
 set laststatus=2
@@ -227,31 +234,37 @@ let g:golden_ratio_autocommand = 0
 nnoremap <F7> :GoldenRatioToggle<CR>
 
 "==============================================================================
-" YouCompleteMe Adjustments
+" REPL.nvim adjustments
 "==============================================================================
-" needs to use the exact python that vim was originally compiled against
-let os = substitute(system('uname'), "\n", "", "")
-if os == "Darwin"
-    let g:ycm_path_to_python_interpreter = "python"
-elseif os == "Linux"
-    let g:ycm_path_to_python_interpreter = "/gscuser/idas/.pyenv/versions/2.7.13/bin/python"
-endif
+let g:repl = {}
+let g:repl['python'] = {
+    \ 'bin': 'python',
+    \ 'args': [],
+    \ 'syntax': 'python',
+    \ 'title': 'Python REPL'
+\ }
 
-let g:ycm_autoclose_preview_window_after_completion = 1
-let g:ycm_min_num_of_chars_for_completion = 1
-let g:ycm_semantic_triggers =  {
-  \   'c' : ['->', '.'],
-  \   'objc' : ['->', '.'],
-  \   'ocaml' : ['.', '#'],
-  \   'cpp,objcpp' : ['->', '.', '::'],
-  \   'perl' : ['->'],
-  \   'php' : ['->', '::'],
-  \   'cs,java,javascript,d,python,perl6,scala,vb,elixir,go' : ['.'],
-  \   'vim' : ['re![_a-zA-Z]+[_\w]*\.'],
-  \   'ruby' : ['.', '::'],
-  \   'lua' : ['.', ':'],
-  \   'erlang' : [':'],
-  \ }
+let g:repl['scheme'] = {
+    \ 'bin': 'rlwrap csi',
+    \ 'args': [],
+    \ 'syntax': '',
+    \ 'title': 'Chicken REPL'
+\ }
+
+let g:repl['clojure'] = {
+    \ 'bin': 'LEIN_USE_BOOTCLASSPATH=no lein',
+    \ 'args': ['repl'],
+    \ 'syntax': '',
+    \ 'title': 'Clojure nREPL'
+\ }
+
+" Send the text of a motion to the REPL
+nmap <leader>rs  <Plug>(ReplSend)
+" Send the current line to the REPL
+nmap <leader>rss <Plug>(ReplSendLine)
+nmap <leader>rs_ <Plug>(ReplSendLine)
+" Send the selected text to the REPL
+vmap <leader>rs  <Plug>(ReplSend)
 
 "==============================================================================
 " Mouse
@@ -356,25 +369,6 @@ else
     let g:slime_target = "vimterminal"
 endif
 
-let g:rbpt_max = 16
-let g:rbpt_loadcmd_toggle = 0
-let g:slimv_lisp = 'ros run'
-let g:silmv_impl = 'sbcl'
-let g:swank_block_size = 65536
-if $TERM == 'screen-256color'
-    let g:slimv_swank_cmd = '! tmux new-window -d -n REPL-SBCL' .
-          \ '"ros run -Q --load ~/.vim/bundle/slimv/slime/start-swank.lisp"'
-elseif $TERM == 'xterm-256color' && os == "Linux"
-    let g:slimv_swank_cmd = '! xterm -e ros run -Q --load ~/.vim/bundle/slimv/slime/start-swank.lisp'
-else
-    let g:slimv_swank_cmd = "! osascript -e 'tell application \"iterm2\"' " .
-          \ "-e 'activate' " .
-          \ "-e 'tell current window to set tb to create tab with default profile' " .
-          \ "-e 'tell current session of current window to write text " .
-          \ "\"cd $PWD; ros run -Q --load ~/.vim/bundle/slimv/slime/start-swank.lisp\"' " .
-          \ "-e 'end tell'"
-endif
-"let g:slimv_swank_cmd = '!osascript -e "tell application \"iTerm\" to do script \"ros run -Q --load ~/.vim/bundle/slimv/slime/start-swank.lisp\""'
 nnoremap <F3> :RainbowParenthesesToggle<CR>
 
 " cmake
@@ -395,45 +389,6 @@ let g:markdown_composer_open_browser = 0
 " --------
 autocmd BufNewFile,BufRead *.asciidoc,*.ad setlocal syntax=asciidoc complete+=k
 
-
-" confluence
-" ----------
-autocmd BufNewFile,BufRead *.confluence,*.cwiki setlocal syntax=confluencewiki
-
-" ocaml
-" -----
-" ## added by OPAM user-setup for vim / base ## 93ee63e278bdfc07d1139a748ed3fff2 ## you can edit, but keep this line
-let s:opam_share_dir = system("opam config var share")
-let s:opam_share_dir = substitute(s:opam_share_dir, '[\r\n]*$', '', '')
-
-let s:opam_configuration = {}
-
-function! OpamConfOcpIndent()
-  execute "set rtp^=" . s:opam_share_dir . "/ocp-indent/vim"
-endfunction
-let s:opam_configuration['ocp-indent'] = function('OpamConfOcpIndent')
-
-function! OpamConfOcpIndex()
-  execute "set rtp+=" . s:opam_share_dir . "/ocp-index/vim"
-endfunction
-let s:opam_configuration['ocp-index'] = function('OpamConfOcpIndex')
-
-function! OpamConfMerlin()
-  let l:dir = s:opam_share_dir . "/merlin/vim"
-  execute "set rtp+=" . l:dir
-endfunction
-let s:opam_configuration['merlin'] = function('OpamConfMerlin')
-
-let s:opam_packages = ["ocp-indent", "ocp-index", "merlin"]
-let s:opam_check_cmdline = ["opam list --installed --short --safe --color=never"] + s:opam_packages
-let s:opam_available_tools = split(system(join(s:opam_check_cmdline)))
-for tool in s:opam_packages
-  " Respect package order (merlin should be after ocp-index)
-  if count(s:opam_available_tools, tool) > 0
-    call s:opam_configuration[tool]()
-  endif
-endfor
-" ## end of OPAM user-setup addition for vim / base ## keep this line
 
 " nim
 " ---
@@ -457,10 +412,6 @@ endf
 nn <M-g> :call JumpToDef()<cr>
 ino <M-g> <esc>:call JumpToDef()<cr>i
 
-
-" scala
-" -----
-"let g:ensime_server_v2=1
 
 "==============================================================================
 " History Niceties
@@ -487,10 +438,6 @@ endif " has("autocmd")
 nnoremap tt :tabnew<CR>   " <normal mode> tt -- opens a new tab
 map <C-h> :tabp<CR>     " CTRL + h -- moves one tab to the left
 map <C-l> :tabn<CR>     " CTRL + l -- moves one tab to the right
-
-" screen send shortcuts
-" ---------------------
-vmap <C-c><C-c> :SlimeSend<CR>
 
 " OmniComplete -- Ctrl+N -- Remappings
 " taken from http://vim.sourceforge.net/tips/tip.php?tip_id=1386
@@ -523,21 +470,6 @@ function! WordProcessorMode()
 endfunction
 command! WP call WordProcessorMode()
 
-" Based on: From https://github.com/laktek/distraction-free-writing-vim
-function! DistractionFreeWriting()
-    colorscheme iawriter
-    set background=light
-    set gfn=Cousine:h16                                   " font to use
-    set lines=30 columns=90                               " size of the editable area
-    set fuoptions=background:#00f5f6f6                    " bakground color
-    set guioptions-=r                                     " remove righ scrollbar
-    set laststatus=0                                      " don't show status line
-    set noruler                                           " don't show ruler
-    set fullscreen                                        " go to fullscreen editing mode
-    set linebreak                                         " break the lines on words
-endfunction
-command! DFW call DistractionFreeWriting()
-
 " The Genome Institute at Washington University Specific
 " ------------------------------------------------------
 
@@ -548,13 +480,6 @@ function HandleLimsEnv()
   endif
 endfunction
 au BufRead * call HandleLimsEnv()
-
-function ShowSchema()
-    let currentWord = expand("<cword>")
-    exe "!clear && schema -c " . currentWord . " | less"
-    unlet currentWord
-endfunction
-map <C-s> :call ShowSchema()
 
 "==============================================================================
 " Macros
