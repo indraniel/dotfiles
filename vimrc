@@ -27,101 +27,100 @@ set incsearch
 "set cryptmethod=blowfish2
 
 "==============================================================================
-" Plugins (managed by Vundle on github)
+" Plugins (managed by vim-plug)
 "==============================================================================
-filetype off                                                       " required!
 
 let gitlab = 'https://gitlab.com/'
 
-let g:vundle_default_git_proto='git'
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+" bootstrap plug.vim if necessary (see https://github.com/junegunn/vim-plug/wiki/tips)
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
 
-" let Vundle manage Vundle
-" required!
-Plugin 'VundleVim/Vundle.vim'
+call plug#begin('~/.vim/bundle')
 
 " UI Additions
 " ------------
-Plugin 'w0ng/vim-hybrid'
-Plugin 'chriskempson/tomorrow-theme', {'rtp': 'vim/'}
-Plugin '29decibel/codeschool-vim-theme'
-Plugin 'nanotech/jellybeans.vim'
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-Plugin 'roman/golden-ratio'
-Plugin 'vim-scripts/LargeFile'
-Plugin 'Pychimp/vim-sol'
-Plugin 'baskerville/bubblegum'
-Plugin 'Lokaltog/vim-distinguished'
-Plugin 'matthewtodd/vim-twilight'
-Plugin 'jonathanfilip/vim-lucius'
-Plugin 'reedes/vim-pencil'
-Plugin 'morhetz/gruvbox'
-Plugin 'lifepillar/vim-solarized8'
+Plug 'w0ng/vim-hybrid'
+Plug 'chriskempson/tomorrow-theme', {'rtp': 'vim/'}
+Plug '29decibel/codeschool-vim-theme'
+Plug 'nanotech/jellybeans.vim'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'roman/golden-ratio'
+Plug 'vim-scripts/LargeFile'
+Plug 'Pychimp/vim-sol'
+Plug 'baskerville/bubblegum'
+Plug 'Lokaltog/vim-distinguished'
+Plug 'matthewtodd/vim-twilight'
+Plug 'jonathanfilip/vim-lucius'
+Plug 'reedes/vim-pencil'
+Plug 'morhetz/gruvbox'
+Plug 'lifepillar/vim-solarized8'
 
 " Navigation
 " ----------
-Plugin 'scrooloose/nerdtree'
-Plugin 'jistr/vim-nerdtree-tabs'
-Plugin 'majutsushi/tagbar'
+Plug 'scrooloose/nerdtree'
+Plug 'jistr/vim-nerdtree-tabs'
+Plug 'majutsushi/tagbar'
 
 " Git Integrations
 " ----------------
 if executable('git')
-    Plugin 'tpope/vim-git'
-    Plugin 'tpope/vim-fugitive'
-    Plugin 'gregsexton/gitv'
-    Plugin 'int3/vim-extradite'
+    Plug 'tpope/vim-git'
+    Plug 'tpope/vim-fugitive'
+    Plug 'gregsexton/gitv'
+    Plug 'int3/vim-extradite'
 endif
 
-Plugin 'tpope/vim-eunuch'
+Plug 'tpope/vim-eunuch'
 
 " Commands
 " --------
-Plugin 'tpope/vim-surround'
+Plug 'tpope/vim-surround'
 
 " IDE-ish features
 " ----------------
-Plugin 'Shougo/deoplete.nvim'
-Plugin 'davidhalter/jedi-vim'
-Plugin 'deoplete-plugins/deoplete-jedi'
+Plug 'Shougo/deoplete.nvim'
+Plug 'davidhalter/jedi-vim'
+Plug 'deoplete-plugins/deoplete-jedi'
 
 " Language Syntax
 " ---------------
-Plugin 'vim-perl/vim-perl'
-Plugin 'pfdevilliers/Pretty-Vim-Python'
-Plugin 'vim-ruby/vim-ruby'
-Plugin 'pangloss/vim-javascript'
-Plugin 'itspriddle/vim-jquery'
-Plugin 'guns/vim-clojure-static'
-Plugin 'kien/rainbow_parentheses.vim'
-Plugin 'tpope/vim-markdown'
+Plug 'vim-perl/vim-perl'
+Plug 'pfdevilliers/Pretty-Vim-Python'
+Plug 'vim-ruby/vim-ruby'
+Plug 'pangloss/vim-javascript'
+Plug 'itspriddle/vim-jquery'
+Plug 'guns/vim-clojure-static'
+Plug 'kien/rainbow_parentheses.vim'
+Plug 'tpope/vim-markdown'
 " Choices are (1) 'tpope/vim-markdown', or (2) 'gmarik/vim-markdown' :
 " which is a fork of (3) 'hallison/vim-markdown' or (4) 'plasticboy/vim-markdown'
-Plugin 'mihai-rotaru/vim-asciidoc-ft-syntax'
-Plugin 'laktek/distraction-free-writing-vim'
-Plugin 'nelstrom/vim-markdown-folding'
-Plugin 'fatih/vim-go'
-Plugin 'gerw/vim-latex-suite'
-Plugin 'vim-scripts/vim-niji'
-"Plugin 'kovisoft/paredit'
-Plugin 'guns/vim-sexp'
-Plugin 'tpope/vim-sexp-mappings-for-regular-people'
-Plugin 'tpope/vim-repeat'
-Plugin 'plytophogy/vim-virtualenv'
-Plugin 'lambdalisue/vim-pyenv'
-Plugin 'zah/nim.vim'
-Plugin 'broadinstitute/vim-wdl'
+Plug 'mihai-rotaru/vim-asciidoc-ft-syntax'
+Plug 'laktek/distraction-free-writing-vim'
+Plug 'nelstrom/vim-markdown-folding'
+Plug 'fatih/vim-go'
+Plug 'gerw/vim-latex-suite'
+Plug 'vim-scripts/vim-niji'
+"Plug 'kovisoft/paredit'
+Plug 'guns/vim-sexp'
+Plug 'tpope/vim-sexp-mappings-for-regular-people'
+Plug 'tpope/vim-repeat'
+Plug 'plytophogy/vim-virtualenv'
+Plug 'lambdalisue/vim-pyenv'
+Plug 'zah/nim.vim'
+Plug 'broadinstitute/vim-wdl'
 
 " Applications
 " ------------
-Plugin 'szw/vim-dict'
-Plugin 'tpope/vim-fireplace'
-Plugin gitlab.'HiPhish/repl.nvim'
+Plug 'szw/vim-dict'
+Plug 'tpope/vim-fireplace'
+Plug gitlab.'HiPhish/repl.nvim'
 
-call vundle#end()                                                " required!
-filetype plugin indent on                                        " required!
+call plug#end()                                                " required!
 
 "==============================================================================
 " Colors
