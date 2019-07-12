@@ -119,6 +119,7 @@ Plug 'venantius/vim-cljfmt'
 " ------------
 Plug 'szw/vim-dict'
 Plug 'tpope/vim-fireplace', { 'tag': 'v1.2' }
+"Plug 'clojure-vim/acid.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug gitlab.'HiPhish/repl.nvim'
 
 call plug#end()                                                " required!
