@@ -117,7 +117,7 @@ Plug 'broadinstitute/vim-wdl'
 " Applications
 " ------------
 Plug 'szw/vim-dict'
-Plug 'tpope/vim-fireplace'
+Plug 'tpope/vim-fireplace', { 'tag': 'v1.2' }
 Plug gitlab.'HiPhish/repl.nvim'
 
 call plug#end()                                                " required!
