@@ -118,13 +118,15 @@ Plug 'plytophogy/vim-virtualenv'
 Plug 'lambdalisue/vim-pyenv'
 Plug 'zah/nim.vim'
 Plug 'broadinstitute/vim-wdl'
-Plug 'venantius/vim-cljfmt'
 
 " Applications
 " ------------
 Plug 'szw/vim-dict'
 Plug 'tpope/vim-fireplace', { 'tag': 'v1.2' }
+Plug 'venantius/vim-cljfmt'
+Plug 'clojure-vim/async-clj-omni'
 "Plug 'clojure-vim/acid.nvim', { 'do': ':UpdateRemotePlugins' }
+"Plug 'Olical/conjure', { 'tag': 'v0.22.0', 'do': 'bin/compile' }
 Plug gitlab.'HiPhish/repl.nvim'
 
 call plug#end()                                                " required!
