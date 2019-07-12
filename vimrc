@@ -113,6 +113,7 @@ Plug 'plytophogy/vim-virtualenv'
 Plug 'lambdalisue/vim-pyenv'
 Plug 'zah/nim.vim'
 Plug 'broadinstitute/vim-wdl'
+Plug 'venantius/vim-cljfmt'
 
 " Applications
 " ------------
