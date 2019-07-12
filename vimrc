@@ -88,7 +88,7 @@ Plug 'tpope/vim-surround'
 
 " IDE-ish features
 " ----------------
-Plug 'Shougo/deoplete.nvim'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'davidhalter/jedi-vim'
 Plug 'deoplete-plugins/deoplete-jedi'
 
@@ -417,6 +417,14 @@ endf
 " Jump to tag
 nn <M-g> :call JumpToDef()<cr>
 ino <M-g> <esc>:call JumpToDef()<cr>i
+
+
+"==============================================================================
+" Deoplete / Omni-Complete Setup
+"==============================================================================
+let g:deoplete#enable_at_startup = 1
+let g:deoplete#keyword_patterns = {}
+let g:deoplete#keyword_patterns.clojure = '[\w!$%&*+/:<=>?@\^_~\-\.#]*'
 
 
 "==============================================================================
