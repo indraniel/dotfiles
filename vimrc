@@ -29,7 +29,7 @@ set incsearch
 " Host Python Program
 " -------------------
 
-let g:python3_host_prog = '~/.pyenv/versions/3.7.2/bin/python'
+let g:python3_host_prog = expand('~/.pyenv/versions/3.7.2/bin/python')
 
 "==============================================================================
 " Plugins (managed by vim-plug)
