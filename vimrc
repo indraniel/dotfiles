@@ -310,6 +310,11 @@ let python_highlight_all=1
 let python_highlight_exceptions=0
 let python_hightlight_builtins=0
 
+" disable autocompletion; we use deoplete for completion
+let g:jedi#completions_enabled = 0
+" open the go-to function in splits, not another buffer
+let g:jedi#use_splits_not_buffers = "right"
+
 " hylang
 " ------
 autocmd BufNewFile,BufRead *.hy setlocal ft=hy
