@@ -117,7 +117,7 @@ Plug 'tpope/vim-sexp-mappings-for-regular-people'
 Plug 'tpope/vim-repeat'
 Plug 'plytophogy/vim-virtualenv'
 Plug 'lambdalisue/vim-pyenv'
-Plug 'zah/nim.vim'
+Plug 'alaviss/nim.nvim'
 Plug 'broadinstitute/vim-wdl'
 
 " Applications
