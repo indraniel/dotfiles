@@ -89,9 +89,16 @@ Plug 'tpope/vim-surround'
 
 " IDE-ish features
 " ----------------
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'davidhalter/jedi-vim'
-Plug 'deoplete-plugins/deoplete-jedi'
+Plug 'prabirshrestha/async.vim'
+Plug 'prabirshrestha/asyncomplete.vim'
+Plug 'prabirshrestha/vim-lsp'
+Plug 'prabirshrestha/asyncomplete-lsp.vim'
+Plug 'yami-beta/asyncomplete-omni.vim'
+Plug 'prabirshrestha/asyncomplete-file.vim'
+if executable('ctags')
+    Plug 'prabirshrestha/asyncomplete-tags.vim'
+    Plug 'ludovicchabant/vim-gutentags'
+endif
 
 " Language Syntax
 " ---------------
@@ -311,10 +318,10 @@ let python_highlight_all=1
 let python_highlight_exceptions=0
 let python_hightlight_builtins=0
 
-" disable autocompletion; we use deoplete for completion
-let g:jedi#completions_enabled = 0
+" disable autocompletion; we use asyncomplete for completion
+" let g:jedi#completions_enabled = 0
 " open the go-to function in splits, not another buffer
-let g:jedi#use_splits_not_buffers = "right"
+" let g:jedi#use_splits_not_buffers = "right"
 
 " hylang
 " ------
@@ -428,12 +435,58 @@ ino <M-g> <esc>:call JumpToDef()<cr>i
 
 
 "==============================================================================
-" Deoplete / Omni-Complete Setup
+" asyncomplete.vim / Omni-Complete Setup
 "==============================================================================
-let g:deoplete#enable_at_startup = 1
-let g:deoplete#keyword_patterns = {}
-let g:deoplete#keyword_patterns.clojure = '[\w!$%&*+/:<=>?@\^_~\-\.#]*'
 
+" file completion
+au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#file#get_source_options({
+    \ 'name': 'file',
+    \ 'whitelist': ['*'],
+    \ 'priority': 10,
+    \ 'completor': function('asyncomplete#sources#file#completor')
+    \ }))
+
+" ctags (c programming)
+au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#tags#get_source_options({
+    \ 'name': 'tags',
+    \ 'whitelist': ['c'],
+    \ 'completor': function('asyncomplete#sources#tags#completor'),
+    \ 'config': {
+    \    'max_file_size': 50000000,
+    \  },
+    \ }))
+
+" omni-completion
+call asyncomplete#register_source(asyncomplete#sources#omni#get_source_options({
+\ 'name': 'omni',
+\ 'whitelist': ['*'],
+\ 'blacklist': ['c', 'cpp', 'html'],
+\ 'completor': function('asyncomplete#sources#omni#completor')
+\  }))
+
+" python
+if executable('pyls')
+    " pip install python-language-server
+    au User lsp_setup call lsp#register_server({
+        \ 'name': 'pyls',
+        \ 'cmd': {server_info->['pyls']},
+        \ 'whitelist': ['python'],
+        \ })
+endif
+
+" nim
+au User asyncomplete_setup call asyncomplete#register_source({
+    \ 'name': 'nim',
+    \ 'whitelist': ['nim'],
+    \ 'completor': {opt, ctx -> nim#suggest#sug#GetAllCandidates({start, candidates -> asyncomplete#complete(opt['name'], ctx, start, candidates)})}
+    \ })
+
+" clojure
+au User asyncomplete_setup call asyncomplete#register_source({
+    \ 'name': 'async_clj_omni',
+    \ 'whitelist': ['clojure'],
+    \ 'completor': function('async_clj_omni#sources#complete'),
+    \ })
 
 "==============================================================================
 " History Niceties
