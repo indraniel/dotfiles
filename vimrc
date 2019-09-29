@@ -126,6 +126,7 @@ Plug 'plytophogy/vim-virtualenv'
 Plug 'lambdalisue/vim-pyenv'
 Plug 'alaviss/nim.nvim'
 Plug 'broadinstitute/vim-wdl'
+Plug 'wlangstroth/vim-racket'
 
 " Applications
 " ------------
@@ -265,6 +266,13 @@ let g:repl['scheme'] = {
     \ 'args': [],
     \ 'syntax': '',
     \ 'title': 'Chicken REPL'
+\ }
+
+let g:repl['racket'] = {
+    \ 'bin': 'rlwrap racket',
+    \ 'args': [],
+    \ 'syntax': '',
+    \ 'title': 'Racket REPL'
 \ }
 
 let g:repl['clojure'] = {
