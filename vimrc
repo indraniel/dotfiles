@@ -113,7 +113,6 @@ Plug 'tpope/vim-markdown'
 " Choices are (1) 'tpope/vim-markdown', or (2) 'gmarik/vim-markdown' :
 " which is a fork of (3) 'hallison/vim-markdown' or (4) 'plasticboy/vim-markdown'
 Plug 'mihai-rotaru/vim-asciidoc-ft-syntax'
-Plug 'laktek/distraction-free-writing-vim'
 Plug 'nelstrom/vim-markdown-folding'
 Plug 'fatih/vim-go'
 Plug 'gerw/vim-latex-suite'
