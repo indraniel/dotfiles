@@ -80,6 +80,7 @@ export HISTIGNORE=' *'
 
 # account for 'homebrew'ed software
 declare -a extra_paths=(
+    $HOME/sw/neovim/local/bin
     $HOME/.pyenv/bin
     $HOME/bin
     /usr/bin
@@ -113,5 +114,4 @@ export -f it2profile
 
 # set the default editor
 #export EDITOR=/usr/bin/vim
-alias nvim=$HOME/sw/neovim/local/bin/nvim
 export EDITOR="$HOME/sw/neovim/local/bin/nvim"
