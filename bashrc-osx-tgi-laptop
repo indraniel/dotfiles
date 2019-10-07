@@ -1,28 +1,7 @@
-function tab {
-    # from: https://gist.github.com/bobthecow/757788
-    # and https://stackoverflow.com/questions/38692346/new-tab-in-iterm2
-	# this function is only meant for MacOS and iTerm2
-    local cmd=""
-    local cdto="$PWD"
-    local args="$@"
-
-    if [ -d "$1" ]; then
-        cdto=`cd "$1"; pwd`
-        args="${@:2}"
-    fi
-
-    if [ -n "$args" ]; then
-        cmd="$args"
-    fi
-
-    osascript &>/tmp/log <<EOF
-tell application "iTerm2"
-    activate
-    tell current window to set tb to create tab with default profile
-    tell current session of current window to write text "cd ${cdto};${cmd}"
-end tell
-EOF
-}
+if [[ "$__bashrc_imported_flag" == "defined-${USER}" ]]; then
+    return 0
+fi
+__bashrc_imported_flag="defined-${USER}"
 
 function join_by { local IFS="$1"; shift; echo "$*"; }
 
@@ -80,10 +59,12 @@ fi
 unset colorize
 
 # enable branch notification niceties on the prompt
-if [ -f /usr/share/git-core/git-prompt.sh ]; then
-    source /usr/share/git-core/git-prompt.sh
-else
-    source ~/.git-prompt.sh
+GIT_PROMPT=/usr/local/etc/bash_completion.d/git-prompt.sh
+XCODE_GIT_PROMPT=/Applications/Xcode.app/Contents/Developer/usr/share/git-core/git-prompt.sh
+if [ -f "${XCODE_GIT_PROMPT}" ]; then
+    source ${XCODE_GIT_PROMPT}
+elif [ -f "${GIT_PROMPT}" ]; then
+    source ${GIT_PROMPT}
 fi
 
 # get vim's slimux/tmux integration to work correctly on MacOS (OSX)
@@ -95,15 +76,11 @@ export EVENT_NOPOLL=1
 export HISTIGNORE=' *'
 
 # original $PATH from initial purchase
-#export PATH=/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/opt/X11/bin
+#export PATH=/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin
 
 # account for 'homebrew'ed software
 declare -a extra_paths=(
-    $HOME/.goenv/bin
     $HOME/.pyenv/bin
-    $HOME/.rbenv/bin
-    $HOME/.Renv/bin
-    $HOME/.plenv/bin
     $HOME/bin
     /usr/bin
     /bin
@@ -115,52 +92,26 @@ declare -a extra_paths=(
 NEW_PATHS=$(join_by : "${extra_paths[@]}")
 export PATH=$NEW_PATHS
 
-# rbenv setup
-if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
-
 # pyenv setup
 if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
 
-## pyenv virtualenv setup
-#if which pyenv > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi
+## Renv setup
+#if which Renv > /dev/null; then eval "$(Renv init -)"; fi
 
-# plenv setup
-if which plenv > /dev/null; then eval "$(plenv init -)"; fi
+## java setup
+#export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_45.jdk/Contents/Home
+#export PATH=$HOME/idas/local/maven/apache-maven-3.5.4/bin:$PATH
 
-# Renv setup
-if which Renv > /dev/null; then eval "$(Renv init -)"; fi
-
-# goenv setup
-if which goenv > /dev/null; then eval "$(goenv init -)"; fi
-
-# java setup
-export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_45.jdk/Contents/Home
-export PATH=$HOME/idas/local/maven/apache-maven-3.5.4/bin:$PATH
-
-# scala setup
-export SCALA_HOME=$HOME/software/scala/scala-2.11.8
-export PATH=$SCALA_HOME/bin:$PATH
-
-# google-cloud
-source /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.bash.inc
-source /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.bash.inc
-
-# rust setup
-export PATH=$HOME/.cargo/bin:$PATH
+## google-cloud
+#source /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.bash.inc
+#source /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.bash.inc
 
 ## iTerm2 shortcuts
 ## based on http://stackoverflow.com/questions/8598021/iterm-2-profiles
-#function it2profile() { echo -e "\033]50;SetProfile=$1\a"; }
-#export -f it2profile
-#
-## iterm2 shell integration
-#if [ "$TERM" != "eterm-color" ] && [ "$TERM" != "dumb" ]; then
-#    # inside emacs skip this
-#    test -e "${HOME}/.iterm2_shell_integration.bash" \
-#        && source "${HOME}/.iterm2_shell_integration.bash"
-#fi
+function it2profile() { echo -e "\033]50;SetProfile=$1\a"; }
+export -f it2profile
 
 # set the default editor
-alias nvim='/usr/local/bin/nvim'
-export EDITOR="/usr/local/bin/nvim"
-
+#export EDITOR=/usr/bin/vim
+alias nvim=$HOME/sw/neovim/local/bin/nvim
+export EDITOR="$HOME/sw/neovim/local/bin/nvim"
