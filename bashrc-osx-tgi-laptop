@@ -132,8 +132,9 @@ if [ -f '/Users/idas/sw/gcloud/google-cloud-sdk/completion.bash.inc' ]; then
 fi
 
 ## java setup
-#export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_45.jdk/Contents/Home
-#export PATH=$HOME/idas/local/maven/apache-maven-3.5.4/bin:$PATH
+#export JDK_VERSION=jdk-11.0.4+11
+#export JAVA_HOME=/Users/idas/sw/java/${JDK_VERSION}/Contents/Home
+#export PATH=${JAVA_HOME}/bin:$PATH
 
 ## iTerm2 shortcuts
 ## based on http://stackoverflow.com/questions/8598021/iterm-2-profiles
