@@ -26,7 +26,7 @@ function setup_symlinks() {
     ln -vs $DOTFILE_DIR/init.vim $HOME/.config/nvim/init.vim
     ln -vs $DOTFILE_DIR/vim $HOME/.vim
 #    ln -vs $DOTFILE_DIR/screenrc $HOME/.screenrc
-    ln -vs $DOTFILE_DIR/bash/utils/git-prompt/git-prompt.sh $HOME/.git-prompt.sh
+#    ln -vs $DOTFILE_DIR/bash/utils/git-prompt/git-prompt.sh $HOME/.git-prompt.sh
     ln -vs $DOTFILE_DIR/bash/utils/bash-preexec/bash-preexec.sh \
         $HOME/.bash-preexec.sh
 
