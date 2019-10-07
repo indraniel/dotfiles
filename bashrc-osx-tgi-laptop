@@ -58,7 +58,11 @@ fi
 
 unset colorize
 
-# enable branch notification niceties on the prompt
+# enable git completion niceties
+GIT_COMPLETION=/usr/local/etc/bash_completion.d/git-completion.bash
+source ${GIT_COMPLETION}
+
+# enable git branch notification niceties on the prompt
 GIT_PROMPT=/usr/local/etc/bash_completion.d/git-prompt.sh
 XCODE_GIT_PROMPT=/Applications/Xcode.app/Contents/Developer/usr/share/git-core/git-prompt.sh
 if [ -f "${XCODE_GIT_PROMPT}" ]; then
