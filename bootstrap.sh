@@ -81,16 +81,8 @@ function bootUp() {
     note "Re-making .vim directory..."
     setup_symlinks
 
-    mkdir -p $HOME/.vim/bundle
-
-    note "Installing Vundle..."
-    git clone git://github.com/VundleVim/Vundle.vim.git $HOME/.vim/bundle/vundle
-
 #    note "rsync-ing remaining dotfiles..."
 #    rsync --exclude ".git/" --exclude ".DS_Store" --exclude "bootstrap.sh" --exclude "README.md" -av . ~
-
-    note "Installing plugins using Vundle..."
-    vim +PluginInstall +qall
 
     note "dotfile setup complete!"
 }
