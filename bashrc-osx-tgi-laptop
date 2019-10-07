@@ -71,6 +71,22 @@ elif [ -f "${GIT_PROMPT}" ]; then
     source ${GIT_PROMPT}
 fi
 
+# enable bash history logging
+source ~/.bash-preexec.sh
+LOG_DIR=$HOME/.logs
+preexec() {
+    # don't log root enabled commands
+    if [ "$(id -u)" -ne 0 ]; then
+        CMD_LOG="$LOG_DIR/bash-history-$(date "+%Y-%m-%d").log"
+        if [ ! -e "$CMD_LOG" ]; then
+            touch $CMD_LOG
+            chgrp info $CMD_LOG
+            chmod 0664 $CMD_LOG
+        fi
+        echo "[$(date)] : $USER@$(hostname) : $(pwd) : $(history 1)" >> ${CMD_LOG}
+    fi
+}
+
 # get vim's slimux/tmux integration to work correctly on MacOS (OSX)
 # see https://github.com/epeli/slimux/issues/61
 export EVENT_NOKQUEUE=1
