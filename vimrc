@@ -268,7 +268,7 @@ let g:repl['scheme'] = {
 \ }
 
 let g:repl['racket'] = {
-    \ 'bin': 'rlwrap racket',
+    \ 'bin': 'racket -il xrepl',
     \ 'args': [],
     \ 'syntax': '',
     \ 'title': 'Racket REPL'
