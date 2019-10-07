@@ -49,6 +49,8 @@ call plug#begin('~/.vim/bundle')
 
 " UI Additions
 " ------------
+Plug 'KevinGoodsell/vim-csexact'
+Plug 'godlygeek/csapprox'
 Plug 'w0ng/vim-hybrid'
 Plug 'chriskempson/tomorrow-theme', {'rtp': 'vim/'}
 Plug '29decibel/codeschool-vim-theme'
