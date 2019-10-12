@@ -98,10 +98,15 @@ export HISTIGNORE=' *'
 # original $PATH from initial purchase
 #export PATH=/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin
 
+## java setup
+export JDK_VERSION=jdk-11.0.4+11
+export JAVA_HOME=/Users/idas/sw/java/${JDK_VERSION}/Contents/Home
+
 # account for 'homebrew'ed software
 declare -a extra_paths=(
     $HOME/sw/neovim/local/bin
     $HOME/.pyenv/bin
+    $JAVA_HOME/bin
     $HOME/bin
     /usr/bin
     /bin
@@ -130,11 +135,6 @@ fi
 if [ -f '/Users/idas/sw/gcloud/google-cloud-sdk/completion.bash.inc' ]; then
     source '/Users/idas/sw/gcloud/google-cloud-sdk/completion.bash.inc';
 fi
-
-## java setup
-#export JDK_VERSION=jdk-11.0.4+11
-#export JAVA_HOME=/Users/idas/sw/java/${JDK_VERSION}/Contents/Home
-#export PATH=${JAVA_HOME}/bin:$PATH
 
 ## iTerm2 shortcuts
 ## based on http://stackoverflow.com/questions/8598021/iterm-2-profiles
