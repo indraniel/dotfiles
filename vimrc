@@ -128,6 +128,7 @@ Plug 'lambdalisue/vim-pyenv'
 Plug 'alaviss/nim.nvim'
 Plug 'broadinstitute/vim-wdl'
 Plug 'wlangstroth/vim-racket'
+Plug 'udalov/kotlin-vim'
 
 " Applications
 " ------------
