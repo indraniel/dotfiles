@@ -80,6 +80,9 @@ export HISTIGNORE=' *'
 # account for 'homebrew'ed software
 #export PATH=$HOME/.Renv/bin:$HOME/.goenv/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin
 export PATH=/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin
+## java setup
+export JDK_VERSION=jdk-11.0.3+7
+export JAVA_HOME=/Users/idas/sw/java/${JDK_VERSION}/Contents/Home
 
 # rbenv setup
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
