@@ -88,8 +88,8 @@ export JAVA_HOME=/Users/idas/sw/java/${JDK_VERSION}/Contents/Home
 # pyenv setup
 if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
 
-# Renv setup
-if which Renv > /dev/null; then eval "$(Renv init -)"; fi
+## Renv setup
+#if which Renv > /dev/null; then eval "$(Renv init -)"; fi
 
 # goenv setup
 if which goenv > /dev/null; then eval "$(goenv init -)"; fi
