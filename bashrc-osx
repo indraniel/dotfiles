@@ -66,6 +66,10 @@ elif [ -f "${GIT_PROMPT}" ]; then
     source ${GIT_PROMPT}
 fi
 
+# get vim's slimux/tmux integration to work correctly on MacOS (OSX)
+# see https://github.com/epeli/slimux/issues/61
+export EVENT_NOKQUEUE=1
+export EVENT_NOPOLL=1
 
 # commands beginning with one space don't get stored in .bash_history
 export HISTIGNORE=' *'
