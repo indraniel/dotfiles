@@ -3,6 +3,8 @@ if [[ "$__bashrc_imported_flag" == "defined-${USER}" ]]; then
 fi
 __bashrc_imported_flag="defined-${USER}"
 
+function join_by { local IFS="$1"; shift; echo "$*"; }
+
 # set a fancy prompt (non-color, unless we know we "want" color)
 case "$TERM" in
     xterm) colorize=yes;;
@@ -77,13 +79,25 @@ export HISTIGNORE=' *'
 # original $PATH from initial purchase
 #/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin
 
-# account for 'homebrew'ed software
-#export PATH=$HOME/.Renv/bin:$HOME/.goenv/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin
-export PATH=/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin
 ## java setup
 export JDK_VERSION=jdk-11.0.3+7
 export JAVA_HOME=/Users/idas/sw/java/${JDK_VERSION}/Contents/Home
 
+# account for 'homebrew'ed software
+declare -a extra_paths=(
+    $HOME/sw/neovim/local/bin
+    $HOME/.pyenv/bin
+    $JAVA_HOME/bin
+    $HOME/bin
+    /usr/bin
+    /bin
+    /usr/sbin
+    /sbin
+    /usr/local/bin
+    /opt/X11/bin
+)
+NEW_PATHS=$(join_by : "${extra_paths[@]}")
+export PATH=$NEW_PATHS
 
 # pyenv setup
 if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
