@@ -105,7 +105,17 @@ if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
 ## Renv setup
 #if which Renv > /dev/null; then eval "$(Renv init -)"; fi
 
+## google-cloud
+export CLOUDSDK_ROOT_DIR=/Users/idas/sw/gcloud/google-cloud-sdk
+export CLOUDSDK_PYTHON=$HOME/.pyenv/versions/3.7.4/bin/python
+export CLOUDSDK_GSUTIL_PYTHON=$HOME/.pyenv/versions/3.7.4/bin/python
+if [ -f '/Users/idas/sw/gcloud/google-cloud-sdk/path.bash.inc' ]; then
+    source '/Users/idas/sw/gcloud/google-cloud-sdk/path.bash.inc';
+fi
 
+if [ -f '/Users/idas/sw/gcloud/google-cloud-sdk/completion.bash.inc' ]; then
+    source '/Users/idas/sw/gcloud/google-cloud-sdk/completion.bash.inc';
+fi
 
 # iTerm2 shortcuts
 # based on http://stackoverflow.com/questions/8598021/iterm-2-profiles
