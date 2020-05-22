@@ -92,8 +92,6 @@ if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
 #if which Renv > /dev/null; then eval "$(Renv init -)"; fi
 
 
-# ocaml/opam setup
-#source $HOME/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
 
 # iTerm2 shortcuts
 # based on http://stackoverflow.com/questions/8598021/iterm-2-profiles
