@@ -66,9 +66,6 @@ elif [ -f "${GIT_PROMPT}" ]; then
     source ${GIT_PROMPT}
 fi
 
-# set the default editor
-#alias vim='mvim -v'
-export EDITOR=/usr/bin/vim
 
 # commands beginning with one space don't get stored in .bash_history
 export HISTIGNORE=' *'
@@ -99,3 +96,7 @@ if which goenv > /dev/null; then eval "$(goenv init -)"; fi
 # based on http://stackoverflow.com/questions/8598021/iterm-2-profiles
 function it2profile() { echo -e "\033]50;SetProfile=$1\a"; }
 export -f it2profile
+
+# set the default editor
+#export EDITOR=/usr/bin/vim
+export EDITOR="$HOME/sw/neovim/local/bin/nvim"
