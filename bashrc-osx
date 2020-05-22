@@ -91,8 +91,6 @@ if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
 ## Renv setup
 #if which Renv > /dev/null; then eval "$(Renv init -)"; fi
 
-# goenv setup
-if which goenv > /dev/null; then eval "$(goenv init -)"; fi
 
 # ocaml/opam setup
 #source $HOME/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
