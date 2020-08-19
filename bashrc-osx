@@ -81,13 +81,15 @@ export HISTIGNORE=' *'
 
 ## java setup
 export JDK_VERSION=jdk-11.0.3+7
-export JAVA_HOME=/Users/idas/sw/java/${JDK_VERSION}/Contents/Home
+export JAVA_HOME=${HOME}/sw/java/${JDK_VERSION}/Contents/Home
+export GRADLE_HOME=${HOME}/sw/gradle/gradle-6.5.1
 
 # account for 'homebrew'ed software
 declare -a extra_paths=(
     $HOME/sw/neovim/local/bin
     $HOME/.pyenv/bin
     $JAVA_HOME/bin
+    $GRADLE_HOME/bin
     $HOME/bin
     /usr/bin
     /bin
