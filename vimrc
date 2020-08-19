@@ -499,6 +499,19 @@ au User asyncomplete_setup call asyncomplete#register_source({
     \ 'completor': function('async_clj_omni#sources#complete'),
     \ })
 
+" kotlin
+if executable(expand('~/sw/kotlin/lsp/server/bin/kotlin-language-server'))
+    au User lsp_setup call lsp#register_server({
+        \ 'name': 'kotlin-language-server',
+        \ 'cmd': {server_info->[
+        \     &shell,
+        \     &shellcmdflag,
+        \     expand('~/sw/kotlin/lsp/server/bin/kotlin-language-server')
+        \ ]},
+        \ 'whitelist': ['kotlin']
+        \ })
+endif
+
 "==============================================================================
 " History Niceties
 "==============================================================================
