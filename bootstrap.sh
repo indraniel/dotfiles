@@ -58,6 +58,9 @@ function setup_symlinks() {
 
     # clojure/lein configs
     ln -vs $DOTFILE_DIR/lein $HOME/.lein
+
+    # clojure/clj-tools configs
+    ln -vs $DOTFILE_DIR/clojure $HOME/.clojure
 }
 
 function setup_bash_utils() {
