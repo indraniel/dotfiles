@@ -9,3 +9,8 @@
         gglog = log --graph --full-history --pretty=format:'%w(120, 0, 9)%C(yellow)%h%Cred%d%Creset %C(green)%an%Creset %C(white)%s%Creset'
 [push]
 	default = nothing
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
