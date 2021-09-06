@@ -121,7 +121,7 @@ NEW_PATHS=$(join_by : "${extra_paths[@]}")
 export PATH=$NEW_PATHS
 
 # pyenv setup
-if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
+if which pyenv > /dev/null; then eval "$(pyenv init --path)"; fi
 
 ## Renv setup
 #if which Renv > /dev/null; then eval "$(Renv init -)"; fi
