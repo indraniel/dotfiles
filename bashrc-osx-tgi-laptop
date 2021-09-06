@@ -106,6 +106,7 @@ export GRADLE_HOME=${HOME}/sw/gradle/gradle-6.6
 declare -a extra_paths=(
     $HOME/sw/neovim/local/bin
     $HOME/.pyenv/bin
+    $HOME/.nimble/bin
     $JAVA_HOME/bin
     $GRADLE_HOME/bin
     $HOME/bin
