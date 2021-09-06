@@ -105,6 +105,7 @@ export GRADLE_HOME=${HOME}/sw/gradle/gradle-6.6
 # account for 'homebrew'ed software
 declare -a extra_paths=(
     $HOME/sw/neovim/local/bin
+    $HOME/.cargo/bin
     $HOME/.pyenv/bin
     $HOME/.nimble/bin
     $JAVA_HOME/bin
