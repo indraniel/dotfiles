@@ -134,12 +134,13 @@ Plug 'kovisoft/slimv'
 " Applications
 " ------------
 Plug 'szw/vim-dict'
-Plug 'tpope/vim-fireplace', { 'tag': 'v1.2' }
+"Plug 'tpope/vim-fireplace', { 'tag': 'v1.2' }
 Plug 'venantius/vim-cljfmt'
 Plug 'clojure-vim/async-clj-omni'
 "Plug 'clojure-vim/acid.nvim', { 'do': ':UpdateRemotePlugins' }
-"Plug 'Olical/conjure', { 'tag': 'v0.22.0', 'do': 'bin/compile' }
-Plug gitlab.'HiPhish/repl.nvim'
+Plug 'Olical/conjure', { 'tag': 'v4.23.0' }
+Plug 'Olical/aniseed', { 'tag': 'v3.21.0' }
+"Plug gitlab.'HiPhish/repl.nvim'
 
 call plug#end()                                                " required!
 
