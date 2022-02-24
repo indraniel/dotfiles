@@ -102,8 +102,13 @@ export JDK_VERSION=jdk-17.0.2+8
 export JAVA_HOME=/Users/idas/sw/java/${JDK_VERSION}/Contents/Home
 export GRADLE_HOME=${HOME}/sw/gradle/gradle-6.6
 
+## roswell setup
+export ROSWELL_HOME=${HOME}/sw/roswell/setup
+
 # account for 'homebrew'ed software
 declare -a extra_paths=(
+    $HOME/sw/roswell/setup/bin
+    $HOME/sw/roswell/local/bin
     $HOME/sw/scala/bin
     $HOME/sw/neovim/local/bin
     $HOME/.cargo/bin
