@@ -174,6 +174,7 @@ let g:LargeFile=20 " Files larger than 20MB will not have syntax highlighting
 " Leader
 "==============================================================================
 let mapleader = ","
+let maplocalleader = ","
 
 "==============================================================================
 " (neovim) Terminal adjustments
