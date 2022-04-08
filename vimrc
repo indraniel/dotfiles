@@ -140,7 +140,6 @@ Plug 'clojure-vim/async-clj-omni'
 "Plug 'clojure-vim/acid.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'Olical/conjure'
 Plug 'Olical/aniseed'
-"Plug gitlab.'HiPhish/repl.nvim'
 
 call plug#end()                                                " required!
 
@@ -254,46 +253,6 @@ let g:golden_ratio_autocommand = 0
 " golden ratio resize toggle
 " --------------------------
 nnoremap <F7> :GoldenRatioToggle<CR>
-
-"==============================================================================
-" REPL.nvim adjustments
-"==============================================================================
-let g:repl = {}
-let g:repl['python'] = {
-    \ 'bin': 'python',
-    \ 'args': [],
-    \ 'syntax': 'python',
-    \ 'title': 'Python REPL'
-\ }
-
-let g:repl['scheme'] = {
-    \ 'bin': 'rlwrap csi',
-    \ 'args': [],
-    \ 'syntax': '',
-    \ 'title': 'Chicken REPL'
-\ }
-
-let g:repl['racket'] = {
-    \ 'bin': 'racket -il xrepl',
-    \ 'args': [],
-    \ 'syntax': '',
-    \ 'title': 'Racket REPL'
-\ }
-
-let g:repl['clojure'] = {
-    \ 'bin': 'LEIN_USE_BOOTCLASSPATH=no lein',
-    \ 'args': ['repl'],
-    \ 'syntax': '',
-    \ 'title': 'Clojure nREPL'
-\ }
-
-" Send the text of a motion to the REPL
-nmap <leader>rs  <Plug>(ReplSend)
-" Send the current line to the REPL
-nmap <leader>rss <Plug>(ReplSendLine)
-nmap <leader>rs_ <Plug>(ReplSendLine)
-" Send the selected text to the REPL
-vmap <leader>rs  <Plug>(ReplSend)
 
 "==============================================================================
 " Mouse
