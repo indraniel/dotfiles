@@ -135,9 +135,9 @@ Plug 'kovisoft/slimv'
 " ------------
 Plug 'szw/vim-dict'
 "Plug 'tpope/vim-fireplace', { 'tag': 'v1.2' }
-Plug 'venantius/vim-cljfmt'
-Plug 'clojure-vim/async-clj-omni'
 "Plug 'clojure-vim/acid.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'venantius/vim-cljfmt'
+Plug 'thecontinium/asyncomplete-conjure.vim'
 Plug 'Olical/conjure'
 Plug 'Olical/aniseed'
 
@@ -454,11 +454,13 @@ au User asyncomplete_setup call asyncomplete#register_source({
     \ })
 
 " clojure
-au User asyncomplete_setup call asyncomplete#register_source({
-    \ 'name': 'async_clj_omni',
-    \ 'whitelist': ['clojure'],
-    \ 'completor': function('async_clj_omni#sources#complete'),
-    \ })
+au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#conjure#get_source_options({
+    \ 'name': 'conjure',
+    \ 'allowlist': ['clojure'],
+    \ 'triggers': {'*': ['/']},
+    \ 'time': 10,
+    \ 'completor': function('asyncomplete#sources#conjure#completor'),
+    \ }))
 
 " kotlin
 if executable(expand('~/sw/kotlin/lsp/server/bin/kotlin-language-server'))
