@@ -158,7 +158,7 @@ elseif $TERM_PROGRAM == 'iTerm.app'
     colorscheme gruvbox
 elseif $TERM == 'screen-256color'
     set t_Co=256
-    colorscheme railscasts
+    colorscheme gruvbox
 elseif $TERM == 'xterm-256color'
     set t_Co=256
     colorscheme railscasts
