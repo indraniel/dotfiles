@@ -129,7 +129,7 @@ Plug 'alaviss/nim.nvim'
 Plug 'broadinstitute/vim-wdl'
 Plug 'wlangstroth/vim-racket'
 Plug 'udalov/kotlin-vim'
-Plug 'kovisoft/slimv'
+"Plug 'kovisoft/slimv'
 
 " Applications
 " ------------
