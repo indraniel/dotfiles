@@ -129,6 +129,7 @@ Plug 'alaviss/nim.nvim'
 Plug 'broadinstitute/vim-wdl'
 Plug 'wlangstroth/vim-racket'
 Plug 'udalov/kotlin-vim'
+Plug 'rust-lang/rust.vim'
 "Plug 'kovisoft/slimv'
 
 " Applications
@@ -472,6 +473,15 @@ if executable(expand('~/sw/kotlin/lsp/server/bin/kotlin-language-server'))
         \     expand('~/sw/kotlin/lsp/server/bin/kotlin-language-server')
         \ ]},
         \ 'whitelist': ['kotlin']
+        \ })
+endif
+
+" rust
+if executable('rust-analyzer')
+  au User lsp_setup call lsp#register_server({
+        \   'name': 'Rust Language Server',
+        \   'cmd': {server_info->['rust-analyzer']},
+        \   'whitelist': ['rust'],
         \ })
 endif
 
