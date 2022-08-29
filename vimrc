@@ -344,7 +344,7 @@ let javascript_enable_domhtmlcss=1
 " Racket/Scheme/Clojure/Common-Lisp related
 " -----------------------------------------
 autocmd BufNewFile,BufRead *.clj,*.cljs, setlocal ft=clojure
-autocmd BufNewFile,BufRead *.cl,*.lisp, setlocal ft=lisp
+autocmd BufNewFile,BufRead *.cl,*.lisp, setlocal ft=lisp smartindent shiftwidth=2 tabstop=2 softtabstop=2
 
 let g:niji_dark_colours = [
     \ [ '81', '#5fd7ff'],
