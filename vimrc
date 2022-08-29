@@ -110,7 +110,7 @@ Plug 'vim-ruby/vim-ruby'
 Plug 'pangloss/vim-javascript'
 Plug 'itspriddle/vim-jquery'
 Plug 'guns/vim-clojure-static'
-Plug 'kien/rainbow_parentheses.vim'
+"Plug 'kien/rainbow_parentheses.vim'
 Plug 'tpope/vim-markdown'
 " Choices are (1) 'tpope/vim-markdown', or (2) 'gmarik/vim-markdown' :
 " which is a fork of (3) 'hallison/vim-markdown' or (4) 'plasticboy/vim-markdown'
