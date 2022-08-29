@@ -365,6 +365,12 @@ endif
 
 nnoremap <F3> :RainbowParenthesesToggle<CR>
 
+let g:slimv_swank_cmd = "!qlot exec ros -e '(ql:quickload :swank) (swank:create-server)' wait &"
+let g:slimv_lisp = 'qlot exec ros run'
+let g:slimv_impl = 'sbcl'
+let g:slimv_keybindings = 2
+let g:swank_block_size = 65536
+
 " cmake
 " -----
 autocmd BufNewFile,BufRead CMakeLists.txt setlocal ft=cmake
