@@ -119,7 +119,6 @@ Plug 'nelstrom/vim-markdown-folding'
 Plug 'fatih/vim-go'
 Plug 'gerw/vim-latex-suite'
 Plug 'vim-scripts/vim-niji'
-"Plug 'kovisoft/paredit'
 Plug 'guns/vim-sexp'
 Plug 'tpope/vim-sexp-mappings-for-regular-people'
 Plug 'tpope/vim-repeat'
@@ -130,16 +129,17 @@ Plug 'broadinstitute/vim-wdl'
 Plug 'wlangstroth/vim-racket'
 Plug 'udalov/kotlin-vim'
 Plug 'rust-lang/rust.vim'
-"Plug 'kovisoft/slimv'
+"Plug 'kovisoft/paredit', { 'for': ['lisp'] }
+Plug 'kovisoft/slimv', { 'for': ['lisp'] }
 
 " Applications
 " ------------
 Plug 'szw/vim-dict'
 "Plug 'tpope/vim-fireplace', { 'tag': 'v1.2' }
 "Plug 'clojure-vim/acid.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'venantius/vim-cljfmt'
-Plug 'thecontinium/asyncomplete-conjure.vim'
-Plug 'Olical/conjure'
+Plug 'venantius/vim-cljfmt', { 'for': ['clojure'] }
+Plug 'thecontinium/asyncomplete-conjure.vim', { 'for': ['clojure', 'scheme'] }
+Plug 'Olical/conjure', { 'for': ['clojure', 'scheme'] }
 Plug 'Olical/aniseed'
 
 call plug#end()                                                " required!
