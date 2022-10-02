@@ -69,6 +69,7 @@ Plug 'reedes/vim-pencil'
 Plug 'morhetz/gruvbox'
 Plug 'lifepillar/vim-solarized8'
 Plug 'norcalli/nvim-colorizer.lua'
+Plug 'voldikss/vim-floaterm'
 
 " Navigation
 " ----------
