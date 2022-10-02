@@ -132,6 +132,8 @@ Plug 'udalov/kotlin-vim'
 Plug 'rust-lang/rust.vim'
 "Plug 'kovisoft/paredit', { 'for': ['lisp'] }
 Plug 'kovisoft/slimv', { 'for': ['lisp'] }
+Plug 'dart-lang/dart-vim-plugin'
+Plug 'thosakwe/vim-flutter'
 
 " Applications
 " ------------
@@ -476,6 +478,11 @@ nn <M-g> :call JumpToDef()<cr>
 ino <M-g> <esc>:call JumpToDef()<cr>i
 
 
+" dart/flutter
+" ------------
+au BufNewFile,BufRead *.dart set filetype=dart
+autocmd FileType dart setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab
+
 "==============================================================================
 " asyncomplete.vim / Omni-Complete Setup
 "==============================================================================
@@ -513,6 +520,15 @@ if executable('pyls')
         \ 'name': 'pyls',
         \ 'cmd': {server_info->['pyls']},
         \ 'whitelist': ['python'],
+        \ })
+endif
+
+" dart/flutter
+if executable('dart')
+    au User lsp_setup call lsp#register_server({
+        \ 'name': 'dart',
+        \ 'cmd': ['dart', 'language-server', '--client-id', 'vim'],
+        \ 'whitelist': ['dart'],
         \ })
 endif
 
