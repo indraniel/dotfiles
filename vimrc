@@ -68,6 +68,7 @@ Plug 'jonathanfilip/vim-lucius'
 Plug 'reedes/vim-pencil'
 Plug 'morhetz/gruvbox'
 Plug 'lifepillar/vim-solarized8'
+Plug 'norcalli/nvim-colorizer.lua'
 
 " Navigation
 " ----------
