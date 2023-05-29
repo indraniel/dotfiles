@@ -50,7 +50,7 @@ call plug#begin('~/.vim/bundle')
 " UI Additions
 " ------------
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-Plug 'KevinGoodsell/vim-csexact'
+"Plug 'KevinGoodsell/vim-csexact'
 Plug 'godlygeek/csapprox'
 Plug 'w0ng/vim-hybrid'
 Plug 'chriskempson/tomorrow-theme', {'rtp': 'vim/'}
