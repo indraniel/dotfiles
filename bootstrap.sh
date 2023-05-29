@@ -56,11 +56,11 @@ function setup_symlinks() {
         ln -sv $DOTFILE_DIR/profile-osx $HOME/.profile
     fi
 
-    # clojure/lein configs
-    ln -vs $DOTFILE_DIR/lein $HOME/.lein
+#    # clojure/lein configs
+#    ln -vs $DOTFILE_DIR/lein $HOME/.lein
 
-    # clojure/clj-tools configs
-    ln -vs $DOTFILE_DIR/clojure $HOME/.clojure
+#    # clojure/clj-tools configs
+#    ln -vs $DOTFILE_DIR/clojure $HOME/.clojure
 }
 
 function setup_bash_utils() {
