@@ -5,6 +5,8 @@ require('nvim-treesitter.configs').setup {
       "rust",
       "clojure",
       "bash",
+      "markdown",
+      "markdown_inline",
       "scala",
       "sql",
       "dockerfile",
