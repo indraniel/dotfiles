@@ -88,6 +88,7 @@ alias ctags=$(brew --prefix)/bin/ctags
 export JDK_VERSION=jdk-17.0.2+8
 export JAVA_HOME=${HOME}/sw/java/${JDK_VERSION}/Contents/Home
 export GRADLE_HOME=${HOME}/sw/gradle/gradle-8.1.1
+export SCALA_HOME=${HOME}/sw/scala
 
 ## roswell setup
 export ROSWELL_HOME=${HOME}/sw/roswell/setup
@@ -99,6 +100,7 @@ declare -a extra_paths=(
     $HOME/sw/neovim/local/bin
     $HOME/.cargo/bin
     $HOME/.pyenv/bin
+    $SCALA_HOME/bin
     $JAVA_HOME/bin
     $GRADLE_HOME/bin
     $HOME/bin
