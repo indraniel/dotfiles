@@ -80,7 +80,8 @@ export HISTIGNORE=' *'
 #/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin
 
 ## java setup
-export JDK_VERSION=jdk-11.0.3+7
+#export JDK_VERSION=jdk-11.0.3+7
+export JDK_VERSION=jdk-17.0.2+8
 export JAVA_HOME=${HOME}/sw/java/${JDK_VERSION}/Contents/Home
 export GRADLE_HOME=${HOME}/sw/gradle/gradle-6.5.1
 
