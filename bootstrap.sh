@@ -22,6 +22,7 @@ function note() {
 }
 
 function setup_symlinks() {
+    # original vim/nvim config (VimL-based)
     ln -vs $DOTFILE_DIR/vimrc $HOME/.vimrc
     ln -vs $DOTFILE_DIR/init.vim $HOME/.config/nvim/init.vim
     ln -vs $DOTFILE_DIR/vim $HOME/.vim
