@@ -26,14 +26,20 @@ function setup_symlinks() {
     ln -vs $DOTFILE_DIR/vimrc $HOME/.vimrc
     ln -vs $DOTFILE_DIR/init.vim $HOME/.config/nvim/init.vim
     ln -vs $DOTFILE_DIR/vim $HOME/.vim
+
+    # screen configs
 #    ln -vs $DOTFILE_DIR/screenrc $HOME/.screenrc
+
+    # setup the bash git prompt -- now comes with the lastest version of git
 #    ln -vs $DOTFILE_DIR/bash/utils/git-prompt/git-prompt.sh $HOME/.git-prompt.sh
+
+    # bash command history logging...
     ln -vs $DOTFILE_DIR/bash/utils/bash-preexec/bash-preexec.sh \
         $HOME/.bash-preexec.sh
 
     os=$(uname)
 
-    # bashrc configs
+    # bashrc and tmux configs
     if [ "$os" == "Linux" ]; then
         ln -vs $DOTFILE_DIR/bashrc-tgi-linux $HOME/.bashrc
     	ln -vs $DOTFILE_DIR/tmux-linux.conf $HOME/.tmux.conf
