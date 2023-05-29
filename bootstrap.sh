@@ -27,6 +27,9 @@ function setup_symlinks() {
     ln -vs $DOTFILE_DIR/init.vim $HOME/.config/nvim/init.vim
     ln -vs $DOTFILE_DIR/vim $HOME/.vim
 
+    # newer nvim (nvim2) config (lua-based)
+    ln -vs $DOTFILE_DIR/nvim2 $HOME/.config/nvim2
+
     # screen configs
 #    ln -vs $DOTFILE_DIR/screenrc $HOME/.screenrc
 
@@ -77,6 +80,13 @@ function setup_logging_directory() {
     fi
 }
 
+function install_packer() {
+    git clone \
+        --depth 1 \
+        https://github.com/wbthomason/packer.nvim \
+        ~/.local/share/nvim2/site/pack/packer/start/packer.nvim
+}
+
 function bootUp() {
     note "setup bash utilities"
     setup_bash_utils
@@ -86,6 +96,9 @@ function bootUp() {
 
     note "Re-making symlink directories..."
     setup_symlinks
+
+    note "installing neovim packer..."
+    install_packer
 
 #    note "rsync-ing remaining dotfiles..."
 #    rsync --exclude ".git/" --exclude ".DS_Store" --exclude "bootstrap.sh" --exclude "README.md" -av . ~
