@@ -84,7 +84,7 @@ function bootUp() {
     note "setup logging"
     setup_logging_directory
 
-    note "Re-making .vim directory..."
+    note "Re-making symlink directories..."
     setup_symlinks
 
 #    note "rsync-ing remaining dotfiles..."
