@@ -56,13 +56,6 @@ function setup_symlinks() {
         ln -sv $DOTFILE_DIR/profile-osx $HOME/.profile
     fi
 
-    # tmux configs
-    if [ "$os" == "Linux" ]; then
-        ln -vs $DOTFILE_DIR/tmux-linux.conf $HOME/.tmux.conf
-    elif [ "$os" == "Darwin" ]; then
-        ln -sv $DOTFILE_DIR/tmux-osx.conf $HOME/.tmux.conf
-    fi
-
     # clojure/lein configs
     ln -vs $DOTFILE_DIR/lein $HOME/.lein
 
