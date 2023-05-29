@@ -75,4 +75,13 @@ return require('packer').startup(function(use)
         }
     })
 
+    use({
+        "scalameta/nvim-metals",
+        ft = {'scala'},
+        requires = {
+          "nvim-lua/plenary.nvim",
+          "mfussenegger/nvim-dap",
+        },
+    })
+
 end)
