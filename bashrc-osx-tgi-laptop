@@ -97,6 +97,10 @@ export HISTIGNORE=' *'
 # original $PATH from initial purchase
 #export PATH=/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin
 
+# ctags setup
+#  -- assuming that "brew install universal-ctags" has been already executed
+alias ctags=$(brew --prefix)/bin/ctags
+
 ## java setup
 export JDK_VERSION=jdk-17.0.2+8
 #export JDK_VERSION=jdk-11.0.4+11
