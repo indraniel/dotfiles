@@ -100,7 +100,7 @@ export HISTIGNORE=' *'
 ## java setup
 export JDK_VERSION=jdk-17.0.2+8
 export JAVA_HOME=/Users/idas/sw/java/${JDK_VERSION}/Contents/Home
-export GRADLE_HOME=${HOME}/sw/gradle/gradle-6.6
+export GRADLE_HOME=${HOME}/sw/gradle/gradle-8.1.1
 
 ## roswell setup
 export ROSWELL_HOME=${HOME}/sw/roswell/setup
