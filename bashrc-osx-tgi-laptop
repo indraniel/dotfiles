@@ -140,8 +140,8 @@ if which pyenv > /dev/null; then eval "$(pyenv init --path)"; fi
 
 ## google-cloud
 export CLOUDSDK_ROOT_DIR=/Users/idas/sw/gcloud/google-cloud-sdk
-export CLOUDSDK_PYTHON=$HOME/.pyenv/versions/3.7.4/bin/python
-export CLOUDSDK_GSUTIL_PYTHON=$HOME/.pyenv/versions/3.7.4/bin/python
+export CLOUDSDK_PYTHON=$HOME/.pyenv/versions/3.11.2/bin/python
+export CLOUDSDK_GSUTIL_PYTHON=$HOME/.pyenv/versions/3.11.2/bin/python
 if [ -f '/Users/idas/sw/gcloud/google-cloud-sdk/path.bash.inc' ]; then
     source '/Users/idas/sw/gcloud/google-cloud-sdk/path.bash.inc';
 fi
