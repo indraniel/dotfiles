@@ -14,7 +14,7 @@ require('lspconfig').pylsp.setup({
             plugins = {
                 pycodestyle = {
                     -- https://www.flake8rules.com/
-                    ignore = { 'E305', 'E302' }
+                    ignore = { 'E201', 'E202', 'E305', 'E302' , 'E501' }
                 }
             }
         }
