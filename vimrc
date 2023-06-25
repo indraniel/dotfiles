@@ -143,8 +143,8 @@ Plug 'szw/vim-dict'
 "Plug 'tpope/vim-fireplace', { 'tag': 'v1.2' }
 "Plug 'clojure-vim/acid.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'venantius/vim-cljfmt', { 'for': ['clojure'] }
-Plug 'thecontinium/asyncomplete-conjure.vim', { 'for': ['clojure', 'scheme'] }
-Plug 'Olical/conjure', { 'for': ['clojure', 'scheme'] }
+Plug 'thecontinium/asyncomplete-conjure.vim', { 'for': ['clojure', 'scheme', 'janet'] }
+Plug 'Olical/conjure', { 'for': ['clojure', 'scheme', 'janet'] }
 Plug 'Olical/aniseed'
 
 call plug#end()                                                " required!
