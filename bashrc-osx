@@ -114,6 +114,9 @@ declare -a extra_paths=(
 NEW_PATHS=$(join_by : "${extra_paths[@]}")
 export PATH=$NEW_PATHS
 
+# nodenv setup
+if which nodenv > /dev/null; then eval "$(nodenv init -)"; fi
+
 # pyenv setup
 if which pyenv > /dev/null; then eval "$(pyenv init --path)"; fi
 
