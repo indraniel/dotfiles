@@ -44,6 +44,36 @@ return require('packer').startup(function(use)
     use('guns/vim-sexp')
     use('tpope/vim-sexp-mappings-for-regular-people')
 
+    use({'julienvincent/nvim-paredit', ft = {'lisp', 'clojure', 'scheme'} })
+    use({'gpanders/nvim-parinfer', ft = {'lisp', 'clojure', 'scheme'} })
+    use({
+        'dundalek/parpar.nvim',
+        ft = {'lisp', 'clojure', 'scheme'},
+        dependences = {
+            "julienvincent/nvim-paredit",
+            "gpanders/nvim-parinfer",
+        },
+        requires = {
+            "julienvincent/nvim-paredit",
+            "gpanders/nvim-parinfer",
+        },
+        config = function()
+            local paredit = require("nvim-paredit")
+            require("parpar").setup {
+              paredit = {
+                -- pass any nvim-paredit options here
+                keys = {
+                  -- custom bindings are automatically wrapped
+                  ["<A-H>"] = { paredit.api.slurp_backwards, "Slurp backwards" },
+                  ["<A-J>"] = { paredit.api.barf_backwards, "Barf backwards" },
+                  ["<A-K>"] = { paredit.api.barf_forwards, "Barf forwards" },
+                  ["<A-L>"] = { paredit.api.slurp_forwards, "Slurp forwards" },
+                }
+              }
+            }
+        end
+    })
+
     use({ 'kovisoft/slimv', ft = {'lisp'} })
 
     use({'Olical/conjure', ft = {'clojure', 'scheme'} })
