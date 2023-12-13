@@ -76,7 +76,7 @@ return require('packer').startup(function(use)
 
     use({ 'kovisoft/slimv', ft = {'lisp'} })
 
-    use({'Olical/conjure', ft = {'clojure', 'scheme'} })
+    use({'Olical/conjure', ft = {'clojure', 'scheme', 'rust'} })
     use({'Olical/aniseed'})
 
     use({
