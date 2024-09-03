@@ -14,6 +14,9 @@ set $mod Mod4
 # x11 compositor
 exec --no-startup-id picom
 
+# set background wallpaper
+exec --no-startup-id feh --bg-scale ~/Media/wallpapers/empty-room.png
+
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
 font pango:monospace 8
