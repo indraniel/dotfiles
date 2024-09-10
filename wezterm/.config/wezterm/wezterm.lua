@@ -1,19 +1,20 @@
-local wezterm = require 'wezterm'
-local mux = wezterm.mux
-local act = wezterm.action
+-- Pull in the wezterm API
+local wezterm = require("wezterm")
 
-wezterm.on('gui-startup', function()
- local tab, pane, window = mux.spawn_window({})
--- window:gui_window():maximize()
-end)
+-- This will hold the configuration
+local config = wezterm.config_builder()
 
-return {
-    default_prog = { '/usr/bin/bash', '-l' },
---    window_decorations = "INTEGRATED_BUTTONS | RESIZE",
-    window_decorations = "RESIZE",
-    integrated_title_button_style = "Gnome",
-    window_background_opacity = 0.9,
-    color_scheme = 'Dracula',
-    enable_wayland = false,
-    scrollback_lines = 3500,
-}
+config.font = wezterm.font("MesloLGS NF")
+config.font_size = 10
+config.enable_tab_bar = true
+config.color_scheme = 'Tomorrow (Gogh)'
+--config.color_scheme = 'Tomorrow Night (Gogh)'
+--config.color_scheme = 'iTerm2 Pastel Dark Background'
+--config.color_scheme = 'nord'
+config.window_background_opacity = 0.8
+config.default_prog = { '/usr/bin/zsh', '-l' }
+config.window_decorations = "RESIZE"
+config.enable_wayland = false
+config.scrollback_lines = 3500
+
+return config
